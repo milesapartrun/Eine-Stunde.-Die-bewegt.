@@ -8,197 +8,260 @@
 </head>
 
 <body>
+
   <main class="page">
+
+    <!-- HERO -->
 
     <section class="hero">
 
-      <p class="eyebrow">Eine Bewegung für alle.</p>
+      <div class="hero-title">
+        <h1>
+          Eine Stunde.
+          <span>Die bewegt.</span>
+        </h1>
+      </div>
 
-      <h1>
-        Eine Stunde.<br>
-        <span>Die bewegt.</span>
-      </h1>
+      <div class="hero-content">
 
-      <h2>
-        Lasst uns gemeinsam die Welt ein Stück gesünder machen.
-      </h2>
+        <p class="intro">
+          60 Minuten für dich.
+          Rausgehen, loslaufen, abschalten.
+          Oder einfach das machen, was dir guttut.
+        </p>
 
-      <p class="intro">
-        Nimm dir 60 Minuten für dich. Lauf, geh spazieren, fahr Rad,
-        schwimm oder trainiere – ganz egal, wie du dich bewegst.
-        Hauptsache, du bewegst dich.
-      </p>
+        <p class="intro-small">
+          Egal ob du läufst, spazieren gehst, schwimmst,
+          trainierst oder einfach eine Runde durch die Natur drehst.
+          Hauptsache, du kommst in Bewegung.
+        </p>
 
-      <button class="start-button" id="startButton">
-        <span>
-          Eine Stunde,<br>
-          <strong>die bewegt.</strong>
-        </span>
-        <span class="micro-start">Starten</span>
-      </button>
+        <button class="start-button" id="startButton">
+          Eine Stunde. Die bewegt.
+        </button>
 
-    </section>
-
-
-    <section class="stats" aria-label="Gemeinsamer Fortschritt">
-
-      <div>
-        <strong id="people">0</strong>
-        <span>
-          Menschen haben bereits eine Stunde Bewegung geschenkt.
-        </span>
       </div>
 
     </section>
 
 
+    <!-- IMPACT -->
+
+    <section class="stats" aria-label="Gemeinsame Bewegung">
+
+      <div class="stats-number" id="people">
+        0
+      </div>
+
+      <div class="stats-text">
+        Menschen sind heute
+        <strong>in Bewegung.</strong>
+      </div>
+
+    </section>
+
+
+    <!-- MESSAGE -->
+
     <section class="motivation">
 
-      <p class="section-label">Für die nächste Person</p>
+      <div class="motivation-heading">
 
-      <h2>Was möchtest du ihr mitgeben?</h2>
+        <p class="section-label">
+          Für die nächste Person
+        </p>
 
-      <input
-        type="text"
-        id="messageInput"
-        placeholder="„Zieh durch. Du schaffst das.“"
-        maxlength="160"
-        aria-label="Nachricht für die nächste Person"
+        <h2>
+          Hinterlass ihr<br>
+          etwas.
+        </h2>
+
+      </div>
+
+      <div class="motivation-action">
+
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Ein Satz, der sie bewegt."
+          maxlength="160"
+          aria-label="Nachricht für die nächste Person"
+        >
+
+        <button
+          class="message-button"
+          id="messageButton"
+        >
+          Weitergeben
+        </button>
+
+      </div>
+
+      <div
+        class="quote"
+        id="quote"
       >
-
-      <button class="action secondary" id="messageButton">
-        Weitergeben
-      </button>
-
-      <div class="quote" id="quote">
         „Zieh durch. Du schaffst das.“
       </div>
 
     </section>
 
 
-    <footer>
-      Lasst uns gemeinsam die Welt ein Stück gesünder machen.
-    </footer>
+    <!-- START MODAL -->
+
+    <div
+      class="modal hidden"
+      id="modal"
+    >
+
+      <div class="modal-card">
+
+        <button
+          class="close"
+          id="closeModal"
+          aria-label="Schließen"
+        >
+          ×
+        </button>
+
+
+        <p class="section-label">
+          Eine Stunde. Die bewegt.
+        </p>
+
+
+        <h2>
+          Verpass nichts.
+        </h2>
+
+
+        <p class="modal-intro">
+          Bleib bei <strong>Eine Stunde. Die bewegt.</strong>
+          dabei und hilf mit, die Bewegung weiterzutragen.
+        </p>
+
+
+        <!-- INSTAGRAM -->
+
+        <div
+          class="modal-action"
+          id="followAction"
+        >
+
+          <div class="modal-action-icon">
+            ◎
+          </div>
+
+          <div class="modal-action-text">
+            <strong>
+              Folge Tano Loew
+            </strong>
+
+            <span>
+              Auf Instagram
+            </span>
+          </div>
+
+          <div
+            class="check"
+            id="followCheck"
+          >
+            ✓
+          </div>
+
+        </div>
+
+
+        <!-- SHARE -->
+
+        <div
+          class="modal-action"
+          id="shareAction"
+        >
+
+          <div class="modal-action-icon">
+            ↗
+          </div>
+
+          <div class="modal-action-text">
+            <strong>
+              Trag die Bewegung weiter
+            </strong>
+
+            <span>
+              Teile Eine Stunde. Die bewegt.
+              mit jemandem.
+            </span>
+          </div>
+
+          <div
+            class="check"
+            id="shareCheck"
+          >
+            ✓
+          </div>
+
+        </div>
+
+
+        <a
+          class="instagram-link"
+          href="https://www.instagram.com/tanoloew/"
+          target="_blank"
+          rel="noopener"
+          id="instagramLink"
+        >
+          Tano Loew auf Instagram
+        </a>
+
+
+        <button
+          class="confirm"
+          id="confirmStart"
+          disabled
+        >
+          60 Minuten starten
+        </button>
+
+
+        <p
+          class="modal-note"
+          id="modalNote"
+        >
+          Beide Schritte erledigen, dann kann es losgehen.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- TIMER -->
+
+    <div
+      class="timer hidden"
+      id="timer"
+    >
+
+      <div class="timer-label">
+        Eine Stunde. Die bewegt.
+      </div>
+
+      <div
+        class="clock"
+        id="clock"
+      >
+        60:00
+      </div>
+
+      <div class="timer-sub">
+        Raus. Bewegen. Machen.
+      </div>
+
+    </div>
+
 
   </main>
-
-
-  <!-- START-MODAL -->
-
-  <div class="modal hidden" id="modal">
-
-    <div class="modal-card">
-
-      <button
-        class="close"
-        id="closeModal"
-        aria-label="Schließen"
-      >
-        ×
-      </button>
-
-      <p class="section-label">
-        Eine Stunde. Die bewegt.
-      </p>
-
-      <h2>
-        Verpass nichts.
-      </h2>
-
-      <p>
-        Bleib über <strong>Eine Stunde. Die bewegt.</strong>
-        auf dem Laufenden und hilf dabei, die Bewegung weiterzutragen.
-      </p>
-
-
-      <!-- INSTAGRAM -->
-
-      <div class="modal-action" id="followAction">
-
-        <div class="modal-action-icon">
-          ◎
-        </div>
-
-        <div class="modal-action-text">
-          <strong>Folge Tano Loew</strong>
-          <span>Auf Instagram</span>
-        </div>
-
-        <div class="check" id="followCheck">
-          ✓
-        </div>
-
-      </div>
-
-
-      <!-- SHARE -->
-
-      <div class="modal-action" id="shareAction">
-
-        <div class="modal-action-icon">
-          ↗
-        </div>
-
-        <div class="modal-action-text">
-          <strong>Trag die Bewegung weiter</strong>
-          <span>
-            Teile Eine Stunde. Die bewegt. mit jemandem
-          </span>
-        </div>
-
-        <div class="check" id="shareCheck">
-          ✓
-        </div>
-
-      </div>
-
-
-      <a
-        class="instagram-link"
-        href="https://www.instagram.com/tanoloew/"
-        target="_blank"
-        rel="noopener"
-        id="instagramLink"
-      >
-        Tano Loew auf Instagram folgen
-      </a>
-
-
-      <button
-        class="confirm"
-        id="confirmStart"
-        disabled
-      >
-        60 Minuten starten
-      </button>
-
-      <p class="modal-note" id="modalNote">
-        Beide Schritte erledigen, dann kann es losgehen.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- TIMER -->
-
-  <div class="timer hidden" id="timer">
-
-    <div class="timer-label">
-      Eine Stunde. Die bewegt.
-    </div>
-
-    <div class="clock" id="clock">
-      60:00
-    </div>
-
-    <div class="timer-sub">
-      Bewege dich. Ganz egal wie.
-    </div>
-
-  </div>
 
 
   <script src="script.js"></script>
