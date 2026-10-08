@@ -7,2193 +7,1250 @@
   <title>Eine Stunde. Die bewegt.</title>
 
   <style>
-
     :root {
-      --bg: #F5F6F4;
-      --text: #111315;
       --blue: #006B8F;
       --blue-dark: #004F6A;
       --blue-light: #E6F2F6;
+
+      --bg: #F5F6F4;
+      --text: #111315;
       --line: #D8DDE2;
       --muted: #4B5055;
       --placeholder: #B8BDC2;
-
-      --max-width: 820px;
+      --white: #FFFFFF;
     }
-
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
-
 
     html {
       scroll-behavior: smooth;
     }
 
-
     body {
-      min-height: 100vh;
-
+      margin: 0;
       background: var(--bg);
       color: var(--text);
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
-        "Inter",
         "Helvetica Neue",
+        Helvetica,
         Arial,
         sans-serif;
-
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-
-      overflow-x: hidden;
     }
 
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
+    }
 
     button,
-    input {
+    input,
+    textarea {
       font: inherit;
     }
-
 
     button {
       -webkit-tap-highlight-color: transparent;
     }
 
-
     .page {
-      width: 100%;
-      max-width: var(--max-width);
-
+      width: min(820px, calc(100% - 32px));
       margin: 0 auto;
-
-      padding:
-        28px 28px
-        55px;
     }
 
 
-
-    /* =====================================================
+    /* ============================================
        HERO
-       ===================================================== */
+       ============================================ */
 
     .hero {
-      text-align: center;
-
-      padding-top: 5px;
-
-      margin-bottom: 30px;
+      padding: 44px 0 0;
     }
 
-
-    .movement-symbol {
+    .hero-copy {
       position: relative;
-
-      width: 76px;
-      height: 54px;
-
-      margin:
-        0 auto
-        28px;
+      padding: 20px 0 44px;
     }
-
-
-    .movement-symbol span {
-      position: absolute;
-
-      height: 10px;
-
-      border-radius: 999px;
-
-      background: var(--blue);
-
-      transform: rotate(-25deg);
-    }
-
-
-    .movement-symbol span:nth-child(1) {
-      width: 34px;
-
-      top: 3px;
-      left: 12px;
-    }
-
-
-    .movement-symbol span:nth-child(2) {
-      width: 54px;
-
-      top: 20px;
-      left: 18px;
-    }
-
-
-    .movement-symbol span:nth-child(3) {
-      width: 34px;
-
-      top: 37px;
-      left: 30px;
-    }
-
 
     .hero-title {
-      font-size:
-        clamp(76px, 16vw, 136px);
-
-      line-height: 0.78;
-
-      font-weight: 800;
-
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(68px, 13vw, 150px);
+      line-height: 0.83;
       letter-spacing: -0.075em;
-
-      text-align: center;
+      font-weight: 800;
     }
 
-
-    .hero-title .black {
+    .hero-title span {
       display: block;
-
-      color: var(--text);
     }
 
-
-    .hero-title .blue {
-      display: block;
-
+    .hero-title span:last-child {
       color: var(--blue);
     }
 
-
-
-    /* =====================================================
-       GROSSES BILD
-       ===================================================== */
-
     .hero-photo {
       position: relative;
-
-      width:
-        calc(100% + 56px);
-
-      margin-left: -28px;
-
+      width: 100%;
       overflow: hidden;
-
-      background: #ddd;
+      margin-top: 18px;
     }
-
 
     .hero-photo img {
       width: 100%;
       height: auto;
-
       display: block;
-
       object-fit: contain;
     }
 
 
-    .hero-photo::after {
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(17, 19, 21, 0.01) 45%,
-          rgba(17, 19, 21, 0.12)
-        );
-
-      pointer-events: none;
-    }
-
-
-    .photo-tag {
-      position: absolute;
-
-      z-index: 2;
-
-      left: 24px;
-      bottom: 20px;
-
-      padding:
-        9px 13px;
-
-      border-radius: 999px;
-
-      background: white;
-
-      color: var(--text);
-
-      font-size: 12px;
-
-      line-height: 1;
-
-      font-weight: 800;
-
-      letter-spacing: 0.13em;
-
-      text-transform: uppercase;
-    }
-
-
-
-    /* =====================================================
-       EINLEITUNG MIT ERDKUGEL
-       ===================================================== */
+    /* ============================================
+       INTRO
+       ============================================ */
 
     .intro {
       position: relative;
-
-      text-align: center;
-
-      padding-top: 70px;
-
-      margin-bottom: 70px;
-
-      isolation: isolate;
+      overflow: hidden;
+      padding: 92px 0 88px;
     }
-
 
     .intro-globe {
       position: absolute;
-
-      z-index: -1;
-
-      width: 610px;
-      height: 610px;
-
-      left: 50%;
-      top: 15px;
-
-      transform:
-        translateX(-50%);
-
-      opacity: 0.11;
-
+      z-index: 0;
+      width: 620px;
+      height: 620px;
+      right: -180px;
+      top: 20px;
+      opacity: .11;
       pointer-events: none;
     }
-
 
     .intro-globe svg {
       width: 100%;
       height: 100%;
-
       display: block;
     }
 
+    .intro-content {
+      position: relative;
+      z-index: 1;
+      max-width: 670px;
+    }
+
+    .intro-kicker {
+      margin: 0 0 20px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
 
     .intro-title {
-      position: relative;
-
-      max-width: 660px;
-
-      margin:
-        0 auto
-        58px;
-
-      font-size:
-        clamp(27px, 5vw, 37px);
-
-      line-height: 1.08;
-
-      font-weight: 700;
-
-      letter-spacing: -0.04em;
-    }
-
-
-    .minutes {
-      position: relative;
-
-      margin-bottom: 43px;
-
-      font-size:
-        clamp(34px, 6vw, 49px);
-
-      line-height: 1.03;
-
+      margin: 0 0 30px;
+      max-width: 680px;
+      font-size: clamp(40px, 7vw, 70px);
+      line-height: .95;
+      letter-spacing: -.055em;
       font-weight: 800;
-
-      letter-spacing: -0.055em;
     }
 
-
-    .description {
-      position: relative;
-
-      max-width: 700px;
-
-      margin: 0 auto;
-
-      color: var(--muted);
-
-      font-size:
-        clamp(18px, 3vw, 22px);
-
-      line-height: 1.38;
-
-      letter-spacing: -0.025em;
+    .intro-copy {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: -.02em;
     }
 
-
-    .description-main {
-      display: block;
-
-      white-space: nowrap;
+    .intro-copy + .intro-copy {
+      margin-top: 28px;
     }
 
-
-    .description .highlight {
-      display: block;
-
-      margin-top: 8px;
-
+    .intro-emphasis {
       color: var(--blue);
-
-      font-weight: 750;
-
-      white-space: nowrap;
+      font-weight: 800;
     }
 
 
+    /* ============================================
+       CTA
+       ============================================ */
 
-    /* =====================================================
-       HAUPT-BUTTON
-       ===================================================== */
-
-    .main-cta-wrap {
+    .join-cta {
       position: relative;
-
-      margin-top: 58px;
-
-      z-index: 3;
-    }
-
-
-    .main-cta-wrap::before {
-      content: "";
-
-      position: absolute;
-
-      z-index: -1;
-
-      left: 50%;
-      top: 50%;
-
-      width: 92%;
-      height: 82%;
-
-      transform:
-        translate(-50%, -50%);
-
-      border-radius: 999px;
-
+      margin: 0 0 92px;
+      padding: 46px 42px 50px;
       background: var(--blue);
-
-      opacity: 0.16;
-
-      filter: blur(25px);
-
-      animation:
-        ctaGlow 3s ease-in-out infinite;
-    }
-
-
-    @keyframes ctaGlow {
-
-      0%,
-      100% {
-        transform:
-          translate(-50%, -50%)
-          scale(0.96);
-
-        opacity: 0.13;
-      }
-
-      50% {
-        transform:
-          translate(-50%, -50%)
-          scale(1.04);
-
-        opacity: 0.22;
-      }
-    }
-
-
-    .main-cta {
-      position: relative;
-
-      width: 100%;
-
-      border: 0;
-
-      padding:
-        29px 30px 27px;
-
-      border-radius: 999px;
-
-      background: var(--blue);
-
-      color: white;
-
-      text-align: center;
-
+      color: var(--white);
+      overflow: hidden;
       cursor: pointer;
-
-      box-shadow:
-        0 18px 40px
-        rgba(0, 107, 143, 0.28);
-
-      transition:
-        transform 180ms ease,
-        background 180ms ease,
-        box-shadow 180ms ease;
     }
 
-
-    .main-cta::before {
+    .join-cta::before,
+    .join-cta::after {
       content: "";
-
       position: absolute;
-
-      inset: 4px;
-
-      border:
-        1px solid
-        rgba(255,255,255,0.20);
-
-      border-radius: inherit;
-
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 50%;
       pointer-events: none;
     }
 
-
-    .main-cta:hover {
-      background: var(--blue-dark);
-
-      transform:
-        translateY(-4px)
-        scale(1.012);
-
-      box-shadow:
-        0 25px 55px
-        rgba(0, 107, 143, 0.34);
+    .join-cta::before {
+      width: 360px;
+      height: 360px;
+      right: -130px;
+      top: -190px;
     }
 
-
-    .main-cta:active {
-      transform:
-        translateY(0)
-        scale(0.985);
-
-      box-shadow:
-        0 12px 25px
-        rgba(0, 107, 143, 0.25);
+    .join-cta::after {
+      width: 230px;
+      height: 230px;
+      right: 30px;
+      bottom: -155px;
     }
 
+    .join-cta-content {
+      position: relative;
+      z-index: 1;
+    }
 
-    .main-cta-kicker {
-      display: block;
-
-      margin-bottom: 8px;
-
+    .join-cta-kicker {
+      margin: 0 0 14px;
       font-size: 12px;
-
-      line-height: 1;
-
       font-weight: 800;
-
-      letter-spacing: 0.17em;
-
+      letter-spacing: .18em;
       text-transform: uppercase;
-
-      opacity: 0.78;
+      opacity: .8;
     }
 
-
-    .main-cta-title {
-      display: block;
-
-      font-size:
-        clamp(28px, 5vw, 36px);
-
-      line-height: 1;
-
+    .join-cta-title {
+      margin: 0;
+      max-width: 680px;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: .92;
+      letter-spacing: -.055em;
       font-weight: 800;
-
-      letter-spacing: -0.045em;
     }
 
-
-    .main-cta-arrow {
+    .join-cta-arrow {
       display: inline-block;
+      margin-left: 8px;
+      transition: transform .2s ease;
+    }
 
-      margin-left: 7px;
-
-      transition:
-        transform 180ms ease;
+    .join-cta:hover .join-cta-arrow {
+      transform: translateX(8px);
     }
 
 
-    .main-cta:hover .main-cta-arrow {
-      transform:
-        translateX(5px);
-    }
-
-
-
-    /* =====================================================
-       STATISTIKEN
-       ===================================================== */
+    /* ============================================
+       STATS
+       ============================================ */
 
     .stats {
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      border-top:
-        1px solid var(--line);
-
-      border-bottom:
-        1px solid var(--line);
-
-      margin-bottom: 58px;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 92px;
     }
-
 
     .stat {
-      min-height: 175px;
-
-      padding: 28px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
+      padding: 32px 0 36px;
     }
-
 
     .stat + .stat {
-      border-left:
-        1px solid var(--line);
+      border-left: 1px solid var(--line);
+      padding-left: 32px;
     }
-
 
     .stat-number {
-      margin-bottom: 18px;
-
+      display: block;
+      margin-bottom: 8px;
       color: var(--blue);
-
-      font-size:
-        clamp(70px, 13vw, 104px);
-
-      line-height: 0.85;
-
-      font-weight: 700;
-
-      letter-spacing: -0.07em;
+      font-size: clamp(44px, 7vw, 72px);
+      line-height: .9;
+      letter-spacing: -.06em;
+      font-weight: 800;
     }
-
 
     .stat-label {
-      font-size: 21px;
-
-      line-height: 1.15;
-
-      font-weight: 500;
-
-      letter-spacing: -0.025em;
-    }
-
-
-
-    /* =====================================================
-       JEDE STUNDE
-       ===================================================== */
-
-    .count-message {
-      margin-bottom: 70px;
-
-      position: relative;
-    }
-
-
-    .count-message::after {
-      content: "";
-
       display: block;
-
-      width: 92px;
-      height: 5px;
-
-      margin-top: 24px;
-
-      border-radius: 999px;
-
-      background: var(--blue);
-
-      transform: rotate(-7deg);
-
-      transform-origin: left center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
     }
 
 
-    .count-message h2 {
-      width: 100%;
+    /* ============================================
+       COUNT
+       ============================================ */
 
-      font-size:
-        clamp(36px, 6.5vw, 67px);
-
-      line-height: 0.98;
-
-      font-weight: 750;
-
-      letter-spacing: -0.065em;
-
-      white-space: nowrap;
+    .count-section {
+      padding: 0 0 96px;
     }
 
+    .count-title {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(50px, 9vw, 92px);
+      line-height: .88;
+      letter-spacing: -.065em;
+      font-weight: 800;
+    }
 
-    .count-line {
+    .count-title span {
       display: block;
     }
 
+    .count-title span:last-child {
+      color: var(--blue);
+    }
 
 
-    /* =====================================================
-       MOTIVATIONS-BILD
-       ===================================================== */
+    /* ============================================
+       MOTIVATION
+       ============================================ */
+
+    .motivation {
+      padding: 0 0 100px;
+    }
 
     .motivation-photo {
       position: relative;
-
-      height: 210px;
-
-      margin-bottom: 54px;
-
+      width: 100%;
+      height: 300px;
       overflow: hidden;
-
-      border-radius: 26px;
+      margin-bottom: 50px;
     }
-
 
     .motivation-photo img {
       position: absolute;
-
       top: 0;
       left: -100%;
-
       width: 300%;
       height: 100%;
-
       max-width: none;
-
       display: block;
-
       object-fit: cover;
     }
 
-
-    .motivation-photo::after {
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(17, 19, 21, 0.34),
-          transparent 60%
-        );
+    .motivation-content {
+      max-width: 690px;
     }
 
-
-    .motivation-photo-text {
-      position: absolute;
-
-      z-index: 2;
-
-      left: 21px;
-      bottom: 18px;
-
-      color: white;
-
-      font-size: 18px;
-
-      line-height: 1;
-
-      font-weight: 750;
-
-      letter-spacing: -0.025em;
-    }
-
-
-
-    /* =====================================================
-       MOTIVATION
-       ===================================================== */
-
-    .motivation {
-      margin-bottom: 78px;
-    }
-
-
-    .kicker {
-      margin-bottom: 27px;
-
+    .motivation-kicker {
+      margin: 0 0 16px;
       color: var(--blue);
-
-      font-size: 16px;
-
-      line-height: 1;
-
+      font-size: 13px;
       font-weight: 800;
-
-      letter-spacing: 0.17em;
-
+      letter-spacing: .15em;
       text-transform: uppercase;
     }
 
-
     .motivation-title {
-      margin-bottom: 23px;
-
-      font-size:
-        clamp(64px, 12vw, 118px);
-
-      line-height: 0.82;
-
+      margin: 0 0 22px;
+      font-size: clamp(46px, 8vw, 82px);
+      line-height: .9;
+      letter-spacing: -.06em;
       font-weight: 800;
-
-      letter-spacing: -0.078em;
-
-      white-space: nowrap;
     }
 
-
-    .motivation-subtitle {
-      margin-bottom: 54px;
-
-      font-size:
-        clamp(23px, 4vw, 31px);
-
-      line-height: 1.12;
-
-      font-weight: 500;
-
-      letter-spacing: -0.035em;
+    .motivation-copy {
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.4;
     }
 
+    .motivation-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-
-    /* =====================================================
-       NACHRICHT
-       ===================================================== */
-
-    .message-form {
+    .motivation-input {
       width: 100%;
-    }
-
-
-    .message-input-wrap {
-      border-bottom:
-        3px solid var(--text);
-
-      padding-bottom: 9px;
-    }
-
-
-    .message-input {
-      width: 100%;
-
-      border: 0;
-      outline: 0;
-
+      min-height: 130px;
+      padding: 20px;
+      resize: vertical;
+      border: 2px solid var(--text);
+      border-radius: 0;
       background: transparent;
-
       color: var(--text);
-
-      padding:
-        0 0 3px;
-
-      font-size:
-        clamp(21px, 3.8vw, 28px);
-
-      line-height: 1.2;
-
-      font-weight: 500;
-
-      letter-spacing: -0.03em;
+      outline: none;
+      font-size: 20px;
+      line-height: 1.4;
     }
 
+    .motivation-input:focus {
+      border-color: var(--blue);
+    }
 
-    .message-input::placeholder {
+    .motivation-input::placeholder {
       color: var(--placeholder);
-
       opacity: 1;
     }
 
-
-    .message-input:focus::placeholder {
-      opacity: 0.55;
+    .motivation-helper {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
     }
 
-
-    .message-helper {
-      margin-top: 14px;
-
-      color: #A6ACB1;
-
-      font-size: 16px;
-
-      line-height: 1.35;
-
-      letter-spacing: -0.015em;
-    }
-
-
-    .send-area {
-      margin-top: 25px;
-    }
-
-
-    .send-button {
+    .motivation-submit {
+      align-self: flex-start;
+      min-height: 54px;
+      padding: 14px 22px;
       border: 0;
-
-      padding: 0;
-
-      background: transparent;
-
-      color: var(--blue);
-
-      font-size:
-        clamp(20px, 3.8vw, 26px);
-
-      line-height: 1.2;
-
-      font-weight: 700;
-
-      letter-spacing: -0.035em;
-
+      background: var(--blue);
+      color: var(--white);
       cursor: pointer;
-
+      font-size: 15px;
+      font-weight: 800;
       transition:
-        color 160ms ease,
-        transform 160ms ease;
+        background .2s ease,
+        transform .2s ease;
     }
 
-
-    .send-button::after {
-      content: " →";
-
-      display: inline-block;
-
-      transition:
-        transform 160ms ease;
+    .motivation-submit:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
     }
 
-
-    .send-button:hover {
-      color: var(--blue-dark);
-
-      transform: translateX(2px);
-    }
-
-
-    .send-button:hover::after {
-      transform: translateX(5px);
-    }
-
-
-    .send-button:disabled {
-      opacity: 0.45;
-      cursor: wait;
-    }
-
-
-
-    /* =====================================================
-       ERFOLGSMELDUNG
-       ===================================================== */
-
-    .success-message {
+    .motivation-success {
       display: none;
-
-      margin-top: 22px;
-
-      padding:
-        17px 19px;
-
-      border-radius: 17px;
-
+      margin-top: 14px;
+      padding: 16px 18px;
       background: var(--blue-light);
-
       color: var(--blue-dark);
-
-      font-size: 17px;
-
-      line-height: 1.35;
-
-      font-weight: 600;
+      font-weight: 800;
+      border-left: 4px solid var(--blue);
     }
 
-
-    .success-message.visible {
+    .motivation-success.show {
       display: block;
     }
 
 
-
-    /* =====================================================
+    /* ============================================
        FOOTER
-       ===================================================== */
+       ============================================ */
 
-    .footer {
-      padding-top: 35px;
-
-      border-top:
-        1px solid var(--line);
-
-      text-align: center;
+    footer {
+      padding: 38px 0 50px;
+      border-top: 1px solid var(--line);
     }
-
-
-    .footer-mark {
-      width: 60px;
-      height: 5px;
-
-      margin:
-        0 auto
-        25px;
-
-      border-radius: 999px;
-
-      background: var(--blue);
-
-      transform: rotate(-8deg);
-    }
-
 
     .footer-title {
-      color: var(--text);
-
-      font-size:
-        clamp(25px, 5vw, 37px);
-
-      line-height: 1;
-
-      font-weight: 750;
-
-      letter-spacing: -0.045em;
-    }
-
-
-    .footer-title span {
+      margin: 0;
       color: var(--blue);
+      font-size: 18px;
+      font-weight: 800;
     }
 
 
-
-    /* =====================================================
+    /* ============================================
        TEILNAHME-MODAL
-       ===================================================== */
+       ============================================ */
 
     .join-overlay {
       position: fixed;
-
       inset: 0;
-
       z-index: 1000;
-
-      display: flex;
-
+      display: none;
       align-items: center;
       justify-content: center;
-
-      padding: 20px;
-
-      background:
-        rgba(17, 19, 21, 0.62);
-
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-
-      opacity: 0;
-
-      visibility: hidden;
-
-      pointer-events: none;
-
-      transition:
-        opacity 220ms ease,
-        visibility 220ms ease;
+      padding: 24px;
+      background: rgba(17, 19, 21, .72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-
 
     .join-overlay.open {
-      opacity: 1;
-
-      visibility: visible;
-
-      pointer-events: auto;
+      display: flex;
     }
-
 
     .join-modal {
       position: relative;
-
-      width: 100%;
-
-      max-width: 610px;
-
-      max-height: 92vh;
-
+      width: min(760px, 100%);
+      max-height: min(900px, calc(100vh - 48px));
       overflow-y: auto;
-
-      padding: 34px;
-
       background: var(--bg);
-
-      transform:
-        translateY(18px)
-        scale(0.98);
-
-      transition:
-        transform 220ms ease;
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.24);
+      border: 1px solid rgba(255,255,255,.4);
     }
-
-
-    .join-overlay.open .join-modal {
-      transform:
-        translateY(0)
-        scale(1);
-    }
-
 
     .join-close {
       position: absolute;
-
-      top: 14px;
-      right: 17px;
-
-      width: 40px;
-      height: 40px;
-
+      top: 18px;
+      right: 18px;
+      z-index: 10;
+      width: 48px;
+      height: 48px;
       border: 0;
-
-      background: transparent;
-
+      border-radius: 50%;
+      background: rgba(255,255,255,.95);
       color: var(--text);
-
-      font-size: 30px;
-
+      font-size: 31px;
       line-height: 1;
-
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        transform .2s ease,
+        background .2s ease;
     }
 
+    .join-close:hover {
+      transform: rotate(90deg);
+      background: #fff;
+    }
+
+    .join-header {
+      position: relative;
+      overflow: hidden;
+      padding: 48px 48px 44px;
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .join-header::before,
+    .join-header::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .join-header::before {
+      width: 330px;
+      height: 330px;
+      right: -130px;
+      top: -180px;
+    }
+
+    .join-header::after {
+      width: 220px;
+      height: 220px;
+      right: 20px;
+      bottom: -155px;
+    }
 
     .join-kicker {
-      margin-bottom: 13px;
-
-      color: var(--blue);
-
+      position: relative;
+      z-index: 1;
+      margin: 0 0 14px;
       font-size: 12px;
-
       font-weight: 800;
-
-      letter-spacing: 0.16em;
-
+      letter-spacing: .18em;
       text-transform: uppercase;
+      opacity: .8;
     }
-
 
     .join-title {
-      max-width: 500px;
-
-      margin-bottom: 18px;
-
-      font-size:
-        clamp(39px, 7vw, 60px);
-
-      line-height: 0.91;
-
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 620px;
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: .94;
+      letter-spacing: -.055em;
       font-weight: 800;
-
-      letter-spacing: -0.06em;
     }
-
 
     .join-intro {
-      max-width: 500px;
-
-      margin-bottom: 28px;
-
-      color: var(--muted);
-
-      font-size: 16px;
-
-      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      margin: 22px 0 0;
+      color: rgba(255,255,255,.9);
+      font-size: 18px;
+      line-height: 1.5;
     }
 
+    .join-content {
+      padding: 28px 32px 36px;
+    }
 
     .join-step {
-      padding:
-        22px 0;
-
-      border-top:
-        1px solid var(--line);
+      position: relative;
+      padding: 26px 0;
     }
 
-
-    .join-step:last-of-type {
-      border-bottom:
-        1px solid var(--line);
+    .join-step + .join-step {
+      border-top: 2px solid var(--blue-light);
     }
 
+    .join-step.locked {
+      opacity: .42;
+    }
+
+    .join-step.unlocked {
+      opacity: 1;
+    }
 
     .join-step-head {
       display: flex;
-
-      gap: 14px;
-
       align-items: flex-start;
+      gap: 18px;
     }
 
-
     .join-step-number {
-      flex-shrink: 0;
-
-      width: 32px;
-      height: 32px;
-
+      position: relative;
+      flex: 0 0 auto;
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: var(--blue-light);
+      color: var(--blue);
       display: flex;
-
       align-items: center;
       justify-content: center;
-
-      border:
-        1px solid
-        var(--line);
-
-      border-radius: 50%;
-
-      color: var(--muted);
-
-      font-size: 12px;
-
+      font-size: 18px;
       font-weight: 800;
-
-      transition:
-        background 180ms ease,
-        border-color 180ms ease,
-        color 180ms ease;
+      border: 1px solid rgba(0,107,143,.16);
     }
 
-
-    .join-step.completed
-    .join-step-number {
+    .join-step.unlocked .join-step-number {
       background: var(--blue);
-
-      border-color: var(--blue);
-
-      color: white;
+      color: #fff;
     }
 
+    .join-step.completed .join-step-number {
+      background: var(--blue-dark);
+      color: #fff;
+    }
 
     .join-step-title {
-      margin-bottom: 5px;
-
-      font-size: 18px;
-
-      line-height: 1.15;
-
+      margin: 2px 0 6px;
+      font-size: 24px;
+      line-height: 1.08;
+      letter-spacing: -.025em;
       font-weight: 800;
     }
 
-
     .join-step-copy {
+      margin: 0;
       color: var(--muted);
-
-      font-size: 14px;
-
-      line-height: 1.4;
+      font-size: 16px;
+      line-height: 1.45;
     }
-
 
     .join-step-content {
-      margin:
-        16px 0 0 46px;
+      margin-top: 22px;
     }
 
+    .join-icon-box {
+      margin: 0 0 20px;
+      padding: 22px;
+      min-height: 106px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--blue);
+      border-radius: 18px;
+    }
+
+    .join-icon {
+      flex: 0 0 auto;
+      width: 58px;
+      height: 58px;
+      border-radius: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .join-icon svg {
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    .join-icon-text {
+      margin: 0;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 600;
+    }
 
     .join-instagram-button,
     .join-share-button {
-      display: inline-flex;
-
+      width: 100%;
+      min-height: 58px;
+      padding: 14px 20px;
+      border: 2px solid var(--blue);
+      border-radius: 12px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
       align-items: center;
       justify-content: center;
-
-      min-height: 44px;
-
-      padding:
-        11px 16px;
-
-      border:
-        1px solid
-        var(--text);
-
-      background: transparent;
-
-      color: var(--text);
-
-      font-size: 13px;
-
-      font-weight: 800;
-
+      gap: 10px;
       cursor: pointer;
-
       transition:
-        background 160ms ease,
-        color 160ms ease;
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
     }
-
 
     .join-instagram-button:hover,
     .join-share-button:hover {
-      background: var(--text);
-
-      color: white;
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+      transform: translateY(-1px);
     }
 
+    .join-share-button.secondary {
+      background: #fff;
+      color: var(--blue);
+    }
+
+    .join-share-button.secondary:hover {
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      border-color: var(--blue);
+    }
 
     .join-share-buttons {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 9px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
     }
-
 
     .join-confirm {
       display: flex;
-
       align-items: flex-start;
-
-      gap: 10px;
-
-      margin-top: 14px;
-
-      color: var(--text);
-
-      font-size: 13px;
-
-      line-height: 1.35;
-
-      font-weight: 700;
-
+      gap: 13px;
+      margin-top: 18px;
+      padding: 17px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
       cursor: pointer;
+      transition:
+        border-color .2s ease,
+        background .2s ease;
     }
 
+    .join-confirm:hover {
+      border-color: var(--blue);
+    }
 
     .join-confirm input {
       appearance: none;
       -webkit-appearance: none;
-
-      position: relative;
-
-      flex-shrink: 0;
-
-      width: 19px;
-      height: 19px;
-
-      margin-top: 1px;
-
-      border:
-        1px solid
-        #AEB4B9;
-
-      background: white;
-
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      margin: 0;
+      border: 2px solid #AEB6BC;
+      border-radius: 7px;
+      background: #fff;
       cursor: pointer;
+      position: relative;
     }
-
 
     .join-confirm input:checked {
       border-color: var(--blue);
-
       background: var(--blue);
     }
 
-
     .join-confirm input:checked::after {
-      content: "✓";
-
+      content: "";
       position: absolute;
-
-      left: 3px;
-      top: -1px;
-
-      color: white;
-
-      font-size: 13px;
-
-      font-weight: 800;
+      left: 6px;
+      top: 2px;
+      width: 7px;
+      height: 12px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(45deg);
     }
 
-
-    .join-share-section {
-      opacity: 0.38;
-
-      pointer-events: none;
-
-      transition:
-        opacity 180ms ease;
+    .join-confirm span {
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 700;
     }
-
-
-    .join-share-section.unlocked {
-      opacity: 1;
-
-      pointer-events: auto;
-    }
-
 
     .join-start-button {
       width: 100%;
-
-      margin-top: 23px;
-
-      padding:
-        18px 20px;
-
+      min-height: 66px;
+      margin-top: 26px;
+      padding: 16px 24px;
       border: 0;
-
+      border-radius: 14px;
       background: var(--blue);
-
-      color: white;
-
-      font-size: 17px;
-
-      line-height: 1.1;
-
+      color: #fff;
+      font-size: 18px;
       font-weight: 800;
-
       cursor: pointer;
-
       transition:
-        background 160ms ease,
-        opacity 160ms ease;
+        background .2s ease,
+        transform .2s ease,
+        opacity .2s ease;
     }
-
 
     .join-start-button:hover:not(:disabled) {
       background: var(--blue-dark);
+      transform: translateY(-2px);
     }
 
-
     .join-start-button:disabled {
-      opacity: 0.32;
-
+      background: #C9D0D4;
+      color: #fff;
       cursor: not-allowed;
     }
 
-
     .join-note {
-      margin-top: 12px;
-
-      color: var(--muted);
-
-      font-size: 11px;
-
-      line-height: 1.45;
-
+      margin: 15px 0 0;
       text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
     }
 
 
-
-    /* =====================================================
+    /* ============================================
        TIMER
-       ===================================================== */
+       ============================================ */
 
     .timer-overlay {
       position: fixed;
-
       inset: 0;
-
       z-index: 1100;
-
       display: none;
-
       flex-direction: column;
-
-      background: var(--bg);
-
+      background: var(--blue);
+      color: #fff;
       overflow-y: auto;
     }
-
 
     .timer-overlay.open {
       display: flex;
     }
 
-
     .timer-header {
-      width: 100%;
-
-      max-width: 1000px;
-
-      margin: 0 auto;
-
-      padding:
-        26px 28px;
-
       display: flex;
-
-      align-items: center;
-
       justify-content: space-between;
+      align-items: center;
+      padding: 24px 28px;
+      border-bottom: 1px solid rgba(255,255,255,.16);
     }
-
 
     .timer-brand {
-      font-size: 13px;
-
-      line-height: 1;
-
+      font-size: 14px;
       font-weight: 800;
-
-      letter-spacing: -0.01em;
-    }
-
-
-    .timer-brand span {
-      color: var(--blue);
-    }
-
-
-    .timer-status {
-      color: var(--muted);
-
-      font-size: 11px;
-
-      line-height: 1;
-
-      font-weight: 800;
-
-      letter-spacing: 0.12em;
-
+      letter-spacing: .08em;
       text-transform: uppercase;
     }
 
+    .timer-status {
+      font-size: 13px;
+      opacity: .72;
+    }
 
     .timer-main {
-      width: 100%;
-
-      max-width: 900px;
-
+      width: min(820px, calc(100% - 40px));
       margin: auto;
-
-      padding:
-        50px 28px 70px;
-
+      padding: 70px 0;
       text-align: center;
     }
 
-
     .timer-kicker {
-      margin-bottom: 19px;
-
-      color: var(--blue);
-
+      margin: 0 0 16px;
       font-size: 12px;
-
-      line-height: 1;
-
       font-weight: 800;
-
-      letter-spacing: 0.17em;
-
+      letter-spacing: .18em;
       text-transform: uppercase;
+      opacity: .72;
     }
-
 
     .timer-title {
-      margin-bottom: 48px;
-
-      font-size:
-        clamp(50px, 9vw, 90px);
-
-      line-height: 0.85;
-
+      margin: 0 auto 32px;
+      max-width: 760px;
+      font-size: clamp(46px, 9vw, 100px);
+      line-height: .88;
+      letter-spacing: -.07em;
       font-weight: 800;
-
-      letter-spacing: -0.075em;
     }
-
 
     .timer-display {
-      margin-bottom: 36px;
-
-      color: var(--blue);
-
-      font-size:
-        clamp(90px, 19vw, 190px);
-
-      line-height: 0.8;
-
-      font-weight: 800;
-
-      letter-spacing: -0.085em;
-
+      margin: 0;
       font-variant-numeric: tabular-nums;
+      font-size: clamp(82px, 18vw, 180px);
+      line-height: .85;
+      letter-spacing: -.075em;
+      font-weight: 800;
     }
-
 
     .timer-progress {
       width: 100%;
-
       height: 8px;
-
-      margin-bottom: 28px;
-
+      margin: 44px 0 28px;
+      background: rgba(255,255,255,.2);
       overflow: hidden;
-
-      background: var(--line);
     }
-
 
     .timer-progress-bar {
-      width: 0%;
-
+      width: 100%;
       height: 100%;
-
-      background: var(--blue);
-
-      transition:
-        width 500ms linear;
+      background: #fff;
+      transform-origin: left center;
+      transform: scaleX(1);
     }
-
 
     .timer-copy {
-      max-width: 540px;
-
       margin: 0 auto;
-
-      color: var(--muted);
-
+      max-width: 580px;
+      color: rgba(255,255,255,.82);
       font-size: 18px;
-
-      line-height: 1.4;
+      line-height: 1.5;
     }
-
-
-    .timer-copy strong {
-      color: var(--text);
-    }
-
 
     .timer-cancel {
-      margin-top: 28px;
-
-      border: 0;
-
+      margin-top: 34px;
+      padding: 12px 18px;
+      border: 1px solid rgba(255,255,255,.42);
       background: transparent;
-
-      color: var(--muted);
-
-      font-size: 12px;
-
-      text-decoration:
-        underline;
-
-      text-underline-offset: 3px;
-
+      color: #fff;
       cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
     }
-
-
-
-    /* =====================================================
-       TIMER FERTIG
-       ===================================================== */
 
     .timer-finish {
       display: none;
-
-      max-width: 720px;
-
+      max-width: 680px;
       margin: 0 auto;
     }
 
-
-    .timer-finish.visible {
+    .timer-finish.show {
       display: block;
     }
 
-
     .finish-kicker {
-      margin-bottom: 20px;
-
-      color: var(--blue);
-
+      margin: 0 0 16px;
       font-size: 12px;
-
-      line-height: 1;
-
       font-weight: 800;
-
-      letter-spacing: 0.17em;
-
+      letter-spacing: .18em;
       text-transform: uppercase;
+      opacity: .72;
     }
-
 
     .finish-title {
-      margin-bottom: 34px;
-
-      font-size:
-        clamp(52px, 10vw, 94px);
-
-      line-height: 0.84;
-
+      margin: 0 0 38px;
+      font-size: clamp(52px, 10vw, 100px);
+      line-height: .88;
+      letter-spacing: -.07em;
       font-weight: 800;
-
-      letter-spacing: -0.08em;
     }
-
 
     .received-label {
-      margin-bottom: 14px;
-
-      color: var(--muted);
-
-      font-size: 11px;
-
-      line-height: 1;
-
+      margin: 0 0 12px;
+      font-size: 12px;
       font-weight: 800;
-
-      letter-spacing: 0.13em;
-
+      letter-spacing: .16em;
       text-transform: uppercase;
+      opacity: .72;
     }
-
 
     .received-message {
-      margin-bottom: 28px;
-
-      padding:
-        32px 26px;
-
-      background: var(--blue);
-
-      color: white;
-
-      font-size:
-        clamp(25px, 5vw, 45px);
-
-      line-height: 1.08;
-
+      margin: 0;
+      padding: 28px;
+      background: #fff;
+      color: var(--text);
+      font-size: clamp(24px, 4vw, 38px);
+      line-height: 1.1;
+      letter-spacing: -.035em;
       font-weight: 800;
-
-      letter-spacing: -0.045em;
     }
-
 
     .finish-button {
-      padding:
-        15px 20px;
-
+      margin-top: 26px;
+      min-height: 56px;
+      padding: 14px 22px;
       border: 0;
-
-      background: var(--text);
-
-      color: white;
-
-      font-size: 14px;
-
-      font-weight: 800;
-
+      background: #fff;
+      color: var(--blue);
       cursor: pointer;
+      font-size: 15px;
+      font-weight: 800;
     }
 
 
-    .finish-button:hover {
-      background: var(--blue-dark);
-    }
-
-
-
-    /* =====================================================
+    /* ============================================
        MOBILE
-       ===================================================== */
+       ============================================ */
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
 
       .page {
-        padding:
-          23px 22px
-          50px;
+        width: min(100% - 24px, 820px);
       }
-
 
       .hero {
-        margin-bottom: 0;
+        padding-top: 24px;
       }
 
-
-      .movement-symbol {
-        margin-bottom: 27px;
-
-        transform: scale(0.82);
+      .hero-copy {
+        padding-bottom: 30px;
       }
-
 
       .hero-title {
-        font-size: 79px;
+        font-size: clamp(62px, 17vw, 110px);
       }
-
-
-      .hero-photo {
-        width:
-          calc(100% + 44px);
-
-        margin-left: -22px;
-
-        margin-top: 34px;
-      }
-
-
-      .photo-tag {
-        left: 18px;
-        bottom: 16px;
-
-        font-size: 10px;
-      }
-
 
       .intro {
-        padding-top: 58px;
-
-        margin-bottom: 57px;
+        padding: 70px 0 68px;
       }
-
 
       .intro-globe {
-        width: 430px;
-        height: 430px;
-
-        top: 25px;
-
-        opacity: 0.095;
+        width: 470px;
+        height: 470px;
+        right: -220px;
+        top: 40px;
+        opacity: .095;
       }
-
 
       .intro-title {
-        margin-bottom: 56px;
-
-        font-size: 26px;
+        font-size: clamp(42px, 12vw, 64px);
       }
 
-
-      .minutes {
-        margin-bottom: 39px;
-
-        font-size: 34px;
-      }
-
-
-      .description {
-        font-size: 17px;
-
-        line-height: 1.35;
-      }
-
-
-      .description-main {
-        white-space: normal;
-      }
-
-
-      .description-main .line {
-        display: block;
-
-        white-space: nowrap;
-      }
-
-
-      .description .highlight {
-        margin-top: 7px;
-
-        font-size: 18px;
-
-        white-space: nowrap;
-      }
-
-
-      .main-cta-wrap {
-        margin-top: 50px;
-      }
-
-
-      .main-cta {
-        padding:
-          25px 22px
-          23px;
-      }
-
-
-      .main-cta-kicker {
-        font-size: 10px;
-
-        margin-bottom: 7px;
-      }
-
-
-      .main-cta-title {
-        font-size: 27px;
-      }
-
-
-      .stats {
-        margin-bottom: 50px;
-      }
-
-
-      .stat {
-        min-height: 153px;
-
-        padding:
-          23px 18px;
-      }
-
-
-      .stat-number {
-        margin-bottom: 15px;
-
-        font-size: 66px;
-      }
-
-
-      .stat-label {
-        font-size: 17px;
-      }
-
-
-      .count-message {
-        margin-bottom: 55px;
-      }
-
-
-      .count-message h2 {
-        font-size: 36px;
-
-        line-height: 1;
-
-        letter-spacing: -0.06em;
-
-        white-space: normal;
-      }
-
-
-      .count-line {
-        display: block;
-
-        white-space: nowrap;
-      }
-
-
-      .count-message::after {
-        width: 58px;
-
-        height: 4px;
-
-        margin-top: 18px;
-      }
-
-
-      .motivation-photo {
-        height: 170px;
-
-        margin-bottom: 43px;
-
-        border-radius: 21px;
-      }
-
-
-      .motivation-photo-text {
-        left: 16px;
-
-        bottom: 15px;
-
-        font-size: 16px;
-      }
-
-
-      .kicker {
-        margin-bottom: 25px;
-
-        font-size: 13px;
-      }
-
-
-      .motivation-title {
-        margin-bottom: 21px;
-
-        font-size: 64px;
-
-        white-space: nowrap;
-      }
-
-
-      .motivation-subtitle {
-        margin-bottom: 49px;
-
-        font-size: 21px;
-      }
-
-
-      .message-input {
-        font-size: 22px;
-      }
-
-
-      .message-helper {
-        font-size: 15px;
-
-        margin-top: 13px;
-      }
-
-
-      .send-area {
-        margin-top: 23px;
-      }
-
-
-      .send-button {
+      .intro-copy {
         font-size: 20px;
       }
 
-
-      .footer {
-        padding-top: 31px;
+      .join-cta {
+        margin-bottom: 68px;
+        padding: 34px 26px 38px;
       }
 
-
-      .footer-mark {
-        width: 48px;
-
-        height: 4px;
-
-        margin-bottom: 21px;
+      .join-cta-title {
+        font-size: clamp(40px, 11vw, 60px);
       }
 
-
-      .footer-title {
-        font-size: 25px;
+      .stats {
+        margin-bottom: 68px;
       }
 
-
-      .join-overlay {
-        padding: 12px;
+      .stat {
+        padding: 26px 0 30px;
       }
 
-
-      .join-modal {
-        padding:
-          29px 21px 23px;
+      .stat + .stat {
+        padding-left: 18px;
       }
 
-
-      .join-step-content {
-        margin-left: 0;
+      .stat-number {
+        font-size: 48px;
       }
 
-
-      .join-share-buttons {
-        flex-direction: column;
+      .count-section {
+        padding-bottom: 72px;
       }
 
+      .motivation {
+        padding-bottom: 76px;
+      }
 
-      .join-instagram-button,
-      .join-share-button {
+      .motivation-photo {
+        height: 220px;
+        margin-bottom: 38px;
+      }
+
+      .motivation-title {
+        font-size: clamp(46px, 13vw, 70px);
+      }
+
+      .motivation-copy {
+        font-size: 18px;
+      }
+
+      .motivation-submit {
         width: 100%;
       }
 
 
-      .timer-header {
-        padding:
-          20px;
+      /* Modal */
+
+      .join-overlay {
+        padding: 0;
+        align-items: flex-end;
       }
 
+      .join-modal {
+        width: 100%;
+        max-height: 94vh;
+        border-radius: 26px 26px 0 0;
+      }
+
+      .join-header {
+        padding: 38px 24px 34px;
+      }
+
+      .join-close {
+        top: 14px;
+        right: 14px;
+        width: 42px;
+        height: 42px;
+        font-size: 27px;
+      }
+
+      .join-title {
+        max-width: 330px;
+        font-size: 44px;
+      }
+
+      .join-intro {
+        font-size: 16px;
+      }
+
+      .join-content {
+        padding: 16px 20px 28px;
+      }
+
+      .join-step {
+        padding: 22px 0;
+      }
+
+      .join-step-head {
+        gap: 14px;
+      }
+
+      .join-step-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+      }
+
+      .join-step-title {
+        font-size: 21px;
+      }
+
+      .join-icon-box {
+        padding: 18px;
+      }
+
+      .join-share-buttons {
+        grid-template-columns: 1fr;
+      }
+
+
+      /* Timer */
+
+      .timer-header {
+        padding: 18px 18px;
+      }
 
       .timer-main {
-        padding:
-          40px 20px 55px;
+        width: min(100% - 32px, 820px);
+        padding: 50px 0;
       }
-
 
       .timer-title {
-        margin-bottom: 42px;
+        font-size: clamp(48px, 13vw, 78px);
       }
-
 
       .timer-display {
-        margin-bottom: 30px;
+        font-size: clamp(78px, 22vw, 140px);
       }
-
 
       .timer-copy {
         font-size: 16px;
       }
 
+      .received-message {
+        padding: 22px;
+      }
     }
-
-
-
-    /* =====================================================
-       SEHR KLEINE HANDYS
-       ===================================================== */
 
     @media (max-width: 380px) {
 
       .hero-title {
-        font-size: 69px;
-      }
-
-
-      .description {
-        font-size: 16px;
-      }
-
-
-      .description .highlight {
-        font-size: 16px;
-      }
-
-
-      .intro-globe {
-        width: 350px;
-        height: 350px;
-
-        opacity: 0.09;
-      }
-
-
-      .count-message h2 {
-        font-size: 33px;
-      }
-
-
-      .motivation-title {
         font-size: 58px;
       }
 
-
-      .motivation-subtitle {
-        font-size: 20px;
+      .intro-globe {
+        opacity: .09;
       }
 
-
-      .join-title {
-        font-size: 37px;
+      .join-header {
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
+      .join-content {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
     }
-
   </style>
 </head>
 
-
 <body>
-
 
   <main class="page">
 
 
-    <!-- =================================================
-         1. HERO
-         ================================================= -->
+    <!-- ============================================
+         HERO
+         ============================================ -->
 
     <section class="hero">
 
-      <div
-        class="movement-symbol"
-        aria-hidden="true"
-      >
+      <div class="hero-copy">
 
-        <span></span>
-        <span></span>
-        <span></span>
+        <h1 class="hero-title">
+          <span>Eine Stunde.</span>
+          <span>Die bewegt.</span>
+        </h1>
 
       </div>
 
 
-      <h1 class="hero-title">
-
-        <span class="black">
-          Eine<br>
-          Stunde.
-        </span>
-
-
-        <span class="blue">
-          Die<br>
-          bewegt.
-        </span>
-
-      </h1>
-
-    </section>
-
-
-
-    <!-- =================================================
-         2. GROSSES BILD
-         ================================================= -->
-
-    <section class="hero-photo">
-
-      <img
-        src="./movement.jpeg"
-        alt="Menschen beim Laufen, Radfahren und Schwimmen"
-      >
-
-
-      <div class="photo-tag">
-        Bewegung kennt keine Form
+      <div class="hero-photo">
+        <img
+          src="./movement.jpeg"
+          alt="Menschen beim Laufen, Radfahren und Schwimmen"
+        >
       </div>
 
     </section>
 
 
 
-    <!-- =================================================
-         3. EINLEITUNG
-         ================================================= -->
+    <!-- ============================================
+         INTRO
+         ============================================ -->
 
     <section class="intro">
 
-      <div
-        class="intro-globe"
-        aria-hidden="true"
-      >
+      <div class="intro-globe" aria-hidden="true">
 
         <svg
           viewBox="0 0 600 600"
@@ -2203,97 +1260,71 @@
           <circle
             cx="300"
             cy="300"
-            r="255"
+            r="250"
             fill="none"
             stroke="#006B8F"
-            stroke-width="7"
+            stroke-width="2"
           />
 
           <ellipse
             cx="300"
             cy="300"
-            rx="255"
+            rx="250"
             ry="105"
             fill="none"
             stroke="#006B8F"
-            stroke-width="5"
+            stroke-width="2"
           />
 
           <ellipse
             cx="300"
             cy="300"
-            rx="255"
-            ry="185"
+            rx="250"
+            ry="190"
             fill="none"
             stroke="#006B8F"
-            stroke-width="4"
+            stroke-width="2"
           />
 
           <ellipse
             cx="300"
             cy="300"
             rx="105"
-            ry="255"
+            ry="250"
             fill="none"
             stroke="#006B8F"
-            stroke-width="5"
+            stroke-width="2"
           />
 
           <ellipse
             cx="300"
             cy="300"
-            rx="185"
-            ry="255"
+            rx="190"
+            ry="250"
             fill="none"
             stroke="#006B8F"
-            stroke-width="4"
+            stroke-width="2"
           />
 
           <path
-            d="
-              M 150 190
-              C 185 160 220 170 238 190
-              C 250 204 250 220 270 225
-              C 290 230 300 215 318 218
-              C 342 222 350 246 370 248
-              C 394 250 420 230 445 245
-              C 462 255 466 277 455 292
-              C 443 308 424 308 416 326
-              C 408 345 423 363 411 380
-              C 398 399 370 391 351 405
-              C 330 421 327 448 302 456
-              C 277 464 255 447 239 429
-              C 224 412 204 405 188 389
-              C 169 370 169 345 153 326
-              C 140 311 118 307 112 286
-              C 105 263 123 242 140 226
-              C 154 212 158 201 150 190
-              Z
-            "
-            fill="#006B8F"
-            opacity="0.30"
+            d="M50 300H550"
+            fill="none"
+            stroke="#006B8F"
+            stroke-width="2"
           />
 
           <path
-            d="
-              M 245 128
-              C 260 145 282 151 294 144
-              C 308 136 317 116 335 118
-              C 352 120 361 138 358 154
-              C 355 170 340 180 342 197
-              C 344 215 363 224 370 241
-              C 378 260 369 278 351 285
-              C 333 292 316 280 301 286
-              C 285 292 278 311 261 313
-              C 243 315 231 299 219 285
-              C 207 270 187 266 181 248
-              C 175 230 187 213 202 201
-              C 216 190 221 172 215 157
-              C 210 145 219 130 233 126
-              Z
-            "
-            fill="#006B8F"
-            opacity="0.22"
+            d="M75 205H525"
+            fill="none"
+            stroke="#006B8F"
+            stroke-width="1.5"
+          />
+
+          <path
+            d="M75 395H525"
+            fill="none"
+            stroke="#006B8F"
+            stroke-width="1.5"
           />
 
         </svg>
@@ -2301,78 +1332,29 @@
       </div>
 
 
-      <h2 class="intro-title">
+      <div class="intro-content">
 
-        Gemeinsam machen wir die Welt
-        ein Stück gesünder.
+        <p class="intro-kicker">
+          Eine Stunde. Die bewegt.
+        </p>
 
-      </h2>
+        <h2 class="intro-title">
+          Gemeinsam machen wir die Welt ein Stück gesünder.
+        </h2>
 
+        <p class="intro-copy">
+          <strong>60 Minuten für dich.</strong><br>
+          Für deine Gesundheit.
+        </p>
 
-      <p class="minutes">
+        <p class="intro-copy">
+          Geh raus. Lauf, geh spazieren, fahr Rad,
+          schwimm, trainier oder mach etwas ganz anderes.
+        </p>
 
-        60 Minuten für dich.<br>
-
-        Für deine Gesundheit.
-
-      </p>
-
-
-      <p class="description">
-
-        <span class="description-main">
-
-          <span class="line">
-            Geh raus. Lauf, geh spazieren, fahr Rad,
-          </span>
-
-          <span class="line">
-            schwimm, trainier oder mach etwas ganz anderes.
-          </span>
-
-        </span>
-
-
-        <span class="highlight">
-
+        <p class="intro-copy intro-emphasis">
           Egal was. Hauptsache, du bewegst dich.
-
-        </span>
-
-      </p>
-
-
-
-      <!-- =================================================
-           ZENTRALER CTA
-           ================================================= -->
-
-      <div class="main-cta-wrap">
-
-        <button
-          class="main-cta"
-          id="mainCta"
-          type="button"
-          aria-label="Jetzt mitmachen"
-        >
-
-          <span class="main-cta-kicker">
-            Jetzt mitmachen
-          </span>
-
-
-          <span class="main-cta-title">
-
-            Eine Stunde.
-            Die bewegt.
-
-            <span class="main-cta-arrow">
-              →
-            </span>
-
-          </span>
-
-        </button>
+        </p>
 
       </div>
 
@@ -2380,51 +1362,69 @@
 
 
 
-    <!-- =================================================
-         4. STATISTIKEN
-         ================================================= -->
+    <!-- ============================================
+         CTA
+         ============================================ -->
+
+    <section
+      class="join-cta"
+      id="joinCta"
+      role="button"
+      tabindex="0"
+      aria-label="Jetzt mitmachen"
+    >
+
+      <div class="join-cta-content">
+
+        <p class="join-cta-kicker">
+          Jetzt mitmachen
+        </p>
+
+        <h2 class="join-cta-title">
+          Eine Stunde. Die bewegt.
+          <span class="join-cta-arrow">→</span>
+        </h2>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ============================================
+         STATS
+         ============================================ -->
 
     <section class="stats">
 
       <div class="stat">
 
-        <div
+        <span
           class="stat-number"
           id="peopleCount"
         >
           0
-        </div>
+        </span>
 
-
-        <div class="stat-label">
-
-          Menschen<br>
-
-          in Bewegung
-
-        </div>
+        <span class="stat-label">
+          Menschen in Bewegung
+        </span>
 
       </div>
 
 
-
       <div class="stat">
 
-        <div
+        <span
           class="stat-number"
           id="hoursCount"
         >
           0
-        </div>
+        </span>
 
-
-        <div class="stat-label">
-
-          Stunden<br>
-
-          bewegt
-
-        </div>
+        <span class="stat-label">
+          Stunden bewegt
+        </span>
 
       </div>
 
@@ -2432,169 +1432,120 @@
 
 
 
-    <!-- =================================================
-         5. JEDE STUNDE
-         ================================================= -->
+    <!-- ============================================
+         COUNT
+         ============================================ -->
 
-    <section class="count-message">
+    <section class="count-section">
 
-      <h2>
-
-        <span class="count-line">
-          Jede Stunde zählt.
-        </span>
-
-
-        <span class="count-line">
-          Jede Bewegung auch.
-        </span>
-
+      <h2 class="count-title">
+        <span>Jede Stunde zählt.</span>
+        <span>Jede Bewegung auch.</span>
       </h2>
 
     </section>
 
 
 
-    <!-- =================================================
-         6. MOTIVATIONS-BILD
-         ================================================= -->
-
-    <section class="motivation-photo">
-
-      <img
-        src="./movement.jpeg"
-        alt="Person beim Radfahren an der Küste"
-        loading="lazy"
-      >
-
-
-      <div class="motivation-photo-text">
-
-        Dein Tempo. Deine Stunde.
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         7. MOTIVATION
-         ================================================= -->
+    <!-- ============================================
+         MOTIVATION
+         ============================================ -->
 
     <section
       class="motivation"
       id="motivation"
     >
 
-      <div class="kicker">
+      <div class="motivation-photo">
 
-        Für die nächste Person
+        <img
+          src="./movement.jpeg"
+          alt=""
+          aria-hidden="true"
+        >
 
       </div>
 
 
-      <h2 class="motivation-title">
+      <div class="motivation-content">
 
-        Motivier sie.
+        <p class="motivation-kicker">
+          Für die nächste Person
+        </p>
 
-      </h2>
+        <h2 class="motivation-title">
+          Motivier sie.
+        </h2>
+
+        <p class="motivation-copy">
+          Schreib ihr etwas, das sie antreibt.
+        </p>
 
 
-      <p class="motivation-subtitle">
+        <form
+          class="motivation-form"
+          id="motivationForm"
+        >
 
-        Schreib ihr etwas, das sie antreibt.
-
-      </p>
-
-
-
-      <form
-        class="message-form"
-        id="messageForm"
-      >
-
-        <div class="message-input-wrap">
-
-          <input
-            id="messageInput"
-            class="message-input"
-            type="text"
-            maxlength="120"
-            autocomplete="off"
+          <textarea
+            class="motivation-input"
+            id="motivationInput"
+            name="message"
             placeholder="„Zieh durch. Du schaffst das.“"
-            aria-label="Motivationsnachricht"
-          >
+            maxlength="500"
+            required
+          ></textarea>
 
-        </div>
-
-
-        <div class="message-helper">
-
-          Deine Nachricht wird an die nächste Person
-          weitergegeben.
-
-        </div>
-
-
-        <div class="send-area">
+          <p class="motivation-helper">
+            Deine Nachricht wird an die nächste Person weitergegeben.
+          </p>
 
           <button
-            class="send-button"
+            class="motivation-submit"
             type="submit"
           >
-
-            Auf den Weg schicken
-
+            Auf den Weg schicken →
           </button>
 
-        </div>
+        </form>
 
 
         <div
-          class="success-message"
-          id="successMessage"
+          class="motivation-success"
+          id="motivationSuccess"
         >
-
           Geschafft. Deine Motivation ist unterwegs.
-
         </div>
-
-      </form>
-
-    </section>
-
-
-
-    <!-- =================================================
-         8. ABSCHLUSS
-         ================================================= -->
-
-    <footer class="footer">
-
-      <div class="footer-mark"></div>
-
-
-      <div class="footer-title">
-
-        Eine Stunde.
-
-        <span>
-          Die bewegt.
-        </span>
 
       </div>
 
-    </footer>
-
+    </section>
 
   </main>
 
 
 
-  <!-- =====================================================
-       TEILNAHME-FENSTER
-       ===================================================== -->
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+
+  <footer>
+
+    <div class="page">
+
+      <p class="footer-title">
+        Eine Stunde. Die bewegt.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- ============================================
+       TEILNAHME-MODAL
+       ============================================ -->
 
   <div
     class="join-overlay"
@@ -2619,187 +1570,274 @@
       </button>
 
 
-      <div class="join-kicker">
-        Jetzt wird's ernst
+      <!-- KOPF -->
+
+      <div class="join-header">
+
+        <p class="join-kicker">
+          Eine Stunde. Die bewegt.
+        </p>
+
+        <h2
+          class="join-title"
+          id="joinTitle"
+        >
+          Mach mit. Beweg etwas.
+        </h2>
+
+        <p class="join-intro">
+          Eine Stunde beginnt mit einer Bewegung –
+          und wird weitergegeben, wenn du jemanden
+          dafür begeisterst.
+        </p>
+
       </div>
 
 
-      <h2
-        class="join-title"
-        id="joinTitle"
-      >
-        Erst zwei Dinge.
-        Dann 60 Minuten.
-      </h2>
+      <div class="join-content">
 
 
-      <p class="join-intro">
-        Damit die Idee funktioniert, wird Bewegung
-        weitergegeben. Mach zuerst die beiden Schritte
-        und starte danach deine Stunde.
-      </p>
+        <!-- ======================================
+             SCHRITT 1
+             ====================================== -->
 
+        <section
+          class="join-step"
+          id="joinStep1"
+        >
 
+          <div class="join-step-head">
 
-      <!-- =================================================
-           SCHRITT 1
-           ================================================= -->
-
-      <div
-        class="join-step"
-        id="joinStepOne"
-      >
-
-        <div class="join-step-head">
-
-          <div class="join-step-number">
-            1
-          </div>
-
-
-          <div>
-
-            <div class="join-step-title">
-              Folge @tano.loew auf Instagram
+            <div class="join-step-number">
+              1
             </div>
 
+            <div>
 
-            <div class="join-step-copy">
-              Öffne mein Instagram-Profil und folge mir.
+              <h3 class="join-step-title">
+                Folge @tano.loew auf Instagram
+              </h3>
+
+              <p class="join-step-copy">
+                Werde Teil der Bewegung und folge dem
+                Projekt auf Instagram.
+              </p>
+
             </div>
 
           </div>
 
-        </div>
+
+          <div class="join-step-content">
+
+            <div class="join-icon-box">
+
+              <div class="join-icon">
+
+                <!-- Instagram -->
+
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                  ></rect>
+
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                  ></circle>
+
+                  <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="1"
+                    fill="currentColor"
+                    stroke="none"
+                  ></circle>
+
+                </svg>
+
+              </div>
+
+              <p class="join-icon-text">
+                Ein Follow macht aus einer Idee
+                eine gemeinsame Bewegung.
+              </p>
+
+            </div>
 
 
-        <div class="join-step-content">
-
-          <a
-            class="join-instagram-button"
-            href="https://www.instagram.com/tano.loew/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            @tano.loew auf Instagram ↗
-          </a>
-
-
-          <label class="join-confirm">
-
-            <input
-              type="checkbox"
-              id="followCheck"
+            <a
+              class="join-instagram-button"
+              id="instagramLink"
+              href="https://www.instagram.com/tano.loew/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-
-            <span>
-              Ich folge @tano.loew.
-            </span>
-
-          </label>
-
-        </div>
-
-      </div>
+              @tano.loew auf Instagram ↗
+            </a>
 
 
+            <label class="join-confirm">
 
-      <!-- =================================================
-           SCHRITT 2
-           ================================================= -->
+              <input
+                type="checkbox"
+                id="followCheck"
+              >
 
-      <div
-        class="join-step join-share-section"
-        id="joinStepTwo"
-      >
+              <span>
+                Ich folge @tano.loew.
+              </span>
 
-        <div class="join-step-head">
-
-          <div class="join-step-number">
-            2
-          </div>
-
-
-          <div>
-
-            <div class="join-step-title">
-              Gib die Idee weiter
-            </div>
-
-
-            <div class="join-step-copy">
-              Teile diese Webseite mit mindestens einer
-              Person über WhatsApp oder Instagram Direct.
-            </div>
+            </label>
 
           </div>
 
-        </div>
+        </section>
 
 
-        <div class="join-step-content">
 
-          <div class="join-share-buttons">
+        <!-- ======================================
+             SCHRITT 2
+             ====================================== -->
+
+        <section
+          class="join-step locked"
+          id="joinStep2"
+        >
+
+          <div class="join-step-head">
+
+            <div class="join-step-number">
+              2
+            </div>
+
+            <div>
+
+              <h3 class="join-step-title">
+                Motiviere mindestens eine weitere Person.
+              </h3>
+
+              <p class="join-step-copy">
+                Gib die Idee weiter. Bring mindestens
+                einen Menschen dazu, sich ebenfalls
+                eine Stunde zu bewegen.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="join-step-content">
+
+            <div class="join-icon-box">
+
+              <div class="join-icon">
+
+                <!-- Share / Send -->
+
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+
+                  <path
+                    d="M21 3L10 14"
+                  ></path>
+
+                  <path
+                    d="M21 3L14 21L10 14L3 10L21 3Z"
+                  ></path>
+
+                </svg>
+
+              </div>
+
+              <p class="join-icon-text">
+                Eine Nachricht, ein Gespräch oder
+                ein geteilter Link – Hauptsache,
+                du bewegst jemanden mit.
+              </p>
+
+            </div>
+
+
+            <div class="join-share-buttons">
+
+              <button
+                class="join-share-button"
+                id="whatsappShare"
+                type="button"
+              >
+                Über WhatsApp motivieren ↗
+              </button>
+
+
+              <button
+                class="join-share-button secondary"
+                id="instagramShare"
+                type="button"
+              >
+                Über Instagram Direct motivieren ↗
+              </button>
+
+            </div>
+
+
+            <label class="join-confirm">
+
+              <input
+                type="checkbox"
+                id="shareCheck"
+              >
+
+              <span>
+                Ich habe mindestens eine weitere Person
+                dazu motiviert, sich zu bewegen.
+              </span>
+
+            </label>
+
 
             <button
-              class="join-share-button"
-              id="whatsappButton"
+              class="join-start-button"
+              id="startButton"
               type="button"
+              disabled
             >
-              Über WhatsApp teilen ↗
+              Meine 60 Minuten starten →
             </button>
 
 
-            <button
-              class="join-share-button"
-              id="instagramButton"
-              type="button"
-            >
-              Instagram Direct ↗
-            </button>
+            <p class="join-note">
+              Die Angaben werden auf Vertrauensbasis bestätigt.
+              Die Website kann einen Instagram-Follow oder
+              eine persönliche Weiterleitung nicht technisch überprüfen.
+            </p>
 
           </div>
 
+        </section>
 
-          <label class="join-confirm">
-
-            <input
-              type="checkbox"
-              id="shareCheck"
-            >
-
-            <span>
-              Ich habe die Webseite an mindestens eine
-              Person weitergeleitet.
-            </span>
-
-          </label>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- =================================================
-           START
-           ================================================= -->
-
-      <button
-        class="join-start-button"
-        id="startTimerButton"
-        type="button"
-        disabled
-      >
-        Meine 60 Minuten starten →
-      </button>
-
-
-      <div class="join-note">
-        Die Bestätigung der beiden Schritte erfolgt auf
-        Vertrauensbasis. Eine normale Webseite kann einen
-        Instagram-Follow oder eine Direct Message nicht
-        zuverlässig technisch überprüfen.
       </div>
 
     </div>
@@ -2808,9 +1846,9 @@
 
 
 
-  <!-- =====================================================
-       TIMER-FENSTER
-       ===================================================== -->
+  <!-- ============================================
+       TIMER
+       ============================================ -->
 
   <div
     class="timer-overlay"
@@ -2818,52 +1856,40 @@
     aria-hidden="true"
   >
 
-    <header class="timer-header">
+    <div class="timer-header">
 
       <div class="timer-brand">
-
-        Eine Stunde.
-        <span>Die bewegt.</span>
-
+        Eine Stunde. Die bewegt.
       </div>
-
 
       <div
         class="timer-status"
         id="timerStatus"
       >
-        Deine Stunde läuft
+        60 Minuten für dich
       </div>
 
-    </header>
+    </div>
 
 
-
-    <main class="timer-main">
-
-
-      <!-- =================================================
-           TIMER LÄUFT
-           ================================================= -->
+    <div class="timer-main">
 
       <div id="timerRunning">
 
-        <div class="timer-kicker">
-          Jetzt zählt nur eins
-        </div>
+        <p class="timer-kicker">
+          Deine Stunde
+        </p>
 
-
-        <h1 class="timer-title">
+        <h2 class="timer-title">
           Beweg dich.
-        </h1>
+        </h2>
 
-
-        <div
+        <p
           class="timer-display"
           id="timerDisplay"
         >
           60:00
-        </div>
+        </p>
 
 
         <div class="timer-progress">
@@ -2877,22 +1903,15 @@
 
 
         <p class="timer-copy">
-
-          Lauf. Geh. Fahr Rad. Schwimm. Trainier.
-          Oder mach etwas ganz anderes.
-
-          <br>
-
-          <strong>
-            Eine Stunde gehört jetzt dir.
-          </strong>
-
+          Lauf. Geh. Fahr Rad. Schwimm.
+          Trainier. Oder mach etwas ganz anderes.
+          Hauptsache, du bewegst dich.
         </p>
 
 
         <button
           class="timer-cancel"
-          id="cancelTimerButton"
+          id="timerCancel"
           type="button"
         >
           Stunde abbrechen
@@ -2902,36 +1921,34 @@
 
 
 
-      <!-- =================================================
-           TIMER FERTIG
-           ================================================= -->
+      <!-- ======================================
+           ABSCHLUSS
+           ====================================== -->
 
       <div
         class="timer-finish"
         id="timerFinish"
       >
 
-        <div class="finish-kicker">
-          Geschafft
-        </div>
+        <p class="finish-kicker">
+          Eine Stunde geschafft
+        </p>
 
-
-        <h1 class="finish-title">
+        <h2 class="finish-title">
           Du hast sie bewegt.
-        </h1>
+        </h2>
 
 
-        <div class="received-label">
-          Deine Motivation von einem anderen Menschen
-        </div>
+        <p class="received-label">
+          Eine Nachricht für dich
+        </p>
 
-
-        <div
+        <p
           class="received-message"
           id="receivedMessage"
         >
-          Du hast deine Stunde geschafft.
-        </div>
+          Du hast heute etwas für dich getan.
+        </p>
 
 
         <button
@@ -2944,51 +1961,33 @@
 
       </div>
 
-    </main>
+    </div>
 
   </div>
 
 
 
-  <!-- =====================================================
+  <!-- ============================================
        SUPABASE
-       ===================================================== -->
+       ============================================ -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
-
   <script>
 
-
-    /* =====================================================
-       SUPABASE EINSTELLUNGEN
-       =====================================================
-
-       HIER DEINE BEIDEN SUPABASE-WERTE EINTRAGEN.
-
-       Du findest sie in deinem Supabase-Projekt
-       unter Connect / API Keys.
-
-       WICHTIG:
-       Hier ausschließlich die öffentliche
-       Publishable Key verwenden.
-
-       NICHT den Secret Key / Service Role Key
-       hier eintragen.
-    */
-
+    /* ==========================================
+       SUPABASE KONFIGURATION
+       ========================================== */
 
     const SUPABASE_URL =
       "HIER_DEINE_SUPABASE_URL";
-
 
     const SUPABASE_PUBLISHABLE_KEY =
       "HIER_DEIN_SUPABASE_PUBLISHABLE_KEY";
 
 
     let supabaseClient = null;
-
 
     const supabaseConfigured =
       SUPABASE_URL &&
@@ -3009,200 +2008,129 @@
 
 
 
-    /* =====================================================
-       EINSTELLUNGEN
-       ===================================================== */
-
-
-    const CAMPAIGN_URL =
-      window.location.href.split("#")[0];
-
-
-    /*
-      DIE ECHTE AKTION DAUERT 60 MINUTEN.
-
-      Für einen kurzen Test kannst du vorübergehend
-      1 statt 60 eintragen.
-
-      VOR DEM LIVEGANG WIEDER AUF 60 STELLEN.
-    */
-
-    const TIMER_MINUTES = 60;
-
-
-    const TIMER_SECONDS =
-      TIMER_MINUTES * 60;
-
-
-
-    /* =====================================================
+    /* ==========================================
        ELEMENTE
-       ===================================================== */
+       ========================================== */
 
-
-    const mainCta =
-      document.getElementById("mainCta");
-
+    const joinCta =
+      document.getElementById("joinCta");
 
     const joinOverlay =
       document.getElementById("joinOverlay");
 
-
     const joinClose =
       document.getElementById("joinClose");
-
 
     const followCheck =
       document.getElementById("followCheck");
 
-
     const shareCheck =
       document.getElementById("shareCheck");
 
+    const joinStep2 =
+      document.getElementById("joinStep2");
 
-    const joinStepOne =
-      document.getElementById("joinStepOne");
+    const startButton =
+      document.getElementById("startButton");
 
+    const whatsappShare =
+      document.getElementById("whatsappShare");
 
-    const joinStepTwo =
-      document.getElementById("joinStepTwo");
-
-
-    const startTimerButton =
-      document.getElementById("startTimerButton");
-
-
-    const whatsappButton =
-      document.getElementById("whatsappButton");
-
-
-    const instagramButton =
-      document.getElementById("instagramButton");
-
+    const instagramShare =
+      document.getElementById("instagramShare");
 
     const timerOverlay =
       document.getElementById("timerOverlay");
 
-
     const timerDisplay =
       document.getElementById("timerDisplay");
-
 
     const timerProgressBar =
       document.getElementById("timerProgressBar");
 
-
     const timerRunning =
       document.getElementById("timerRunning");
-
 
     const timerFinish =
       document.getElementById("timerFinish");
 
-
-    const timerStatus =
-      document.getElementById("timerStatus");
-
-
-    const receivedMessage =
-      document.getElementById("receivedMessage");
-
+    const timerCancel =
+      document.getElementById("timerCancel");
 
     const finishButton =
       document.getElementById("finishButton");
 
+    const receivedMessage =
+      document.getElementById("receivedMessage");
 
-    const cancelTimerButton =
-      document.getElementById("cancelTimerButton");
-
-
-    const messageForm =
-      document.getElementById("messageForm");
-
-
-    const messageInput =
-      document.getElementById("messageInput");
-
-
-    const successMessage =
-      document.getElementById("successMessage");
-
+    const timerStatus =
+      document.getElementById("timerStatus");
 
     const peopleCount =
       document.getElementById("peopleCount");
 
-
     const hoursCount =
       document.getElementById("hoursCount");
 
+    const motivationForm =
+      document.getElementById("motivationForm");
 
+    const motivationInput =
+      document.getElementById("motivationInput");
 
-    /* =====================================================
-       TIMER-VARIABLEN
-       ===================================================== */
-
-
-    let timerInterval = null;
-
-
-    let timerRemaining =
-      TIMER_SECONDS;
-
-
-    let timerStartedAt = null;
+    const motivationSuccess =
+      document.getElementById("motivationSuccess");
 
 
 
-    /* =====================================================
-       CTA ÖFFNET TEILNAHME-FENSTER
-       ===================================================== */
+    /* ==========================================
+       MODAL ÖFFNEN / SCHLIESSEN
+       ========================================== */
 
+    function openJoinModal() {
 
-    mainCta.addEventListener(
-      "click",
-      function() {
+      joinOverlay.classList.add("open");
+      joinOverlay.setAttribute("aria-hidden", "false");
 
-        joinOverlay.classList.add(
-          "open"
-        );
+      document.body.classList.add("modal-open");
 
+      updateJoinState();
 
-        joinOverlay.setAttribute(
-          "aria-hidden",
-          "false"
-        );
-
-
-        document.body.style.overflow =
-          "hidden";
-
-      }
-    );
-
-
-
-    /* =====================================================
-       MODAL SCHLIESSEN
-       ===================================================== */
+    }
 
 
     function closeJoinModal() {
 
-      joinOverlay.classList.remove(
-        "open"
-      );
+      joinOverlay.classList.remove("open");
+      joinOverlay.setAttribute("aria-hidden", "true");
 
-
-      joinOverlay.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-
-      document.body.style.overflow =
-        "";
+      document.body.classList.remove("modal-open");
 
     }
+
+
+    joinCta.addEventListener(
+      "click",
+      openJoinModal
+    );
+
+
+    joinCta.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+          openJoinModal();
+
+        }
+
+      }
+    );
 
 
     joinClose.addEventListener(
@@ -3215,12 +2143,8 @@
       "click",
       function(event) {
 
-        if (
-          event.target === joinOverlay
-        ) {
-
+        if (event.target === joinOverlay) {
           closeJoinModal();
-
         }
 
       }
@@ -3235,9 +2159,7 @@
           event.key === "Escape" &&
           joinOverlay.classList.contains("open")
         ) {
-
           closeJoinModal();
-
         }
 
       }
@@ -3245,123 +2167,70 @@
 
 
 
-    /* =====================================================
-       SCHRITT 1
-       ===================================================== */
+    /* ==========================================
+       SCHRITT 1 → SCHRITT 2
+       ========================================== */
 
+    function updateJoinState() {
 
-    followCheck.addEventListener(
-      "change",
-      function() {
-
-        const followed =
-          followCheck.checked;
-
-
-        joinStepOne.classList.toggle(
-          "completed",
-          followed
-        );
-
-
-        /*
-          Schritt 2 wird erst jetzt
-          freigeschaltet.
-        */
-
-        joinStepTwo.classList.toggle(
-          "unlocked",
-          followed
-        );
-
-
-        if (!followed) {
-
-          shareCheck.checked =
-            false;
-
-          joinStepTwo.classList.remove(
-            "completed"
-          );
-
-        }
-
-
-        updateStartButton();
-
-      }
-    );
-
-
-
-    /* =====================================================
-       SCHRITT 2
-       ===================================================== */
-
-
-    shareCheck.addEventListener(
-      "change",
-      function() {
-
-        joinStepTwo.classList.toggle(
-          "completed",
-          shareCheck.checked
-        );
-
-
-        updateStartButton();
-
-      }
-    );
-
-
-
-    /* =====================================================
-       START-BUTTON AKTIVIEREN
-       ===================================================== */
-
-
-    function updateStartButton() {
-
-      const followDone =
+      const followed =
         followCheck.checked;
 
-
-      const shareDone =
+      const shared =
         shareCheck.checked;
 
 
-      startTimerButton.disabled =
-        !(
-          followDone &&
-          shareDone
-        );
+      if (followed) {
+
+        joinStep2.classList.remove("locked");
+        joinStep2.classList.add("unlocked");
+
+      } else {
+
+        joinStep2.classList.add("locked");
+        joinStep2.classList.remove("unlocked");
+
+        shareCheck.checked = false;
+
+      }
+
+
+      startButton.disabled =
+        !(followed && shared);
 
     }
 
 
+    followCheck.addEventListener(
+      "change",
+      updateJoinState
+    );
 
-    /* =====================================================
-       WHATSAPP TEILEN
-       ===================================================== */
+
+    shareCheck.addEventListener(
+      "change",
+      updateJoinState
+    );
 
 
-    whatsappButton.addEventListener(
+
+    /* ==========================================
+       WHATSAPP
+       ========================================== */
+
+    whatsappShare.addEventListener(
       "click",
-      async function() {
+      function() {
 
-        await copyCampaignLink();
-
-
-        const text =
-          "Mach mit bei „Eine Stunde. Die bewegt.“ – 60 Minuten Bewegung. Danach bekommst du eine Motivation von einem anderen Menschen. " +
-          CAMPAIGN_URL;
-
+        const message =
+          "Mach mit bei „Eine Stunde. Die bewegt.“ 💙\n\n" +
+          "Nimm dir 60 Minuten für dich und deine Gesundheit. " +
+          "Beweg dich – egal wie.\n\n" +
+          window.location.href;
 
         const whatsappUrl =
           "https://wa.me/?text=" +
-          encodeURIComponent(text);
-
+          encodeURIComponent(message);
 
         window.open(
           whatsappUrl,
@@ -3374,24 +2243,34 @@
 
 
 
-    /* =====================================================
+    /* ==========================================
        INSTAGRAM DIRECT
-       ===================================================== */
+       ========================================== */
 
-
-    instagramButton.addEventListener(
+    instagramShare.addEventListener(
       "click",
       async function() {
 
-        /*
-          Der Link wird zunächst kopiert,
-          weil Instagram von einer normalen
-          Webseite keinen zuverlässig
-          vorausgefüllten Direct-Share-Link
-          anbietet.
-        */
+        const shareText =
+          "Eine Stunde. Die bewegt. 💙\n\n" +
+          "Nimm dir 60 Minuten für dich und beweg dich. " +
+          "Egal wie. Hauptsache, du bewegst dich.";
 
-        await copyCampaignLink();
+        try {
+
+          await navigator.clipboard.writeText(
+            window.location.href +
+            "\n\n" +
+            shareText
+          );
+
+        } catch (error) {
+
+          console.log(
+            "Clipboard konnte nicht verwendet werden."
+          );
+
+        }
 
 
         window.open(
@@ -3405,58 +2284,64 @@
 
 
 
-    /* =====================================================
-       LINK IN ZWISCHENABLAGE
-       ===================================================== */
+    /* ==========================================
+       TIMER
+       ========================================== */
+
+    const TOTAL_SECONDS = 60 * 60;
+
+    let remainingSeconds =
+      TOTAL_SECONDS;
+
+    let timerInterval = null;
 
 
-    async function copyCampaignLink() {
+    function formatTime(seconds) {
 
-      try {
+      const minutes =
+        Math.floor(seconds / 60);
 
-        if (
-          navigator.clipboard
-        ) {
+      const secs =
+        seconds % 60;
 
-          await navigator.clipboard.writeText(
-            CAMPAIGN_URL
-          );
+      return (
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(secs).padStart(2, "0")
+      );
 
-        }
+    }
 
-      } catch (error) {
 
-        console.log(
-          "Kampagnenlink konnte nicht automatisch kopiert werden."
-        );
+    function updateTimerDisplay() {
 
-      }
+      timerDisplay.textContent =
+        formatTime(remainingSeconds);
+
+
+      const progress =
+        remainingSeconds / TOTAL_SECONDS;
+
+      timerProgressBar.style.transform =
+        "scaleX(" + progress + ")";
 
     }
 
 
 
-    /* =====================================================
-       60 MINUTEN STARTEN
-       ===================================================== */
+    /* ==========================================
+       TIMER STARTEN
+       ========================================== */
 
-
-    startTimerButton.addEventListener(
+    startButton.addEventListener(
       "click",
       function() {
 
-        if (
-          !followCheck.checked ||
-          !shareCheck.checked
-        ) {
-
+        if (startButton.disabled) {
           return;
-
         }
 
-
         closeJoinModal();
-
 
         startTimer();
 
@@ -3464,220 +2349,140 @@
     );
 
 
-
     function startTimer() {
 
-      clearInterval(
-        timerInterval
-      );
-
-
-      timerRemaining =
-        TIMER_SECONDS;
-
-
-      timerStartedAt =
-        Date.now();
-
+      remainingSeconds =
+        TOTAL_SECONDS;
 
       timerRunning.style.display =
         "block";
 
+      timerFinish.classList.remove("show");
 
-      timerFinish.classList.remove(
-        "visible"
-      );
+      timerStatus.textContent =
+        "60 Minuten für dich";
 
-
-      timerOverlay.classList.add(
-        "open"
-      );
-
+      timerOverlay.classList.add("open");
 
       timerOverlay.setAttribute(
         "aria-hidden",
         "false"
       );
 
-
-      document.body.style.overflow =
-        "hidden";
-
-
-      timerStatus.textContent =
-        "Deine Stunde läuft";
-
+      document.body.classList.add("modal-open");
 
       updateTimerDisplay();
 
 
-      /*
-        Wir berechnen die verbleibende
-        Zeit anhand der echten Uhrzeit.
+      clearInterval(timerInterval);
 
-        Dadurch läuft der Timer nicht
-        schneller oder langsamer, wenn
-        der Browser einmal kurz pausiert.
-      */
 
       timerInterval =
         setInterval(
           function() {
 
-            const elapsed =
-              Math.floor(
-                (
-                  Date.now() -
-                  timerStartedAt
-                ) / 1000
-              );
-
-
-            timerRemaining =
-              Math.max(
-                TIMER_SECONDS -
-                elapsed,
-                0
-              );
-
+            remainingSeconds--;
 
             updateTimerDisplay();
 
 
-            if (
-              timerRemaining <= 0
-            ) {
+            if (remainingSeconds <= 0) {
 
-              clearInterval(
-                timerInterval
-              );
+              clearInterval(timerInterval);
 
-
-              finishHour();
+              finishTimer();
 
             }
 
           },
-          500
+          1000
         );
 
     }
 
 
 
-    /* =====================================================
-       TIMER-ANZEIGE
-       ===================================================== */
+    /* ==========================================
+       TIMER ABBRECHEN
+       ========================================== */
+
+    timerCancel.addEventListener(
+      "click",
+      function() {
+
+        const confirmed =
+          window.confirm(
+            "Möchtest du die Stunde wirklich abbrechen?"
+          );
+
+        if (!confirmed) {
+          return;
+        }
+
+        clearInterval(timerInterval);
+
+        closeTimer();
+
+      }
+    );
 
 
-    function updateTimerDisplay() {
 
-      const minutes =
-        Math.floor(
-          timerRemaining / 60
-        );
+    /* ==========================================
+       TIMER SCHLIESSEN
+       ========================================== */
 
+    function closeTimer() {
 
-      const seconds =
-        timerRemaining % 60;
+      clearInterval(timerInterval);
 
+      timerOverlay.classList.remove("open");
 
-      timerDisplay.textContent =
-        String(minutes).padStart(2, "0") +
-        ":" +
-        String(seconds).padStart(2, "0");
+      timerOverlay.setAttribute(
+        "aria-hidden",
+        "true"
+      );
 
-
-      const elapsed =
-        TIMER_SECONDS -
-        timerRemaining;
-
-
-      const progress =
-        Math.min(
-          Math.max(
-            (
-              elapsed /
-              TIMER_SECONDS
-            ) * 100,
-            0
-          ),
-          100
-        );
-
-
-      timerProgressBar.style.width =
-        progress + "%";
+      document.body.classList.remove("modal-open");
 
     }
 
 
 
-    /* =====================================================
-       STUNDE FERTIG
-       ===================================================== */
+    /* ==========================================
+       60 MINUTEN ABGESCHLOSSEN
+       ========================================== */
 
+    async function finishTimer() {
 
-    async function finishHour() {
-
-      timerDisplay.textContent =
-        "00:00";
-
-
-      timerProgressBar.style.width =
-        "100%";
-
+      timerStatus.textContent =
+        "60 Minuten geschafft";
 
       timerRunning.style.display =
         "none";
 
+      timerFinish.classList.add("show");
 
-      timerFinish.classList.add(
-        "visible"
-      );
-
-
-      timerStatus.textContent =
-        "Geschafft";
-
-
-      /*
-        Person als abgeschlossen
-        speichern.
-      */
 
       await recordCompletedHour();
 
-
-      /*
-        Jetzt wird die nächste
-        verfügbare Motivation geholt.
-      */
-
-      const message =
+      const motivation =
         await claimNextMotivation();
 
 
-      if (message) {
+      if (motivation) {
 
         receivedMessage.textContent =
-          "„" +
-          message +
-          "“";
+          motivation;
 
       } else {
 
         receivedMessage.textContent =
-          "Du hast es geschafft. " +
-          "Nimm diesen Moment mit – " +
-          "und gib deine Motivation weiter.";
+          "Du hast heute etwas für dich getan. " +
+          "Jetzt gib die Bewegung weiter.";
 
       }
 
-
-      /*
-        Statistik aktualisieren.
-      */
 
       await loadStats();
 
@@ -3685,60 +2490,85 @@
 
 
 
-    /* =====================================================
-       MOTIVATION AUS WARTESCHLANGE HOLEN
-       ===================================================== */
+    /* ==========================================
+       ABGESCHLOSSENE STUNDE SPEICHERN
+       ========================================== */
 
-
-    async function claimNextMotivation() {
-
-      /*
-        Falls Supabase noch nicht eingetragen
-        wurde, funktioniert die Seite trotzdem
-        lokal für Tests.
-      */
+    async function recordCompletedHour() {
 
       if (!supabaseClient) {
 
-        const localMessages =
-          JSON.parse(
+        const localCompleted =
+          Number(
             localStorage.getItem(
-              "campaignMotivations"
-            ) || "[]"
+              "completedHours"
+            ) || "0"
           );
 
-
-        if (
-          localMessages.length === 0
-        ) {
-
-          return null;
-
-        }
-
-
-        const next =
-          localMessages.shift();
-
-
         localStorage.setItem(
-          "campaignMotivations",
-          JSON.stringify(
-            localMessages
-          )
+          "completedHours",
+          String(localCompleted + 1)
         );
 
-
-        return next.message;
+        return;
 
       }
 
 
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("participants")
+          .insert({});
+
+
+      if (error) {
+
+        console.error(
+          "Fehler beim Speichern der Stunde:",
+          error
+        );
+
+      }
+
+    }
+
+
+
+    /* ==========================================
+       NÄCHSTE MOTIVATION HOLEN
+       ========================================== */
+
+    async function claimNextMotivation() {
+
+      if (!supabaseClient) {
+
+        const localMessage =
+          localStorage.getItem(
+            "pendingMotivation"
+          );
+
+        if (localMessage) {
+
+          localStorage.removeItem(
+            "pendingMotivation"
+          );
+
+          return localMessage;
+
+        }
+
+        return null;
+
+      }
+
 
       /*
-        Die älteste noch nicht zugestellte
-        Motivation holen.
-      */
+       * Wir versuchen bis zu fünf Mal,
+       * die älteste noch nicht ausgelieferte
+       * Nachricht zu bekommen.
+       */
 
       for (
         let attempt = 0;
@@ -3765,32 +2595,30 @@
                 ascending: true
               }
             )
-            .limit(1);
+            .limit(1)
+            .maybeSingle();
 
 
-        if (
-          error ||
-          !data ||
-          data.length === 0
-        ) {
+        if (error) {
+
+          console.error(
+            "Fehler beim Abrufen der Motivation:",
+            error
+          );
 
           return null;
 
         }
 
 
-        const candidate =
-          data[0];
+        if (!data) {
+          return null;
+        }
 
-
-        /*
-          Nur wenn delivered_at noch null ist,
-          darf die Nachricht übernommen werden.
-        */
 
         const {
-          data: claimed,
-          error: claimError
+          data: updated,
+          error: updateError
         } =
           await supabaseClient
             .from("motivations")
@@ -3800,24 +2628,33 @@
             })
             .eq(
               "id",
-              candidate.id
+              data.id
             )
             .is(
               "delivered_at",
               null
             )
             .select(
-              "message"
+              "id,message"
             )
             .maybeSingle();
 
 
-        if (
-          !claimError &&
-          claimed
-        ) {
+        if (updateError) {
 
-          return claimed.message;
+          console.error(
+            "Fehler beim Zustellen der Motivation:",
+            updateError
+          );
+
+          return null;
+
+        }
+
+
+        if (updated) {
+
+          return updated.message;
 
         }
 
@@ -3830,230 +2667,9 @@
 
 
 
-    /* =====================================================
-       MOTIVATION ABSENDEN
-       ===================================================== */
-
-
-    messageForm.addEventListener(
-      "submit",
-      async function(event) {
-
-        event.preventDefault();
-
-
-        const message =
-          messageInput.value.trim();
-
-
-        if (
-          message.length < 3
-        ) {
-
-          messageInput.focus();
-
-          return;
-
-        }
-
-
-        const sendButton =
-          messageForm.querySelector(
-            ".send-button"
-          );
-
-
-        sendButton.disabled =
-          true;
-
-
-        sendButton.textContent =
-          "Wird weitergegeben …";
-
-
-        let saved =
-          false;
-
-
-
-        /* ---------------------------------------------
-           SUPABASE
-           --------------------------------------------- */
-
-        if (supabaseClient) {
-
-          const {
-            error
-          } =
-            await supabaseClient
-              .from("motivations")
-              .insert({
-                message: message
-              });
-
-
-          if (!error) {
-
-            saved =
-              true;
-
-          } else {
-
-            console.error(
-              "Supabase Fehler:",
-              error
-            );
-
-          }
-
-        }
-
-
-
-        /* ---------------------------------------------
-           LOKALER TEST-FALLBACK
-           --------------------------------------------- */
-
-        else {
-
-          const localMessages =
-            JSON.parse(
-              localStorage.getItem(
-                "campaignMotivations"
-              ) || "[]"
-            );
-
-
-          localMessages.push({
-
-            message:
-              message,
-
-            created_at:
-              new Date().toISOString()
-
-          });
-
-
-          localStorage.setItem(
-            "campaignMotivations",
-            JSON.stringify(
-              localMessages
-            )
-          );
-
-
-          saved =
-            true;
-
-        }
-
-
-
-        /* ---------------------------------------------
-           ERFOLG
-           --------------------------------------------- */
-
-        if (saved) {
-
-          messageInput.value =
-            "";
-
-
-          successMessage.classList.add(
-            "visible"
-          );
-
-
-          sendButton.textContent =
-            "Auf den Weg geschickt ✓";
-
-
-          setTimeout(
-            function() {
-
-              successMessage.classList.remove(
-                "visible"
-              );
-
-
-              sendButton.textContent =
-                "Auf den Weg schicken";
-
-
-              sendButton.disabled =
-                false;
-
-            },
-            4500
-          );
-
-        }
-
-
-        /* ---------------------------------------------
-           FEHLER
-           --------------------------------------------- */
-
-        else {
-
-          sendButton.textContent =
-            "Nochmal versuchen";
-
-
-          sendButton.disabled =
-            false;
-
-
-          alert(
-            "Deine Nachricht konnte gerade nicht gespeichert werden. Bitte versuche es noch einmal."
-          );
-
-        }
-
-      }
-    );
-
-
-
-    /* =====================================================
-       STUNDE ABBRECHEN
-       ===================================================== */
-
-
-    cancelTimerButton.addEventListener(
-      "click",
-      function() {
-
-        const confirmed =
-          window.confirm(
-            "Möchtest du die Stunde wirklich abbrechen?"
-          );
-
-
-        if (!confirmed) {
-
-          return;
-
-        }
-
-
-        clearInterval(
-          timerInterval
-        );
-
-
-        closeTimer();
-
-      }
-    );
-
-
-
-    /* =====================================================
-       FERTIG-BUTTON
-       ===================================================== */
-
+    /* ==========================================
+       ZURÜCK ZUR WEBSITE
+       ========================================== */
 
     finishButton.addEventListener(
       "click",
@@ -4061,116 +2677,190 @@
 
         closeTimer();
 
+        window.location.hash =
+          "motivation";
+
       }
     );
 
 
 
-    /* =====================================================
-       TIMER SCHLIESSEN
-       ===================================================== */
+    /* ==========================================
+       MOTIVATION ABSENDEN
+       ========================================== */
+
+    motivationForm.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
 
 
-    function closeTimer() {
-
-      clearInterval(
-        timerInterval
-      );
+        const message =
+          motivationInput.value.trim();
 
 
-      timerOverlay.classList.remove(
-        "open"
-      );
+        if (!message) {
+          return;
+        }
 
 
-      timerOverlay.setAttribute(
-        "aria-hidden",
-        "true"
-      );
+        const submitButton =
+          motivationForm.querySelector(
+            "button[type='submit']"
+          );
 
 
-      document.body.style.overflow =
-        "";
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+          "Wird auf den Weg geschickt …";
 
 
-      timerRunning.style.display =
-        "block";
+        try {
+
+          if (!supabaseClient) {
+
+            /*
+             * Lokaler Fallback,
+             * falls Supabase noch nicht
+             * konfiguriert wurde.
+             */
+
+            localStorage.setItem(
+              "pendingMotivation",
+              message
+            );
+
+          } else {
+
+            const {
+              error
+            } =
+              await supabaseClient
+                .from("motivations")
+                .insert({
+                  message: message
+                });
 
 
-      timerFinish.classList.remove(
-        "visible"
-      );
+            if (error) {
+              throw error;
+            }
+
+          }
 
 
-      timerProgressBar.style.width =
-        "0%";
+          motivationInput.value = "";
+
+          motivationSuccess.classList.add(
+            "show"
+          );
+
+          submitButton.textContent =
+            "Auf den Weg schicken →";
 
 
-      timerStatus.textContent =
-        "Deine Stunde läuft";
+          /*
+           * Erfolgsmeldung nach einigen
+           * Sekunden wieder ausblenden.
+           */
+
+          setTimeout(
+            function() {
+
+              motivationSuccess.classList.remove(
+                "show"
+              );
+
+            },
+            5000
+          );
 
 
-      timerRemaining =
-        TIMER_SECONDS;
+        } catch (error) {
+
+          console.error(
+            "Fehler beim Speichern der Motivation:",
+            error
+          );
 
 
-      updateTimerDisplay();
-
-    }
-
-
-
-    /* =====================================================
-       TEILNEHMER SPEICHERN
-       ===================================================== */
+          alert(
+            "Die Nachricht konnte gerade nicht gespeichert werden. " +
+            "Bitte versuche es noch einmal."
+          );
 
 
-    async function recordCompletedHour() {
+          submitButton.textContent =
+            "Auf den Weg schicken →";
 
-      if (!supabaseClient) {
+        }
 
-        return;
+
+        submitButton.disabled = false;
 
       }
+    );
 
 
-      const {
-        error
-      } =
-        await supabaseClient
-          .from("participants")
-          .insert({});
 
+    /* ==========================================
+       PLACEHOLDER
+       ========================================== */
 
-      if (error) {
+    motivationInput.addEventListener(
+      "focus",
+      function() {
 
-        console.error(
-          "Teilnehmer konnte nicht gespeichert werden:",
-          error
+        motivationInput.setAttribute(
+          "placeholder",
+          "Schreib ihr etwas, das sie antreibt …"
         );
 
       }
-
-    }
-
+    );
 
 
-    /* =====================================================
-       STATISTIK LADEN
-       ===================================================== */
+    motivationInput.addEventListener(
+      "blur",
+      function() {
 
+        if (!motivationInput.value) {
+
+          motivationInput.setAttribute(
+            "placeholder",
+            "„Zieh durch. Du schaffst das.“"
+          );
+
+        }
+
+      }
+    );
+
+
+
+    /* ==========================================
+       STATS LADEN
+       ========================================== */
 
     async function loadStats() {
 
       if (!supabaseClient) {
 
-        peopleCount.textContent =
-          "0";
+        const localCompleted =
+          Number(
+            localStorage.getItem(
+              "completedHours"
+            ) || "0"
+          );
 
+
+        peopleCount.textContent =
+          localCompleted;
 
         hoursCount.textContent =
-          "0";
-
+          localCompleted;
 
         return;
 
@@ -4184,7 +2874,7 @@
         await supabaseClient
           .from("participants")
           .select(
-            "id",
+            "*",
             {
               count: "exact",
               head: true
@@ -4192,37 +2882,39 @@
           );
 
 
-      if (
-        !error &&
-        typeof count === "number"
-      ) {
+      if (error) {
 
-        peopleCount.textContent =
-          count.toLocaleString(
-            "de-DE"
-          );
+        console.error(
+          "Fehler beim Laden der Statistiken:",
+          error
+        );
 
-
-        hoursCount.textContent =
-          count.toLocaleString(
-            "de-DE"
-          );
+        return;
 
       }
+
+
+      const total =
+        count || 0;
+
+
+      peopleCount.textContent =
+        total;
+
+      hoursCount.textContent =
+        total;
 
     }
 
 
 
-    /* =====================================================
+    /* ==========================================
        START
-       ===================================================== */
+       ========================================== */
 
-
-    updateStartButton();
+    updateJoinState();
 
     loadStats();
-
 
   </script>
 
