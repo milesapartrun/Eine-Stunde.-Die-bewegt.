@@ -41,9 +41,7 @@
 
     * {
       box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
     }
 
@@ -72,6 +70,8 @@
       -webkit-font-smoothing: antialiased;
 
       text-rendering: optimizeLegibility;
+
+      overflow-x: hidden;
     }
 
 
@@ -92,6 +92,70 @@
       padding:
         28px 28px
         55px;
+
+      position: relative;
+    }
+
+
+
+    /* =====================================================
+       BEWEGUNGSSPUR
+       ===================================================== */
+
+    .movement-trail {
+
+      position: absolute;
+
+      width: 430px;
+
+      height: 620px;
+
+      top: 210px;
+
+      right: -260px;
+
+      pointer-events: none;
+
+      opacity: 0.8;
+
+      z-index: -1;
+
+      transform: rotate(-8deg);
+    }
+
+
+    .movement-trail::before,
+    .movement-trail::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 310px;
+
+      height: 310px;
+
+      border:
+        2px solid
+        rgba(78, 130, 238, 0.13);
+
+      border-radius: 50%;
+    }
+
+
+    .movement-trail::before {
+
+      top: 30px;
+
+      left: 0;
+    }
+
+
+    .movement-trail::after {
+
+      top: 160px;
+
+      left: 100px;
     }
 
 
@@ -106,7 +170,9 @@
 
       padding-top: 5px;
 
-      margin-bottom: 58px;
+      margin-bottom: 42px;
+
+      position: relative;
     }
 
 
@@ -121,6 +187,8 @@
       margin:
         0 auto
         28px;
+
+      transform: rotate(-2deg);
     }
 
 
@@ -135,6 +203,9 @@
       background: var(--blue);
 
       transform: rotate(-25deg);
+
+      transition:
+        transform 250ms ease;
     }
 
 
@@ -168,6 +239,27 @@
     }
 
 
+    .hero:hover .movement-symbol span:nth-child(1) {
+      transform:
+        translateX(-5px)
+        rotate(-25deg);
+    }
+
+
+    .hero:hover .movement-symbol span:nth-child(2) {
+      transform:
+        translateX(5px)
+        rotate(-25deg);
+    }
+
+
+    .hero:hover .movement-symbol span:nth-child(3) {
+      transform:
+        translateX(9px)
+        rotate(-25deg);
+    }
+
+
     .hero-title {
 
       font-size:
@@ -180,6 +272,10 @@
       letter-spacing: -0.075em;
 
       text-align: center;
+
+      position: relative;
+
+      z-index: 2;
     }
 
 
@@ -196,6 +292,391 @@
       display: block;
 
       color: var(--blue);
+    }
+
+
+
+    /* =====================================================
+       SPORT-COLLAGE
+       ===================================================== */
+
+    .movement-scene {
+
+      position: relative;
+
+      width: 100%;
+
+      height: 235px;
+
+      margin:
+        38px auto
+        64px;
+
+      overflow: hidden;
+
+      border-radius: 30px;
+
+      background: #DDE7F9;
+    }
+
+
+    .scene-circle {
+
+      position: absolute;
+
+      width: 330px;
+
+      height: 330px;
+
+      right: -55px;
+
+      top: -95px;
+
+      border-radius: 50%;
+
+      background: var(--blue);
+
+      opacity: 0.95;
+    }
+
+
+    .scene-circle-small {
+
+      position: absolute;
+
+      width: 110px;
+
+      height: 110px;
+
+      left: 30px;
+
+      bottom: -48px;
+
+      border-radius: 50%;
+
+      background: #111315;
+    }
+
+
+    .scene-line {
+
+      position: absolute;
+
+      width: 125%;
+
+      height: 85px;
+
+      left: -12%;
+
+      top: 76px;
+
+      border-top:
+        4px solid
+        rgba(255,255,255,0.78);
+
+      border-radius: 50%;
+
+      transform:
+        rotate(-8deg);
+    }
+
+
+    .scene-line::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 125%;
+
+      height: 85px;
+
+      left: 2%;
+
+      top: 17px;
+
+      border-top:
+        2px solid
+        rgba(255,255,255,0.42);
+
+      border-radius: 50%;
+    }
+
+
+    /*
+       Abstrakte Person in Bewegung.
+       Bewusst reduziert – eher Editorial
+       als Fitness-App.
+    */
+
+    .runner {
+
+      position: absolute;
+
+      width: 150px;
+
+      height: 205px;
+
+      left: 50%;
+
+      bottom: 4px;
+
+      transform:
+        translateX(-50%)
+        rotate(-5deg);
+    }
+
+
+    .runner-head {
+
+      position: absolute;
+
+      width: 31px;
+
+      height: 31px;
+
+      top: 4px;
+
+      left: 62px;
+
+      border-radius: 50%;
+
+      background: var(--text);
+    }
+
+
+    .runner-body {
+
+      position: absolute;
+
+      width: 34px;
+
+      height: 95px;
+
+      top: 34px;
+
+      left: 58px;
+
+      border-radius: 20px;
+
+      background: var(--text);
+
+      transform: rotate(19deg);
+    }
+
+
+    .runner-arm {
+
+      position: absolute;
+
+      width: 17px;
+
+      height: 83px;
+
+      top: 48px;
+
+      left: 47px;
+
+      border-radius: 999px;
+
+      background: var(--text);
+
+      transform:
+        rotate(54deg);
+    }
+
+
+    .runner-arm.two {
+
+      left: 85px;
+
+      transform:
+        rotate(-54deg);
+    }
+
+
+    .runner-leg {
+
+      position: absolute;
+
+      width: 19px;
+
+      height: 103px;
+
+      top: 105px;
+
+      left: 59px;
+
+      border-radius: 999px;
+
+      background: var(--text);
+
+      transform:
+        rotate(34deg);
+    }
+
+
+    .runner-leg.two {
+
+      left: 78px;
+
+      transform:
+        rotate(-48deg);
+    }
+
+
+    .runner-foot {
+
+      position: absolute;
+
+      width: 62px;
+
+      height: 17px;
+
+      left: 76px;
+
+      bottom: 5px;
+
+      border-radius: 999px;
+
+      background: var(--text);
+
+      transform: rotate(-13deg);
+    }
+
+
+    .runner-foot.two {
+
+      left: 25px;
+
+      bottom: 17px;
+
+      transform: rotate(22deg);
+    }
+
+
+    .scene-word {
+
+      position: absolute;
+
+      left: 24px;
+
+      top: 21px;
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+    }
+
+
+    .scene-word span {
+
+      display: block;
+
+      margin-top: 5px;
+
+      font-size: 31px;
+
+      line-height: 0.9;
+
+      letter-spacing: -0.06em;
+
+      text-transform: none;
+    }
+
+
+    .scene-number {
+
+      position: absolute;
+
+      right: 23px;
+
+      bottom: 18px;
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.1em;
+    }
+
+
+
+    /* =====================================================
+       AKTIVITÄTEN
+       ===================================================== */
+
+    .activity-strip {
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 9px;
+
+      flex-wrap: wrap;
+
+      margin:
+        -30px auto
+        57px;
+    }
+
+
+    .activity {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        8px 12px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,0.48);
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      font-weight: 650;
+
+      letter-spacing: -0.01em;
+    }
+
+
+    .activity svg {
+
+      width: 18px;
+
+      height: 18px;
+
+      stroke: var(--blue);
+
+      stroke-width: 2;
+
+      fill: none;
+
+      stroke-linecap: round;
+
+      stroke-linejoin: round;
     }
 
 
@@ -266,11 +747,6 @@
       letter-spacing: -0.025em;
     }
 
-
-    /*
-       Die erste Aussage bekommt bewusst
-       genau zwei Zeilen.
-    */
 
     .description-main {
 
@@ -383,6 +859,10 @@
       flex-direction: column;
 
       justify-content: center;
+
+      position: relative;
+
+      overflow: hidden;
     }
 
 
@@ -390,6 +870,28 @@
 
       border-left:
         1px solid var(--line);
+    }
+
+
+    .stat::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 85px;
+
+      height: 85px;
+
+      right: -25px;
+
+      bottom: -35px;
+
+      border:
+        14px solid
+        rgba(78, 130, 238, 0.08);
+
+      border-radius: 50%;
     }
 
 
@@ -430,6 +932,30 @@
     .count-message {
 
       margin-bottom: 86px;
+
+      position: relative;
+    }
+
+
+    .count-message::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 100px;
+
+      height: 6px;
+
+      right: 0;
+
+      top: 12px;
+
+      border-radius: 999px;
+
+      background: var(--blue);
+
+      transform: rotate(-7deg);
     }
 
 
@@ -464,6 +990,30 @@
     .motivation {
 
       margin-bottom: 78px;
+
+      position: relative;
+    }
+
+
+    .motivation::before {
+
+      content: "→";
+
+      position: absolute;
+
+      right: 4px;
+
+      top: -42px;
+
+      color: var(--blue);
+
+      font-size: 42px;
+
+      line-height: 1;
+
+      font-weight: 300;
+
+      transform: rotate(-8deg);
     }
 
 
@@ -696,6 +1246,30 @@
         1px solid var(--line);
 
       text-align: center;
+
+      position: relative;
+    }
+
+
+    .footer::before {
+
+      content: "";
+
+      display: block;
+
+      width: 70px;
+
+      height: 5px;
+
+      margin:
+        0 auto
+        25px;
+
+      border-radius: 999px;
+
+      background: var(--blue);
+
+      transform: rotate(-9deg);
     }
 
 
@@ -727,6 +1301,7 @@
 
     @media (max-width: 600px) {
 
+
       .page {
 
         padding:
@@ -736,12 +1311,26 @@
 
 
       /* -------------------------
+         DEKORATION
+         ------------------------- */
+
+      .movement-trail {
+
+        right: -330px;
+
+        top: 180px;
+
+        opacity: 0.55;
+      }
+
+
+      /* -------------------------
          HERO
          ------------------------- */
 
       .hero {
 
-        margin-bottom: 58px;
+        margin-bottom: 34px;
       }
 
 
@@ -758,6 +1347,101 @@
         font-size: 79px;
       }
 
+
+      /* -------------------------
+         SPORT-SZENE
+         ------------------------- */
+
+      .movement-scene {
+
+        height: 205px;
+
+        margin:
+          35px auto
+          49px;
+
+        border-radius: 24px;
+      }
+
+
+      .scene-circle {
+
+        width: 280px;
+
+        height: 280px;
+
+        right: -70px;
+
+        top: -85px;
+      }
+
+
+      .runner {
+
+        transform:
+          translateX(-50%)
+          scale(0.87)
+          rotate(-5deg);
+
+        transform-origin: bottom center;
+      }
+
+
+      .scene-word {
+
+        left: 18px;
+
+        top: 17px;
+
+        font-size: 11px;
+      }
+
+
+      .scene-word span {
+
+        font-size: 26px;
+      }
+
+
+      .scene-number {
+
+        right: 17px;
+
+        bottom: 14px;
+
+        font-size: 11px;
+      }
+
+
+      /* -------------------------
+         AKTIVITÄTEN
+         ------------------------- */
+
+      .activity-strip {
+
+        gap: 6px;
+
+        margin:
+          -20px auto
+          48px;
+      }
+
+
+      .activity {
+
+        padding:
+          7px 9px;
+
+        font-size: 12px;
+      }
+
+
+      .activity svg {
+
+        width: 16px;
+
+        height: 16px;
+      }
 
 
       /* -------------------------
@@ -794,13 +1478,6 @@
       }
 
 
-      /*
-         Genau zwei Zeilen:
-         
-         Geh raus... etwas ganz
-         anderes.
-      */
-
       .description-main {
 
         white-space: normal;
@@ -834,7 +1511,6 @@
 
         font-size: 26px;
       }
-
 
 
       /* -------------------------
@@ -872,7 +1548,6 @@
       }
 
 
-
       /* -------------------------
          JEDE STUNDE
          ------------------------- */
@@ -880,6 +1555,18 @@
       .count-message {
 
         margin-bottom: 68px;
+      }
+
+
+      .count-message::before {
+
+        width: 55px;
+
+        height: 4px;
+
+        top: -12px;
+
+        right: 2px;
       }
 
 
@@ -903,10 +1590,19 @@
       }
 
 
-
       /* -------------------------
          MOTIVATION
          ------------------------- */
+
+      .motivation::before {
+
+        top: -31px;
+
+        right: 0;
+
+        font-size: 31px;
+      }
+
 
       .kicker {
 
@@ -932,7 +1628,6 @@
 
         font-size: 21px;
       }
-
 
 
       /* -------------------------
@@ -965,7 +1660,6 @@
       }
 
 
-
       /* -------------------------
          FOOTER
          ------------------------- */
@@ -973,6 +1667,16 @@
       .footer {
 
         padding-top: 31px;
+      }
+
+
+      .footer::before {
+
+        width: 52px;
+
+        height: 4px;
+
+        margin-bottom: 22px;
       }
 
 
@@ -995,6 +1699,21 @@
       .hero-title {
 
         font-size: 69px;
+      }
+
+
+      .movement-scene {
+
+        height: 190px;
+      }
+
+
+      .activity {
+
+        font-size: 11px;
+
+        padding:
+          6px 8px;
       }
 
 
@@ -1040,6 +1759,12 @@
   <main class="page">
 
 
+    <div
+      class="movement-trail"
+      aria-hidden="true"
+    ></div>
+
+
     <!-- =================================================
          1. HERO
          ================================================= -->
@@ -1053,9 +1778,7 @@
       >
 
         <span></span>
-
         <span></span>
-
         <span></span>
 
       </div>
@@ -1081,7 +1804,143 @@
 
 
     <!-- =================================================
-         2. EINLEITUNG
+         2. BEWEGUNGSSZENE
+         ================================================= -->
+
+    <section
+      class="movement-scene"
+      aria-label="Bewegung"
+    >
+
+
+      <div class="scene-circle"></div>
+
+      <div class="scene-circle-small"></div>
+
+
+      <div class="scene-line"></div>
+
+
+      <div class="scene-word">
+
+        60 Minuten
+
+        <span>
+          LOS.
+        </span>
+
+      </div>
+
+
+      <div
+        class="runner"
+        aria-hidden="true"
+      >
+
+        <div class="runner-head"></div>
+
+        <div class="runner-body"></div>
+
+        <div class="runner-arm"></div>
+
+        <div class="runner-arm two"></div>
+
+        <div class="runner-leg"></div>
+
+        <div class="runner-leg two"></div>
+
+        <div class="runner-foot"></div>
+
+        <div class="runner-foot two"></div>
+
+      </div>
+
+
+      <div class="scene-number">
+        01 / 60
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         3. AKTIVITÄTEN
+         ================================================= -->
+
+    <div
+      class="activity-strip"
+      aria-label="Beispiele für Bewegung"
+    >
+
+
+      <div class="activity">
+
+        <svg viewBox="0 0 24 24">
+          <circle cx="14" cy="4" r="2"></circle>
+          <path d="M12 7l-2 5 4 3"></path>
+          <path d="M10 12l-5 2"></path>
+          <path d="M14 15l4 5"></path>
+          <path d="M11 16l-4 5"></path>
+        </svg>
+
+        Laufen
+
+      </div>
+
+
+      <div class="activity">
+
+        <svg viewBox="0 0 24 24">
+          <circle cx="6" cy="18" r="2.5"></circle>
+          <circle cx="18" cy="18" r="2.5"></circle>
+          <path d="M6 18l4-8h5l3 8"></path>
+          <path d="M10 10l-2-3"></path>
+          <path d="M10 10l5 0"></path>
+        </svg>
+
+        Radfahren
+
+      </div>
+
+
+      <div class="activity">
+
+        <svg viewBox="0 0 24 24">
+          <circle cx="17" cy="5" r="2"></circle>
+          <path d="M15 8l-5 5"></path>
+          <path d="M10 13l-5-2"></path>
+          <path d="M10 13l4 6"></path>
+          <path d="M13 10l6 3"></path>
+        </svg>
+
+        Spazieren
+
+      </div>
+
+
+      <div class="activity">
+
+        <svg viewBox="0 0 24 24">
+          <circle cx="15" cy="5" r="2"></circle>
+          <path d="M13 8l-4 4 3 3"></path>
+          <path d="M9 12l-5 2"></path>
+          <path d="M12 15l-2 5"></path>
+          <path d="M13 15l6 3"></path>
+        </svg>
+
+        Ganz egal
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         4. EINLEITUNG
          ================================================= -->
 
     <section class="intro">
@@ -1104,7 +1963,6 @@
 
       <p class="description">
 
-
         <span class="description-main">
 
           <span class="line">
@@ -1121,7 +1979,6 @@
         <span class="highlight">
           Egal was. Hauptsache, du bewegst dich.
         </span>
-
 
       </p>
 
@@ -1140,7 +1997,7 @@
 
 
     <!-- =================================================
-         3. STATISTIKEN
+         5. STATISTIKEN
          ================================================= -->
 
     <section class="stats">
@@ -1198,7 +2055,7 @@
 
 
     <!-- =================================================
-         4. JEDE STUNDE
+         6. JEDE STUNDE
          ================================================= -->
 
     <section class="count-message">
@@ -1222,7 +2079,7 @@
 
 
     <!-- =================================================
-         5. MOTIVATION
+         7. MOTIVATION
          ================================================= -->
 
     <section class="motivation">
@@ -1309,7 +2166,7 @@
 
 
     <!-- =================================================
-         6. ABSCHLUSS
+         8. ABSCHLUSS
          ================================================= -->
 
     <footer class="footer">
@@ -1427,6 +2284,7 @@
 
       }
     );
+
 
   </script>
 
