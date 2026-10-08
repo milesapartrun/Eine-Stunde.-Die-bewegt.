@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -9,17 +10,29 @@
 
   <title>Eine Stunde. Die bewegt.</title>
 
+
   <style>
 
+    /* =====================================================
+       GRUNDWERTE
+       ===================================================== */
+
     :root {
+
       --bg: #F5F6F4;
+
       --text: #111315;
+
       --blue: #4E82EE;
+
       --blue-dark: #3269D8;
+
       --blue-light: #EAF1FF;
 
       --line: #D8DDE2;
+
       --muted: #4B5055;
+
       --placeholder: #B8BDC2;
 
       --max-width: 760px;
@@ -28,7 +41,9 @@
 
     * {
       box-sizing: border-box;
+
       margin: 0;
+
       padding: 0;
     }
 
@@ -39,9 +54,11 @@
 
 
     body {
+
       min-height: 100vh;
 
       background: var(--bg);
+
       color: var(--text);
 
       font-family:
@@ -53,6 +70,7 @@
         sans-serif;
 
       -webkit-font-smoothing: antialiased;
+
       text-rendering: optimizeLegibility;
     }
 
@@ -64,45 +82,50 @@
 
 
     .page {
+
       width: 100%;
+
       max-width: var(--max-width);
 
       margin: 0 auto;
 
       padding:
-        34px 28px
-        70px;
+        28px 28px
+        55px;
     }
+
 
 
     /* =====================================================
-       1. HERO – DAS ERSTE, WAS MAN SIEHT
+       HERO
        ===================================================== */
 
     .hero {
+
       text-align: center;
 
-      padding-top: 8px;
+      padding-top: 5px;
 
-      margin-bottom: 76px;
+      margin-bottom: 58px;
     }
 
 
-    /* Dynamisches Bewegungssymbol */
-
     .movement-symbol {
+
       position: relative;
 
       width: 76px;
-      height: 58px;
+
+      height: 54px;
 
       margin:
         0 auto
-        34px;
+        28px;
     }
 
 
     .movement-symbol span {
+
       position: absolute;
 
       height: 10px;
@@ -116,30 +139,37 @@
 
 
     .movement-symbol span:nth-child(1) {
+
       width: 34px;
 
-      top: 4px;
+      top: 3px;
+
       left: 12px;
     }
 
 
     .movement-symbol span:nth-child(2) {
+
       width: 54px;
 
-      top: 22px;
+      top: 20px;
+
       left: 18px;
     }
 
 
     .movement-symbol span:nth-child(3) {
+
       width: 34px;
 
-      top: 40px;
+      top: 37px;
+
       left: 30px;
     }
 
 
     .hero-title {
+
       font-size:
         clamp(76px, 16vw, 136px);
 
@@ -154,6 +184,7 @@
 
 
     .hero-title .black {
+
       display: block;
 
       color: var(--text);
@@ -161,30 +192,36 @@
 
 
     .hero-title .blue {
+
       display: block;
 
       color: var(--blue);
     }
 
 
+
     /* =====================================================
-       2. EINLEITUNG
+       EINLEITUNG
        ===================================================== */
 
     .intro {
+
       text-align: center;
 
-      margin-bottom: 84px;
+      margin-bottom: 65px;
     }
 
 
     .intro-title {
+
       max-width: 660px;
 
-      margin: 0 auto 76px;
+      margin:
+        0 auto
+        58px;
 
       font-size:
-        clamp(28px, 5vw, 38px);
+        clamp(27px, 5vw, 37px);
 
       line-height: 1.08;
 
@@ -195,10 +232,11 @@
 
 
     .minutes {
-      margin-bottom: 56px;
+
+      margin-bottom: 43px;
 
       font-size:
-        clamp(36px, 6vw, 50px);
+        clamp(34px, 6vw, 49px);
 
       line-height: 1.03;
 
@@ -208,44 +246,67 @@
     }
 
 
+    /* =====================================================
+       BESCHREIBUNG
+       ===================================================== */
+
     .description {
-      max-width: 660px;
+
+      max-width: 700px;
 
       margin: 0 auto;
 
-      font-size:
-        clamp(20px, 3.5vw, 25px);
-
-      line-height: 1.45;
-
       color: var(--muted);
+
+      font-size:
+        clamp(18px, 3vw, 22px);
+
+      line-height: 1.38;
 
       letter-spacing: -0.025em;
     }
 
 
-    .description .highlight {
+    /*
+       Die erste Aussage bekommt bewusst
+       genau zwei Zeilen.
+    */
+
+    .description-main {
+
       display: block;
 
-      margin-top: 10px;
+      white-space: nowrap;
+    }
+
+
+    .description .highlight {
+
+      display: block;
+
+      margin-top: 8px;
 
       color: var(--blue);
 
       font-weight: 750;
+
+      white-space: nowrap;
     }
 
 
+
     /* =====================================================
-       3. CTA
+       HAUPT-BUTTON
        ===================================================== */
 
     .main-cta {
+
       width: 100%;
 
-      margin-top: 72px;
+      margin-top: 58px;
 
       padding:
-        30px 30px;
+        26px 30px;
 
       border-radius: 999px;
 
@@ -256,7 +317,7 @@
       text-align: center;
 
       font-size:
-        clamp(27px, 5vw, 36px);
+        clamp(26px, 5vw, 35px);
 
       line-height: 1.05;
 
@@ -265,8 +326,8 @@
       letter-spacing: -0.04em;
 
       box-shadow:
-        0 18px 42px
-        rgba(78, 130, 238, 0.18);
+        0 16px 36px
+        rgba(78, 130, 238, 0.17);
 
       transition:
         transform 180ms ease,
@@ -276,38 +337,46 @@
 
 
     .main-cta:hover {
+
       background: var(--blue-dark);
 
       transform: translateY(-2px);
 
       box-shadow:
-        0 23px 50px
-        rgba(78, 130, 238, 0.23);
+        0 21px 45px
+        rgba(78, 130, 238, 0.22);
     }
 
 
+
     /* =====================================================
-       4. STATISTIKEN
+       STATISTIKEN
        ===================================================== */
 
     .stats {
+
       display: grid;
 
       grid-template-columns: 1fr 1fr;
 
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      border-top:
+        1px solid var(--line);
 
-      margin-top: 118px;
-      margin-bottom: 74px;
+      border-bottom:
+        1px solid var(--line);
+
+      margin-top: 88px;
+
+      margin-bottom: 55px;
     }
 
 
     .stat {
-      min-height: 205px;
+
+      min-height: 175px;
 
       padding:
-        34px 28px;
+        28px 28px;
 
       display: flex;
 
@@ -318,17 +387,20 @@
 
 
     .stat + .stat {
-      border-left: 1px solid var(--line);
+
+      border-left:
+        1px solid var(--line);
     }
 
 
     .stat-number {
-      margin-bottom: 24px;
+
+      margin-bottom: 18px;
 
       color: var(--blue);
 
       font-size:
-        clamp(76px, 14vw, 108px);
+        clamp(70px, 13vw, 104px);
 
       line-height: 0.85;
 
@@ -339,7 +411,8 @@
 
 
     .stat-label {
-      font-size: 23px;
+
+      font-size: 21px;
 
       line-height: 1.15;
 
@@ -349,44 +422,58 @@
     }
 
 
+
     /* =====================================================
-       5. JEDE STUNDE ZÄHLT
+       JEDE STUNDE ZÄHLT
        ===================================================== */
 
     .count-message {
-      margin-bottom: 142px;
+
+      margin-bottom: 86px;
     }
 
 
     .count-message h2 {
-      max-width: 670px;
+
+      width: 100%;
 
       font-size:
-        clamp(46px, 8vw, 72px);
+        clamp(36px, 6.5vw, 67px);
 
-      line-height: 0.95;
+      line-height: 0.98;
 
       font-weight: 750;
 
       letter-spacing: -0.065em;
+
+      white-space: nowrap;
     }
 
 
+    .count-line {
+
+      display: block;
+    }
+
+
+
     /* =====================================================
-       6. MOTIVATION
+       MOTIVATION
        ===================================================== */
 
     .motivation {
-      margin-bottom: 105px;
+
+      margin-bottom: 78px;
     }
 
 
     .kicker {
-      margin-bottom: 36px;
+
+      margin-bottom: 27px;
 
       color: var(--blue);
 
-      font-size: 17px;
+      font-size: 16px;
 
       line-height: 1;
 
@@ -399,24 +486,28 @@
 
 
     .motivation-title {
-      margin-bottom: 29px;
+
+      margin-bottom: 23px;
 
       font-size:
-        clamp(74px, 14vw, 124px);
+        clamp(64px, 12vw, 118px);
 
       line-height: 0.82;
 
       font-weight: 800;
 
       letter-spacing: -0.078em;
+
+      white-space: nowrap;
     }
 
 
     .motivation-subtitle {
-      margin-bottom: 72px;
+
+      margin-bottom: 54px;
 
       font-size:
-        clamp(25px, 4.5vw, 32px);
+        clamp(23px, 4vw, 31px);
 
       line-height: 1.12;
 
@@ -426,27 +517,32 @@
     }
 
 
+
     /* =====================================================
-       7. NACHRICHT
+       NACHRICHT
        ===================================================== */
 
     .message-form {
+
       width: 100%;
     }
 
 
     .message-input-wrap {
+
       border-bottom:
         3px solid var(--text);
 
-      padding-bottom: 10px;
+      padding-bottom: 9px;
     }
 
 
     .message-input {
+
       width: 100%;
 
       border: 0;
+
       outline: 0;
 
       background: transparent;
@@ -457,7 +553,7 @@
         0 0 3px;
 
       font-size:
-        clamp(22px, 4vw, 29px);
+        clamp(21px, 3.8vw, 28px);
 
       line-height: 1.2;
 
@@ -468,6 +564,7 @@
 
 
     .message-input::placeholder {
+
       color: var(--placeholder);
 
       opacity: 1;
@@ -475,29 +572,33 @@
 
 
     .message-input:focus::placeholder {
+
       opacity: 0.55;
     }
 
 
     .message-helper {
-      margin-top: 17px;
+
+      margin-top: 14px;
 
       color: #A6ACB1;
 
-      font-size: 17px;
+      font-size: 16px;
 
-      line-height: 1.4;
+      line-height: 1.35;
 
       letter-spacing: -0.015em;
     }
 
 
     .send-area {
-      margin-top: 30px;
+
+      margin-top: 25px;
     }
 
 
     .send-button {
+
       border: 0;
 
       padding: 0;
@@ -507,7 +608,7 @@
       color: var(--blue);
 
       font-size:
-        clamp(21px, 4vw, 27px);
+        clamp(20px, 3.8vw, 26px);
 
       line-height: 1.2;
 
@@ -524,6 +625,7 @@
 
 
     .send-button::after {
+
       content: " →";
 
       display: inline-block;
@@ -534,6 +636,7 @@
 
 
     .send-button:hover {
+
       color: var(--blue-dark);
 
       transform: translateX(2px);
@@ -541,8 +644,10 @@
 
 
     .send-button:hover::after {
+
       transform: translateX(5px);
     }
+
 
 
     /* =====================================================
@@ -550,13 +655,15 @@
        ===================================================== */
 
     .success-message {
+
       display: none;
 
-      margin-top: 25px;
+      margin-top: 22px;
 
-      padding: 18px 20px;
+      padding:
+        17px 19px;
 
-      border-radius: 18px;
+      border-radius: 17px;
 
       background: var(--blue-light);
 
@@ -571,28 +678,33 @@
 
 
     .success-message.visible {
+
       display: block;
     }
 
 
+
     /* =====================================================
-       8. ABSCHLUSS
+       FOOTER
        ===================================================== */
 
     .footer {
-      padding-top: 42px;
 
-      border-top: 1px solid var(--line);
+      padding-top: 35px;
+
+      border-top:
+        1px solid var(--line);
 
       text-align: center;
     }
 
 
     .footer-title {
+
       color: var(--text);
 
       font-size:
-        clamp(26px, 5vw, 38px);
+        clamp(25px, 5vw, 37px);
 
       line-height: 1;
 
@@ -603,8 +715,10 @@
 
 
     .footer-title span {
+
       color: var(--blue);
     }
+
 
 
     /* =====================================================
@@ -614,140 +728,261 @@
     @media (max-width: 600px) {
 
       .page {
+
         padding:
-          26px 22px
-          58px;
+          23px 22px
+          50px;
       }
 
 
+      /* -------------------------
+         HERO
+         ------------------------- */
+
       .hero {
-        padding-top: 4px;
+
+        margin-bottom: 58px;
+      }
+
+
+      .movement-symbol {
+
+        margin-bottom: 27px;
+
+        transform: scale(0.82);
+      }
+
+
+      .hero-title {
+
+        font-size: 79px;
+      }
+
+
+
+      /* -------------------------
+         INTRO
+         ------------------------- */
+
+      .intro {
+
+        margin-bottom: 55px;
+      }
+
+
+      .intro-title {
+
+        margin-bottom: 56px;
+
+        font-size: 26px;
+      }
+
+
+      .minutes {
+
+        margin-bottom: 39px;
+
+        font-size: 34px;
+      }
+
+
+      .description {
+
+        font-size: 17px;
+
+        line-height: 1.35;
+      }
+
+
+      /*
+         Genau zwei Zeilen:
+         
+         Geh raus... etwas ganz
+         anderes.
+      */
+
+      .description-main {
+
+        white-space: normal;
+      }
+
+
+      .description-main .line {
+
+        display: block;
+
+        white-space: nowrap;
+      }
+
+
+      .description .highlight {
+
+        margin-top: 7px;
+
+        font-size: 18px;
+
+        white-space: nowrap;
+      }
+
+
+      .main-cta {
+
+        margin-top: 50px;
+
+        padding:
+          24px 22px;
+
+        font-size: 26px;
+      }
+
+
+
+      /* -------------------------
+         STATISTIK
+         ------------------------- */
+
+      .stats {
+
+        margin-top: 73px;
+
+        margin-bottom: 50px;
+      }
+
+
+      .stat {
+
+        min-height: 153px;
+
+        padding:
+          23px 18px;
+      }
+
+
+      .stat-number {
+
+        margin-bottom: 15px;
+
+        font-size: 66px;
+      }
+
+
+      .stat-label {
+
+        font-size: 17px;
+      }
+
+
+
+      /* -------------------------
+         JEDE STUNDE
+         ------------------------- */
+
+      .count-message {
 
         margin-bottom: 68px;
       }
 
 
-      .movement-symbol {
-        margin-bottom: 31px;
-
-        transform: scale(0.86);
-      }
-
-
-      .hero-title {
-        font-size: 80px;
-      }
-
-
-      .intro {
-        margin-bottom: 70px;
-      }
-
-
-      .intro-title {
-        margin-bottom: 66px;
-
-        font-size: 27px;
-      }
-
-
-      .minutes {
-        margin-bottom: 46px;
-
-        font-size: 35px;
-      }
-
-
-      .description {
-        font-size: 20px;
-      }
-
-
-      .main-cta {
-        margin-top: 58px;
-
-        padding:
-          25px 23px;
-
-        font-size: 27px;
-      }
-
-
-      .stats {
-        margin-top: 95px;
-
-        margin-bottom: 62px;
-      }
-
-
-      .stat {
-        min-height: 165px;
-
-        padding:
-          25px 18px;
-      }
-
-
-      .stat-number {
-        margin-bottom: 17px;
-
-        font-size: 68px;
-      }
-
-
-      .stat-label {
-        font-size: 18px;
-      }
-
-
-      .count-message {
-        margin-bottom: 112px;
-      }
-
-
       .count-message h2 {
-        font-size: 48px;
+
+        font-size: 36px;
+
+        line-height: 1;
+
+        letter-spacing: -0.06em;
+
+        white-space: normal;
       }
 
+
+      .count-line {
+
+        display: block;
+
+        white-space: nowrap;
+      }
+
+
+
+      /* -------------------------
+         MOTIVATION
+         ------------------------- */
 
       .kicker {
-        margin-bottom: 28px;
 
-        font-size: 14px;
+        margin-bottom: 25px;
+
+        font-size: 13px;
       }
 
 
       .motivation-title {
-        font-size: 78px;
+
+        margin-bottom: 21px;
+
+        font-size: 64px;
+
+        white-space: nowrap;
       }
 
 
       .motivation-subtitle {
-        margin-bottom: 56px;
 
-        font-size: 23px;
+        margin-bottom: 49px;
+
+        font-size: 21px;
       }
 
 
+
+      /* -------------------------
+         NACHRICHT
+         ------------------------- */
+
       .message-input {
-        font-size: 23px;
+
+        font-size: 22px;
       }
 
 
       .message-helper {
-        font-size: 16px;
+
+        font-size: 15px;
+
+        margin-top: 13px;
       }
 
 
       .send-area {
-        margin-top: 27px;
+
+        margin-top: 23px;
       }
 
+
+      .send-button {
+
+        font-size: 20px;
+      }
+
+
+
+      /* -------------------------
+         FOOTER
+         ------------------------- */
 
       .footer {
-        margin-top: 30px;
+
+        padding-top: 31px;
       }
+
+
+      .footer-title {
+
+        font-size: 25px;
+      }
+
     }
+
 
 
     /* =====================================================
@@ -756,26 +991,51 @@
 
     @media (max-width: 380px) {
 
+
       .hero-title {
-        font-size: 70px;
+
+        font-size: 69px;
+      }
+
+
+      .description {
+
+        font-size: 16px;
+      }
+
+
+      .description .highlight {
+
+        font-size: 16px;
       }
 
 
       .count-message h2 {
-        font-size: 43px;
+
+        font-size: 33px;
       }
 
 
       .motivation-title {
-        font-size: 68px;
+
+        font-size: 58px;
       }
+
+
+      .motivation-subtitle {
+
+        font-size: 20px;
+      }
+
     }
 
   </style>
 </head>
 
 
+
 <body>
+
 
   <main class="page">
 
@@ -786,13 +1046,18 @@
 
     <section class="hero">
 
+
       <div
         class="movement-symbol"
         aria-hidden="true"
       >
+
         <span></span>
+
         <span></span>
+
         <span></span>
+
       </div>
 
 
@@ -809,6 +1074,7 @@
         </span>
 
       </h1>
+
 
     </section>
 
@@ -828,28 +1094,46 @@
 
 
       <p class="minutes">
+
         60 Minuten für dich.<br>
+
         Für deine Gesundheit.
+
       </p>
 
 
       <p class="description">
 
-        Geh raus. Lauf, geh spazieren,
-        fahr Rad, schwimm, trainier
-        oder mach etwas ganz anderes.
+
+        <span class="description-main">
+
+          <span class="line">
+            Geh raus. Lauf, geh spazieren, fahr Rad,
+          </span>
+
+          <span class="line">
+            schwimm, trainier oder mach etwas ganz anderes.
+          </span>
+
+        </span>
+
 
         <span class="highlight">
           Egal was. Hauptsache, du bewegst dich.
         </span>
 
+
       </p>
 
 
       <div class="main-cta">
+
         Eine Stunde.<br>
+
         Die bewegt.
+
       </div>
+
 
     </section>
 
@@ -864,6 +1148,7 @@
 
       <div class="stat">
 
+
         <div
           class="stat-number"
           id="peopleCount"
@@ -871,15 +1156,22 @@
           0
         </div>
 
+
         <div class="stat-label">
+
           Menschen<br>
+
           in Bewegung
+
         </div>
+
 
       </div>
 
 
+
       <div class="stat">
+
 
         <div
           class="stat-number"
@@ -888,10 +1180,15 @@
           0
         </div>
 
+
         <div class="stat-label">
+
           Stunden<br>
+
           bewegt
+
         </div>
+
 
       </div>
 
@@ -901,15 +1198,24 @@
 
 
     <!-- =================================================
-         4. JEDE STUNDE ZÄHLT
+         4. JEDE STUNDE
          ================================================= -->
 
     <section class="count-message">
 
+
       <h2>
-        Jede Stunde zählt.<br>
-        Jede Bewegung auch.
+
+        <span class="count-line">
+          Jede Stunde zählt.
+        </span>
+
+        <span class="count-line">
+          Jede Bewegung auch.
+        </span>
+
       </h2>
+
 
     </section>
 
@@ -937,6 +1243,7 @@
       </p>
 
 
+
       <form
         class="message-form"
         id="messageForm"
@@ -944,6 +1251,7 @@
 
 
         <div class="message-input-wrap">
+
 
           <input
             id="messageInput"
@@ -955,22 +1263,30 @@
             aria-label="Motivationsnachricht"
           >
 
+
         </div>
 
 
         <div class="message-helper">
-          Deine Nachricht wird an die nächste Person weitergegeben.
+
+          Deine Nachricht wird an die nächste Person
+          weitergegeben.
+
         </div>
 
 
         <div class="send-area">
 
+
           <button
             class="send-button"
             type="submit"
           >
+
             Auf den Weg schicken
+
           </button>
+
 
         </div>
 
@@ -979,11 +1295,14 @@
           class="success-message"
           id="successMessage"
         >
+
           Geschafft. Deine Motivation ist unterwegs.
+
         </div>
 
 
       </form>
+
 
     </section>
 
@@ -995,10 +1314,17 @@
 
     <footer class="footer">
 
+
       <div class="footer-title">
+
         Eine Stunde.
-        <span>Die bewegt.</span>
+
+        <span>
+          Die bewegt.
+        </span>
+
       </div>
+
 
     </footer>
 
@@ -1009,6 +1335,7 @@
 
   <script>
 
+
     /* =====================================================
        FORMULAR
        ===================================================== */
@@ -1016,8 +1343,10 @@
     const form =
       document.getElementById("messageForm");
 
+
     const input =
       document.getElementById("messageInput");
+
 
     const successMessage =
       document.getElementById("successMessage");
@@ -1028,6 +1357,7 @@
       function(event) {
 
         event.preventDefault();
+
 
         const message =
           input.value.trim();
@@ -1040,12 +1370,6 @@
           return;
         }
 
-
-        /*
-         * Hier kann später die echte
-         * Weitergabe der Nachricht
-         * angeschlossen werden.
-         */
 
         successMessage.classList.add(
           "visible"
@@ -1068,6 +1392,7 @@
 
       }
     );
+
 
 
     /* =====================================================
@@ -1104,6 +1429,7 @@
     );
 
   </script>
+
 
 </body>
 </html>
