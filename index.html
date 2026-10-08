@@ -2929,13 +2929,13 @@
           <div>
 
             <div class="join-step-title">
-              💙 Gib die Idee weiter
+              💙 Teile das Reel
             </div>
 
 
             <div class="join-step-copy">
-              Motiviere mindestens eine Person und teile
-              die Bewegung mit ihr – über WhatsApp oder Instagram Direct.
+              Schick das Reel mindestens einer Person,
+              die du ebenfalls in Bewegung bringen möchtest.
             </div>
 
           </div>
@@ -2949,19 +2949,10 @@
 
             <button
               class="join-share-button"
-              id="whatsappButton"
+              id="reelShareButton"
               type="button"
             >
-              💬 Über WhatsApp teilen ↗
-            </button>
-
-
-            <button
-              class="join-share-button"
-              id="instagramButton"
-              type="button"
-            >
-              📸 Über Instagram Direct teilen ↗
+              📸 Reel an jemanden schicken ↗
             </button>
 
           </div>
@@ -2975,8 +2966,7 @@
             >
 
             <span>
-              ✓ Ich habe mindestens eine Person motiviert
-              und die Idee mit ihr geteilt.
+              ✓ Ich habe das Reel mindestens einer Person geschickt.
             </span>
 
           </label>
@@ -3217,18 +3207,18 @@
 
 
     /*
-      Der komplette vorgefertigte Text für
-      WhatsApp und Instagram.
+      HIER DIE URL DEINES INSTAGRAM-REELS EINTRAGEN.
 
-      Der Link steht bewusst in einer eigenen
-      Zeile, damit er in den Messengern als
-      klickbarer Link erkannt wird.
+      Diese URL wird beim Klick auf
+      „Reel an jemanden schicken“ über das
+      native Teilen-Menü des Geräts geteilt.
+
+      Beispiel:
+      https://www.instagram.com/reel/XXXXXXXXXXX/
     */
 
-    const SHARE_TEXT =
-      "Mach mit bei „Eine Stunde. Die bewegt.“ 💙\n\n" +
-      "60 Minuten Bewegung. Für dich. Für deine Gesundheit.\n\n" +
-      CAMPAIGN_URL;
+    const REEL_URL =
+      "HIER_DEINE_INSTAGRAM_REEL_URL";
 
 
     /*
@@ -3296,12 +3286,8 @@
       document.getElementById("startTimerButton");
 
 
-    const whatsappButton =
-      document.getElementById("whatsappButton");
-
-
-    const instagramButton =
-      document.getElementById("instagramButton");
+    const reelShareButton =
+      document.getElementById("reelShareButton");
 
 
     const timerOverlay =
@@ -3569,53 +3555,30 @@
 
 
     /* =====================================================
-       WHATSAPP TEILEN
+       INSTAGRAM-REEL TEILEN
        ===================================================== */
 
 
-    whatsappButton.addEventListener(
-      "click",
-      function() {
-
-        /*
-          Der komplette Nachrichtentext wird
-          direkt in WhatsApp vorausgefüllt.
-
-          Die URL steht in einer eigenen Zeile
-          und wird von WhatsApp als klickbarer
-          Link erkannt.
-        */
-
-        const whatsappUrl =
-          "https://wa.me/?text=" +
-          encodeURIComponent(
-            SHARE_TEXT
-          );
-
-
-        window.open(
-          whatsappUrl,
-          "_blank",
-          "noopener,noreferrer"
-        );
-
-      }
-    );
-
-
-
-    /* =====================================================
-       INSTAGRAM DIRECT
-       ===================================================== */
-
-
-    instagramButton.addEventListener(
+    reelShareButton.addEventListener(
       "click",
       async function() {
 
         const originalText =
-          instagramButton.textContent;
+          reelShareButton.textContent;
 
+
+        /*
+          Auf Smartphones und unterstützten
+          Browsern wird das native Teilen-Menü
+          geöffnet.
+
+          Der Nutzer kann dort Instagram auswählen
+          und anschließend den Empfänger bestimmen.
+
+          Die Website selbst kann Instagram Direct
+          nicht automatisch mit einem bestimmten
+          Empfänger öffnen.
+        */
 
         if (
           navigator.share
@@ -3623,87 +3586,15 @@
 
           try {
 
-            /*
-              Zuerst versuchen wir das Bild selbst
-              über das native Teilen-Menü zu teilen.
-
-              Dadurch muss Instagram nicht versuchen,
-              das Open-Graph-Bild der URL zu laden,
-              sondern bekommt die echte Bilddatei.
-            */
-
-            const response =
-              await fetch("./movement.jpeg");
-
-
-            const blob =
-              await response.blob();
-
-
-            const imageFile =
-              new File(
-                [blob],
-                "eine-stunde-die-bewegt.jpg",
-                {
-                  type:
-                    blob.type ||
-                    "image/jpeg"
-                }
-              );
-
-
-            const shareData = {
-              files: [imageFile],
-
-              title:
-                "Eine Stunde. Die bewegt.",
-
-              text:
-                "Mach mit bei „Eine Stunde. Die bewegt.“ 💙\n\n60 Minuten Bewegung. Für dich. Für deine Gesundheit.",
-
-              url:
-                CAMPAIGN_URL
-            };
-
-
-            /*
-              Nur wenn das Gerät das Teilen
-              von Dateien tatsächlich unterstützt,
-              versuchen wir den Bild-Share.
-            */
-
-            if (
-              navigator.canShare &&
-              navigator.canShare({
-                files: [imageFile]
-              })
-            ) {
-
-              await navigator.share(
-                shareData
-              );
-
-
-              return;
-
-            }
-
-
-            /*
-              Wenn Dateifreigabe nicht unterstützt
-              wird, versuchen wir weiterhin den
-              bisherigen Text-/URL-Share.
-            */
-
             await navigator.share({
               title:
                 "Eine Stunde. Die bewegt.",
 
               text:
-                "Mach mit bei „Eine Stunde. Die bewegt.“ 💙\n\n60 Minuten Bewegung. Für dich. Für deine Gesundheit.",
+                "Mach bei „Eine Stunde. Die bewegt.“ mit. 💙",
 
               url:
-                CAMPAIGN_URL
+                REEL_URL
             });
 
 
@@ -3732,28 +3623,29 @@
 
         /*
           Falls das native Teilen nicht verfügbar ist,
-          die Bildfreigabe nicht funktioniert oder das
-          Gerät den nativen Share nicht unterstützt,
-          wird der komplette Nachrichtentext inklusive
-          URL kopiert.
+          öffnen wir das Reel direkt.
         */
 
-        const copied =
-          await copyText(
-            SHARE_TEXT
+        if (
+          REEL_URL &&
+          !REEL_URL.includes("HIER_DEINE")
+        ) {
+
+          reelShareButton.textContent =
+            "📸 Reel geöffnet – jetzt teilen ✓";
+
+
+          window.open(
+            REEL_URL,
+            "_blank",
+            "noopener,noreferrer"
           );
-
-
-        if (copied) {
-
-          instagramButton.textContent =
-            "📋 Nachricht kopiert – jetzt einfügen ✓";
 
 
           setTimeout(
             function() {
 
-              instagramButton.textContent =
+              reelShareButton.textContent =
                 originalText;
 
             },
@@ -3762,52 +3654,8 @@
 
         }
 
-
-        window.open(
-          "https://www.instagram.com/direct/new/",
-          "_blank",
-          "noopener,noreferrer"
-        );
-
       }
     );
-
-
-
-    /* =====================================================
-       TEXT IN ZWISCHENABLAGE
-       ===================================================== */
-
-
-    async function copyText(text) {
-
-      try {
-
-        if (
-          navigator.clipboard
-        ) {
-
-          await navigator.clipboard.writeText(
-            text
-          );
-
-
-          return true;
-
-        }
-
-      } catch (error) {
-
-        console.log(
-          "Text konnte nicht automatisch kopiert werden."
-        );
-
-      }
-
-
-      return false;
-
-    }
 
 
 
