@@ -1,7 +1,42 @@
-const startButton=document.getElementById('startButton'),startHint=document.getElementById('startHint'),followButton=document.getElementById('followButton'),followCheck=document.getElementById('followCheck'),shareButton=document.getElementById('shareButton'),shareCheck=document.getElementById('shareCheck'),modal=document.getElementById('modal'),closeModal=document.getElementById('closeModal'),confirmStart=document.getElementById('confirmStart'),timer=document.getElementById('timer'),clock=document.getElementById('clock'),messageForm=document.getElementById('messageForm'),messageInput=document.getElementById('messageInput'),messagePreview=document.getElementById('messagePreview');let followed=false,shared=false;
-function update(){let ready=followed&&shared;startButton.disabled=!ready;startHint.textContent=ready?'Alles klar. Deine Stunde kann beginnen.':'Folge Tano Löw und teile die Idee, um zu starten.'}
-followButton.addEventListener('click',()=>{followed=true;followButton.classList.add('done');followCheck.textContent='✓';update()});
-shareButton.addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:'einestunde',text:'Eine Stunde. Die bewegt. Mach mit.',url:location.href});else if(navigator.clipboard)await navigator.clipboard.writeText(location.href);shared=true;shareButton.classList.add('done');shareCheck.textContent='✓';update()}catch(e){}});
-startButton.addEventListener('click',()=>modal.classList.remove('hidden'));closeModal.addEventListener('click',()=>modal.classList.add('hidden'));
-confirmStart.addEventListener('click',()=>{modal.classList.add('hidden');timer.classList.remove('hidden');let s=3600;function tick(){clock.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');if(s>0){s--;setTimeout(tick,1000)}}tick()});
-messageForm.addEventListener('submit',e=>{e.preventDefault();let v=messageInput.value.trim();if(v)messagePreview.textContent='„'+v+'“';messageInput.value=''});
+const startButton = document.getElementById('startButton');
+const modal = document.getElementById('modal');
+const closeModal = document.getElementById('closeModal');
+const confirmStart = document.getElementById('confirmStart');
+const timer = document.getElementById('timer');
+const clock = document.getElementById('clock');
+const shareButton = document.getElementById('shareButton');
+
+startButton.addEventListener('click', () => modal.classList.remove('hidden'));
+closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+
+shareButton.addEventListener('click', async () => {
+  const shareData = {
+    title: 'einestunde',
+    text: 'Eine Stunde, die bewegt. Mach mit.',
+    url: window.location.href
+  };
+  try {
+    if (navigator.share) await navigator.share(shareData);
+    else await navigator.clipboard.writeText(window.location.href);
+  } catch (_) {}
+});
+
+confirmStart.addEventListener('click', () => {
+  modal.classList.add('hidden');
+  timer.classList.remove('hidden');
+
+  // Prototype: 60 minutes. Backend-Anbindung kommt im nächsten Schritt.
+  let seconds = 60 * 60;
+  const tick = () => {
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    clock.textContent = `${m}:${s}`;
+    if (seconds > 0) {
+      seconds--;
+      setTimeout(tick, 1000);
+    } else {
+      clock.textContent = '60:00';
+    }
+  };
+  tick();
+});
