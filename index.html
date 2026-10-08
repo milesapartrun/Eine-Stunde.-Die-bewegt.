@@ -63,10 +63,7 @@
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-
-      padding:
-        28px 28px
-        55px;
+      padding: 28px 28px 55px;
     }
 
 
@@ -77,41 +74,30 @@
 
     .hero {
       text-align: center;
-
       padding-top: 5px;
-
       margin-bottom: 30px;
     }
 
 
     .movement-symbol {
       position: relative;
-
       width: 76px;
       height: 54px;
-
-      margin:
-        0 auto
-        28px;
+      margin: 0 auto 28px;
     }
 
 
     .movement-symbol span {
       position: absolute;
-
       height: 10px;
-
       border-radius: 999px;
-
       background: var(--blue);
-
       transform: rotate(-25deg);
     }
 
 
     .movement-symbol span:nth-child(1) {
       width: 34px;
-
       top: 3px;
       left: 12px;
     }
@@ -119,7 +105,6 @@
 
     .movement-symbol span:nth-child(2) {
       width: 54px;
-
       top: 20px;
       left: 18px;
     }
@@ -127,54 +112,42 @@
 
     .movement-symbol span:nth-child(3) {
       width: 34px;
-
       top: 37px;
       left: 30px;
     }
 
 
     .hero-title {
-      font-size:
-        clamp(76px, 16vw, 136px);
-
+      font-size: clamp(76px, 16vw, 136px);
       line-height: 0.78;
-
       font-weight: 800;
-
       letter-spacing: -0.075em;
-
       text-align: center;
     }
 
 
     .hero-title .black {
       display: block;
-
       color: var(--text);
     }
 
 
     .hero-title .blue {
       display: block;
-
       color: var(--blue);
     }
 
 
 
     /* =====================================================
-       GROSSES BILD
+       HAUPTBILD
        ===================================================== */
 
     .hero-photo {
       position: relative;
 
-      width:
-        calc(100% + 56px);
-
+      width: calc(100% + 56px);
       margin-left: -28px;
-
-      height: 390px;
 
       overflow: hidden;
 
@@ -184,17 +157,11 @@
 
     .hero-photo img {
       width: 100%;
-      height: 100%;
+      height: auto;
 
       display: block;
 
-      object-fit: cover;
-
-      /*
-        Das komplette Dreierbild bleibt sichtbar.
-      */
-
-      object-position: center center;
+      object-fit: contain;
     }
 
 
@@ -202,14 +169,13 @@
       content: "";
 
       position: absolute;
-
       inset: 0;
 
       background:
         linear-gradient(
           180deg,
-          rgba(17, 19, 21, 0.02) 40%,
-          rgba(17, 19, 21, 0.16)
+          rgba(17, 19, 21, 0.01) 45%,
+          rgba(17, 19, 21, 0.12)
         );
 
       pointer-events: none;
@@ -224,17 +190,14 @@
       left: 24px;
       bottom: 20px;
 
-      padding:
-        9px 13px;
+      padding: 9px 13px;
 
       border-radius: 999px;
 
       background: white;
-
       color: var(--text);
 
       font-size: 12px;
-
       line-height: 1;
 
       font-weight: 800;
@@ -309,7 +272,6 @@
 
     .description-main {
       display: block;
-
       white-space: nowrap;
     }
 
@@ -411,21 +373,12 @@
     }
 
 
-    /*
-      Das eine Bild wird hier dreimal verwendet.
-
-      Da das Originalbild aus drei gleich großen
-      Bereichen besteht, zeigen wir jeweils nur
-      das passende Drittel.
-    */
-
     .movement-card img {
       position: absolute;
 
       top: 0;
 
       width: 300%;
-
       height: 100%;
 
       max-width: none;
@@ -440,21 +393,21 @@
     }
 
 
-    /* LINKES DRITTEL = LAUFEN */
+    /* LINKES DRITTEL */
 
     .movement-card:nth-child(1) img {
       left: 0;
     }
 
 
-    /* MITTLERES DRITTEL = RADFAHREN */
+    /* MITTLERES DRITTEL */
 
     .movement-card:nth-child(2) img {
       left: -100%;
     }
 
 
-    /* RECHTES DRITTEL = SCHWIMMEN */
+    /* RECHTES DRITTEL */
 
     .movement-card:nth-child(3) img {
       left: -200%;
@@ -470,7 +423,6 @@
       content: "";
 
       position: absolute;
-
       inset: 0;
 
       background:
@@ -495,7 +447,6 @@
       color: white;
 
       font-size: 17px;
-
       line-height: 1;
 
       font-weight: 750;
@@ -515,7 +466,6 @@
       color: white;
 
       font-size: 11px;
-
       line-height: 1;
 
       font-weight: 800;
@@ -548,8 +498,7 @@
     .stat {
       min-height: 175px;
 
-      padding:
-        28px;
+      padding: 28px;
 
       display: flex;
 
@@ -671,7 +620,6 @@
       left: -100%;
 
       width: 300%;
-
       height: 100%;
 
       max-width: none;
@@ -679,8 +627,6 @@
       display: block;
 
       object-fit: cover;
-
-      object-position: center center;
     }
 
 
@@ -822,7 +768,6 @@
 
     .message-input::placeholder {
       color: var(--placeholder);
-
       opacity: 1;
     }
 
@@ -987,7 +932,6 @@
 
     @media (max-width: 600px) {
 
-
       .page {
         padding:
           23px 22px
@@ -1002,7 +946,6 @@
 
       .movement-symbol {
         margin-bottom: 27px;
-
         transform: scale(0.82);
       }
 
@@ -1012,13 +955,14 @@
       }
 
 
+      /* -------------------------
+         HAUPTBILD
+         ------------------------- */
+
       .hero-photo {
-        width:
-          calc(100% + 44px);
+        width: calc(100% + 44px);
 
         margin-left: -22px;
-
-        height: 265px;
 
         margin-top: 34px;
       }
@@ -1026,37 +970,36 @@
 
       .photo-tag {
         left: 18px;
-
         bottom: 16px;
 
         font-size: 10px;
       }
 
 
+      /* -------------------------
+         INTRO
+         ------------------------- */
+
       .intro {
         padding-top: 58px;
-
         margin-bottom: 57px;
       }
 
 
       .intro-title {
         margin-bottom: 56px;
-
         font-size: 26px;
       }
 
 
       .minutes {
         margin-bottom: 39px;
-
         font-size: 34px;
       }
 
 
       .description {
         font-size: 17px;
-
         line-height: 1.35;
       }
 
@@ -1068,16 +1011,13 @@
 
       .description-main .line {
         display: block;
-
         white-space: nowrap;
       }
 
 
       .description .highlight {
         margin-top: 7px;
-
         font-size: 18px;
-
         white-space: nowrap;
       }
 
@@ -1092,40 +1032,36 @@
       }
 
 
+
       /* -------------------------
          SPORT-GALERIE
          ------------------------- */
 
       .movement-gallery {
         gap: 7px;
-
         margin-bottom: 63px;
       }
 
 
       .movement-card {
         height: 205px;
-
         border-radius: 17px;
       }
 
 
       .movement-card-label {
         left: 10px;
-
         bottom: 10px;
-
         font-size: 13px;
       }
 
 
       .movement-card-number {
         right: 9px;
-
         top: 10px;
-
         font-size: 9px;
       }
+
 
 
       /* -------------------------
@@ -1139,15 +1075,12 @@
 
       .stat {
         min-height: 153px;
-
-        padding:
-          23px 18px;
+        padding: 23px 18px;
       }
 
 
       .stat-number {
         margin-bottom: 15px;
-
         font-size: 66px;
       }
 
@@ -1155,6 +1088,7 @@
       .stat-label {
         font-size: 17px;
       }
+
 
 
       /* -------------------------
@@ -1168,29 +1102,24 @@
 
       .count-message h2 {
         font-size: 36px;
-
         line-height: 1;
-
         letter-spacing: -0.06em;
-
         white-space: normal;
       }
 
 
       .count-line {
         display: block;
-
         white-space: nowrap;
       }
 
 
       .count-message::after {
         width: 58px;
-
         height: 4px;
-
         margin-top: 18px;
       }
+
 
 
       /* -------------------------
@@ -1199,20 +1128,17 @@
 
       .motivation-photo {
         height: 170px;
-
         margin-bottom: 43px;
-
         border-radius: 21px;
       }
 
 
       .motivation-photo-text {
         left: 16px;
-
         bottom: 15px;
-
         font-size: 16px;
       }
+
 
 
       /* -------------------------
@@ -1221,25 +1147,22 @@
 
       .kicker {
         margin-bottom: 25px;
-
         font-size: 13px;
       }
 
 
       .motivation-title {
         margin-bottom: 21px;
-
         font-size: 64px;
-
         white-space: nowrap;
       }
 
 
       .motivation-subtitle {
         margin-bottom: 49px;
-
         font-size: 21px;
       }
+
 
 
       /* -------------------------
@@ -1253,7 +1176,6 @@
 
       .message-helper {
         font-size: 15px;
-
         margin-top: 13px;
       }
 
@@ -1268,6 +1190,7 @@
       }
 
 
+
       /* -------------------------
          FOOTER
          ------------------------- */
@@ -1279,9 +1202,7 @@
 
       .footer-mark {
         width: 48px;
-
         height: 4px;
-
         margin-bottom: 21px;
       }
 
@@ -1300,14 +1221,8 @@
 
     @media (max-width: 380px) {
 
-
       .hero-title {
         font-size: 69px;
-      }
-
-
-      .hero-photo {
-        height: 225px;
       }
 
 
@@ -1346,9 +1261,7 @@
 </head>
 
 
-
 <body>
-
 
   <main class="page">
 
@@ -1359,16 +1272,13 @@
 
     <section class="hero">
 
-
       <div
         class="movement-symbol"
         aria-hidden="true"
       >
-
         <span></span>
         <span></span>
         <span></span>
-
       </div>
 
 
@@ -1386,7 +1296,6 @@
 
       </h1>
 
-
     </section>
 
 
@@ -1397,17 +1306,14 @@
 
     <section class="hero-photo">
 
-
       <img
-        src="images/movement.jpeg"
+        src="./movement.jpeg"
         alt="Menschen beim Laufen, Radfahren und Schwimmen"
       >
-
 
       <div class="photo-tag">
         Bewegung kennt keine Form
       </div>
-
 
     </section>
 
@@ -1419,61 +1325,44 @@
 
     <section class="intro">
 
-
       <h2 class="intro-title">
-
         Gemeinsam machen wir die Welt
         ein Stück gesünder.
-
       </h2>
 
 
       <p class="minutes">
-
         60 Minuten für dich.<br>
-
         Für deine Gesundheit.
-
       </p>
 
 
       <p class="description">
 
-
         <span class="description-main">
-
 
           <span class="line">
             Geh raus. Lauf, geh spazieren, fahr Rad,
           </span>
 
-
           <span class="line">
             schwimm, trainier oder mach etwas ganz anderes.
           </span>
-
 
         </span>
 
 
         <span class="highlight">
-
           Egal was. Hauptsache, du bewegst dich.
-
         </span>
-
 
       </p>
 
 
       <div class="main-cta">
-
         Eine Stunde.<br>
-
         Die bewegt.
-
       </div>
-
 
     </section>
 
@@ -1490,23 +1379,19 @@
 
       <article class="movement-card">
 
-
         <img
-          src="images/movement.jpeg"
+          src="./movement.jpeg"
           alt="Person beim Laufen in der Natur"
           loading="lazy"
         >
-
 
         <span class="movement-card-number">
           01
         </span>
 
-
         <span class="movement-card-label">
           Laufen
         </span>
-
 
       </article>
 
@@ -1516,23 +1401,19 @@
 
       <article class="movement-card">
 
-
         <img
-          src="images/movement.jpeg"
+          src="./movement.jpeg"
           alt="Person beim Radfahren an der Küste"
           loading="lazy"
         >
-
 
         <span class="movement-card-number">
           02
         </span>
 
-
         <span class="movement-card-label">
           Radfahren
         </span>
-
 
       </article>
 
@@ -1542,26 +1423,21 @@
 
       <article class="movement-card">
 
-
         <img
-          src="images/movement.jpeg"
+          src="./movement.jpeg"
           alt="Person beim Schwimmen im Meer"
           loading="lazy"
         >
-
 
         <span class="movement-card-number">
           03
         </span>
 
-
         <span class="movement-card-label">
           Schwimmen
         </span>
 
-
       </article>
-
 
     </section>
 
@@ -1573,9 +1449,7 @@
 
     <section class="stats">
 
-
       <div class="stat">
-
 
         <div
           class="stat-number"
@@ -1584,22 +1458,15 @@
           0
         </div>
 
-
         <div class="stat-label">
-
           Menschen<br>
-
           in Bewegung
-
         </div>
-
 
       </div>
 
 
-
       <div class="stat">
-
 
         <div
           class="stat-number"
@@ -1608,18 +1475,12 @@
           0
         </div>
 
-
         <div class="stat-label">
-
           Stunden<br>
-
           bewegt
-
         </div>
 
-
       </div>
-
 
     </section>
 
@@ -1631,22 +1492,17 @@
 
     <section class="count-message">
 
-
       <h2>
-
 
         <span class="count-line">
           Jede Stunde zählt.
         </span>
 
-
         <span class="count-line">
           Jede Bewegung auch.
         </span>
 
-
       </h2>
-
 
     </section>
 
@@ -1658,20 +1514,15 @@
 
     <section class="motivation-photo">
 
-
       <img
-        src="images/movement.jpeg"
+        src="./movement.jpeg"
         alt="Person beim Radfahren an der Küste"
         loading="lazy"
       >
 
-
       <div class="motivation-photo-text">
-
         Dein Tempo. Deine Stunde.
-
       </div>
-
 
     </section>
 
@@ -1683,27 +1534,19 @@
 
     <section class="motivation">
 
-
       <div class="kicker">
-
         Für die nächste Person
-
       </div>
 
 
       <h2 class="motivation-title">
-
         Motivier sie.
-
       </h2>
 
 
       <p class="motivation-subtitle">
-
         Schreib ihr etwas, das sie antreibt.
-
       </p>
-
 
 
       <form
@@ -1711,9 +1554,7 @@
         id="messageForm"
       >
 
-
         <div class="message-input-wrap">
-
 
           <input
             id="messageInput"
@@ -1725,30 +1566,23 @@
             aria-label="Motivationsnachricht"
           >
 
-
         </div>
 
 
         <div class="message-helper">
-
           Deine Nachricht wird an die nächste Person
           weitergegeben.
-
         </div>
 
 
         <div class="send-area">
 
-
           <button
             class="send-button"
             type="submit"
           >
-
             Auf den Weg schicken
-
           </button>
-
 
         </div>
 
@@ -1757,14 +1591,10 @@
           class="success-message"
           id="successMessage"
         >
-
           Geschafft. Deine Motivation ist unterwegs.
-
         </div>
 
-
       </form>
-
 
     </section>
 
@@ -1776,23 +1606,16 @@
 
     <footer class="footer">
 
-
       <div class="footer-mark"></div>
 
-
       <div class="footer-title">
-
         Eine Stunde.
-
         <span>
           Die bewegt.
         </span>
-
       </div>
 
-
     </footer>
-
 
   </main>
 
@@ -1800,18 +1623,11 @@
 
   <script>
 
-
-    /* =====================================================
-       FORMULAR
-       ===================================================== */
-
     const form =
       document.getElementById("messageForm");
 
-
     const input =
       document.getElementById("messageInput");
-
 
     const successMessage =
       document.getElementById("successMessage");
@@ -1823,27 +1639,17 @@
 
         event.preventDefault();
 
-
         const message =
           input.value.trim();
 
-
         if (!message) {
-
           input.focus();
-
           return;
-
         }
 
-
-        successMessage.classList.add(
-          "visible"
-        );
-
+        successMessage.classList.add("visible");
 
         input.value = "";
-
 
         setTimeout(
           function() {
@@ -1859,11 +1665,6 @@
       }
     );
 
-
-
-    /* =====================================================
-       PLACEHOLDER
-       ===================================================== */
 
     input.addEventListener(
       "focus",
@@ -1894,9 +1695,7 @@
       }
     );
 
-
   </script>
-
 
 </body>
 </html>
