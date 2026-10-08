@@ -1571,27 +1571,6 @@
     }
 
 
-    .join-note {
-      margin-top: 12px;
-
-      padding:
-        10px 12px;
-
-      border-radius: 10px;
-
-      background:
-        rgba(0, 107, 143, 0.055);
-
-      color: var(--muted);
-
-      font-size: 11px;
-
-      line-height: 1.45;
-
-      text-align: center;
-    }
-
-
 
     /* =====================================================
        TIMER
@@ -2249,11 +2228,6 @@
           17px 15px;
 
         font-size: 16px;
-      }
-
-
-      .join-note {
-        font-size: 10px;
       }
 
 
@@ -3015,14 +2989,6 @@
         🚀 Meine 60 Minuten starten →
       </button>
 
-
-      <div class="join-note">
-        🔒 Die Bestätigung der beiden Schritte erfolgt auf
-        Vertrauensbasis. Eine normale Webseite kann einen
-        Instagram-Follow oder eine Direct Message nicht
-        zuverlässig technisch überprüfen.
-      </div>
-
     </div>
 
   </div>
@@ -3255,6 +3221,17 @@
       TIMER_MINUTES * 60;
 
 
+    /*
+      NEU:
+      Der laufende Timer wird lokal gespeichert.
+      Dadurch bleibt er auch nach einem Reload
+      oder dem erneuten Öffnen der Seite erhalten.
+    */
+
+    const TIMER_STORAGE_KEY =
+      "eineStundeDieBewegt_timer";
+
+
 
     /* =====================================================
        ELEMENTE
@@ -3371,6 +3348,9 @@
 
 
     let timerStartedAt = null;
+
+
+    let timerEndAt = null;
 
 
 
@@ -3571,12 +3551,14 @@
       "click",
       async function() {
 
-        await copyCampaignLink();
-
-
         const text =
           "Mach mit bei „Eine Stunde. Die bewegt.“ – 60 Minuten Bewegung. Danach bekommst du eine Motivation von einem anderen Menschen. " +
           CAMPAIGN_URL;
+
+
+        await copyText(
+          text
+        );
 
 
         const whatsappUrl =
@@ -3605,14 +3587,51 @@
       async function() {
 
         /*
-          Der Link wird zunächst kopiert,
-          weil Instagram von einer normalen
-          Webseite keinen zuverlässig
-          vorausgefüllten Direct-Share-Link
-          anbietet.
+          Instagram bietet über eine normale
+          Webseite keinen zuverlässigen Link an,
+          der eine neue Direct Message bereits
+          mit einem beliebigen Text vorausfüllt.
+
+          Deshalb wird hier der KOMPLETTE
+          Nachrichtentext kopiert und anschließend
+          direkt Instagram Direct geöffnet.
+
+          Der Nutzer kann die Nachricht dort
+          unmittelbar einfügen und verschicken.
         */
 
-        await copyCampaignLink();
+        const text =
+          "Mach mit bei „Eine Stunde. Die bewegt.“ – 60 Minuten Bewegung. Danach bekommst du eine Motivation von einem anderen Menschen. " +
+          CAMPAIGN_URL;
+
+
+        const copied =
+          await copyText(
+            text
+          );
+
+
+        if (copied) {
+
+          const originalText =
+            instagramButton.textContent;
+
+
+          instagramButton.textContent =
+            "📋 Nachricht kopiert ✓";
+
+
+          setTimeout(
+            function() {
+
+              instagramButton.textContent =
+                originalText;
+
+            },
+            2500
+          );
+
+        }
 
 
         window.open(
@@ -3627,11 +3646,11 @@
 
 
     /* =====================================================
-       LINK IN ZWISCHENABLAGE
+       TEXT IN ZWISCHENABLAGE
        ===================================================== */
 
 
-    async function copyCampaignLink() {
+    async function copyText(text) {
 
       try {
 
@@ -3640,18 +3659,24 @@
         ) {
 
           await navigator.clipboard.writeText(
-            CAMPAIGN_URL
+            text
           );
+
+
+          return true;
 
         }
 
       } catch (error) {
 
         console.log(
-          "Kampagnenlink konnte nicht automatisch kopiert werden."
+          "Text konnte nicht automatisch kopiert werden."
         );
 
       }
+
+
+      return false;
 
     }
 
@@ -3686,19 +3711,62 @@
 
 
 
-    function startTimer() {
+    function startTimer(existingEndAt = null) {
 
       clearInterval(
         timerInterval
       );
 
 
-      timerRemaining =
-        TIMER_SECONDS;
-
-
-      timerStartedAt =
+      const now =
         Date.now();
+
+
+      /*
+        Bei einem normalen Start wird
+        eine neue Endzeit festgelegt.
+
+        Bei einem Reload können wir dagegen
+        eine bereits gespeicherte Endzeit
+        übergeben und genau dort weitermachen.
+      */
+
+      if (existingEndAt) {
+
+        timerEndAt =
+          existingEndAt;
+
+
+        timerStartedAt =
+          timerEndAt -
+          TIMER_SECONDS * 1000;
+
+      } else {
+
+        timerStartedAt =
+          now;
+
+
+        timerEndAt =
+          timerStartedAt +
+          TIMER_SECONDS * 1000;
+
+
+        saveTimerState();
+
+      }
+
+
+      timerRemaining =
+        Math.max(
+          Math.ceil(
+            (
+              timerEndAt -
+              now
+            ) / 1000
+          ),
+          0
+        );
 
 
       timerRunning.style.display =
@@ -3733,31 +3801,48 @@
 
 
       /*
-        Wir berechnen die verbleibende
-        Zeit anhand der echten Uhrzeit.
+        Falls die gespeicherte Stunde
+        bereits abgelaufen ist, wird sie
+        direkt abgeschlossen.
+      */
 
-        Dadurch läuft der Timer nicht
-        schneller oder langsamer, wenn
-        der Browser einmal kurz pausiert.
+      if (
+        timerRemaining <= 0
+      ) {
+
+        clearStoredTimer();
+
+
+        finishHour();
+
+
+        return;
+
+      }
+
+
+      /*
+        Wir rechnen immer anhand der
+        echten Endzeit.
+
+        Dadurch stimmt die Restzeit auch,
+        wenn der Browser einen Tab pausiert,
+        die Seite kurz hängt oder das Gerät
+        zwischenzeitlich offline ist.
       */
 
       timerInterval =
         setInterval(
           function() {
 
-            const elapsed =
-              Math.floor(
-                (
-                  Date.now() -
-                  timerStartedAt
-                ) / 1000
-              );
-
-
             timerRemaining =
               Math.max(
-                TIMER_SECONDS -
-                elapsed,
+                Math.ceil(
+                  (
+                    timerEndAt -
+                    Date.now()
+                  ) / 1000
+                ),
                 0
               );
 
@@ -3774,6 +3859,17 @@
               );
 
 
+              /*
+                Wichtig:
+                Vor finishHour() löschen,
+                damit ein späterer Reload
+                die Stunde nicht ein zweites
+                Mal als abgeschlossen behandelt.
+              */
+
+              clearStoredTimer();
+
+
               finishHour();
 
             }
@@ -3781,6 +3877,198 @@
           },
           500
         );
+
+    }
+
+
+
+    /* =====================================================
+       TIMER-STATUS SPEICHERN
+       ===================================================== */
+
+
+    function saveTimerState() {
+
+      if (
+        !timerEndAt
+      ) {
+
+        return;
+
+      }
+
+
+      try {
+
+        localStorage.setItem(
+          TIMER_STORAGE_KEY,
+          JSON.stringify({
+            startedAt:
+              timerStartedAt,
+
+            endsAt:
+              timerEndAt
+          })
+        );
+
+      } catch (error) {
+
+        console.log(
+          "Timer konnte nicht lokal gespeichert werden."
+        );
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       GESPEICHERTEN TIMER LÖSCHEN
+       ===================================================== */
+
+
+    function clearStoredTimer() {
+
+      try {
+
+        localStorage.removeItem(
+          TIMER_STORAGE_KEY
+        );
+
+      } catch (error) {
+
+        console.log(
+          "Gespeicherter Timer konnte nicht gelöscht werden."
+        );
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       TIMER NACH RELOAD FORTSETZEN
+       ===================================================== */
+
+
+    function resumeTimerAfterReload() {
+
+      let savedTimer = null;
+
+
+      try {
+
+        const saved =
+          localStorage.getItem(
+            TIMER_STORAGE_KEY
+          );
+
+
+        if (!saved) {
+
+          return;
+
+        }
+
+
+        savedTimer =
+          JSON.parse(
+            saved
+          );
+
+      } catch (error) {
+
+        clearStoredTimer();
+
+        return;
+
+      }
+
+
+      if (
+        !savedTimer ||
+        !savedTimer.endsAt
+      ) {
+
+        clearStoredTimer();
+
+        return;
+
+      }
+
+
+      const remaining =
+        Math.ceil(
+          (
+            savedTimer.endsAt -
+            Date.now()
+          ) / 1000
+        );
+
+
+      /*
+        Noch nicht fertig:
+        Timer exakt mit der gespeicherten
+        Endzeit fortsetzen.
+      */
+
+      if (
+        remaining > 0
+      ) {
+
+        startTimer(
+          savedTimer.endsAt
+        );
+
+
+        return;
+
+      }
+
+
+      /*
+        Während die Seite nicht geöffnet war,
+        ist die Stunde bereits abgelaufen.
+
+        Den gespeicherten Status zuerst löschen,
+        damit ein weiterer Reload nicht erneut
+        einen Teilnehmer anlegt.
+      */
+
+      clearStoredTimer();
+
+
+      timerOverlay.classList.add(
+        "open"
+      );
+
+
+      timerOverlay.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+
+      timerRunning.style.display =
+        "block";
+
+
+      timerFinish.classList.remove(
+        "visible"
+      );
+
+
+      timerStatus.textContent =
+        "Deine Stunde läuft";
+
+
+      finishHour();
 
     }
 
@@ -3840,6 +4128,18 @@
 
 
     async function finishHour() {
+
+      /*
+        Der Timer wird vor dem Abschluss
+        aus dem lokalen Speicher entfernt.
+
+        Dadurch kann ein Reload während
+        der Abschlussverarbeitung keinen
+        zweiten Teilnehmer erzeugen.
+      */
+
+      clearStoredTimer();
+
 
       timerDisplay.textContent =
         "00:00";
@@ -4264,6 +4564,15 @@
         );
 
 
+        /*
+          Beim bewussten Abbrechen darf
+          der Timer NICHT nach einem Reload
+          wieder auftauchen.
+        */
+
+        clearStoredTimer();
+
+
         closeTimer();
 
       }
@@ -4297,6 +4606,23 @@
       clearInterval(
         timerInterval
       );
+
+
+      /*
+        Wenn der Nutzer den Timer bewusst
+        schließt bzw. abbricht, wird auch
+        der gespeicherte Timer entfernt.
+      */
+
+      clearStoredTimer();
+
+
+      timerEndAt =
+        null;
+
+
+      timerStartedAt =
+        null;
 
 
       timerOverlay.classList.remove(
@@ -4443,6 +4769,18 @@
     updateStartButton();
 
     loadStats();
+
+
+    /*
+      NEU:
+      Prüfen, ob bereits eine aktive
+      60-Minuten-Stunde gespeichert ist.
+
+      Wenn ja, wird sie automatisch
+      wieder aufgenommen.
+    */
+
+    resumeTimerAfterReload();
 
 
   </script>
