@@ -918,6 +918,12 @@
     }
 
 
+    .send-button:disabled {
+      opacity: 0.45;
+      cursor: wait;
+    }
+
+
 
     /* =====================================================
        ERFOLGSMELDUNG
@@ -1002,6 +1008,739 @@
 
 
     /* =====================================================
+       TEILNAHME-MODAL
+       ===================================================== */
+
+    .join-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 1000;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background:
+        rgba(17, 19, 21, 0.62);
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      pointer-events: none;
+
+      transition:
+        opacity 220ms ease,
+        visibility 220ms ease;
+    }
+
+
+    .join-overlay.open {
+      opacity: 1;
+
+      visibility: visible;
+
+      pointer-events: auto;
+    }
+
+
+    .join-modal {
+      position: relative;
+
+      width: 100%;
+
+      max-width: 610px;
+
+      max-height: 92vh;
+
+      overflow-y: auto;
+
+      padding: 34px;
+
+      background: var(--bg);
+
+      transform:
+        translateY(18px)
+        scale(0.98);
+
+      transition:
+        transform 220ms ease;
+    }
+
+
+    .join-overlay.open .join-modal {
+      transform:
+        translateY(0)
+        scale(1);
+    }
+
+
+    .join-close {
+      position: absolute;
+
+      top: 14px;
+      right: 17px;
+
+      width: 40px;
+      height: 40px;
+
+      border: 0;
+
+      background: transparent;
+
+      color: var(--text);
+
+      font-size: 30px;
+
+      line-height: 1;
+
+      cursor: pointer;
+    }
+
+
+    .join-kicker {
+      margin-bottom: 13px;
+
+      color: var(--blue);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.16em;
+
+      text-transform: uppercase;
+    }
+
+
+    .join-title {
+      max-width: 500px;
+
+      margin-bottom: 18px;
+
+      font-size:
+        clamp(39px, 7vw, 60px);
+
+      line-height: 0.91;
+
+      font-weight: 800;
+
+      letter-spacing: -0.06em;
+    }
+
+
+    .join-intro {
+      max-width: 500px;
+
+      margin-bottom: 28px;
+
+      color: var(--muted);
+
+      font-size: 16px;
+
+      line-height: 1.4;
+    }
+
+
+    .join-step {
+      padding:
+        22px 0;
+
+      border-top:
+        1px solid var(--line);
+    }
+
+
+    .join-step:last-of-type {
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    .join-step-head {
+      display: flex;
+
+      gap: 14px;
+
+      align-items: flex-start;
+    }
+
+
+    .join-step-number {
+      flex-shrink: 0;
+
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 50%;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease;
+    }
+
+
+    .join-step.completed
+    .join-step-number {
+      background: var(--blue);
+
+      border-color: var(--blue);
+
+      color: white;
+    }
+
+
+    .join-step-title {
+      margin-bottom: 5px;
+
+      font-size: 18px;
+
+      line-height: 1.15;
+
+      font-weight: 800;
+    }
+
+
+    .join-step-copy {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.4;
+    }
+
+
+    .join-step-content {
+      margin:
+        16px 0 0 46px;
+    }
+
+
+    .join-instagram-button,
+    .join-share-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 44px;
+
+      padding:
+        11px 16px;
+
+      border:
+        1px solid
+        var(--text);
+
+      background: transparent;
+
+      color: var(--text);
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      transition:
+        background 160ms ease,
+        color 160ms ease;
+    }
+
+
+    .join-instagram-button:hover,
+    .join-share-button:hover {
+      background: var(--text);
+
+      color: white;
+    }
+
+
+    .join-share-buttons {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+    }
+
+
+    .join-confirm {
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 10px;
+
+      margin-top: 14px;
+
+      color: var(--text);
+
+      font-size: 13px;
+
+      line-height: 1.35;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+
+    .join-confirm input {
+      appearance: none;
+      -webkit-appearance: none;
+
+      position: relative;
+
+      flex-shrink: 0;
+
+      width: 19px;
+      height: 19px;
+
+      margin-top: 1px;
+
+      border:
+        1px solid
+        #AEB4B9;
+
+      background: white;
+
+      cursor: pointer;
+    }
+
+
+    .join-confirm input:checked {
+      border-color: var(--blue);
+
+      background: var(--blue);
+    }
+
+
+    .join-confirm input:checked::after {
+      content: "✓";
+
+      position: absolute;
+
+      left: 3px;
+      top: -1px;
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 800;
+    }
+
+
+    .join-share-section {
+      opacity: 0.38;
+
+      pointer-events: none;
+
+      transition:
+        opacity 180ms ease;
+    }
+
+
+    .join-share-section.unlocked {
+      opacity: 1;
+
+      pointer-events: auto;
+    }
+
+
+    .join-start-button {
+      width: 100%;
+
+      margin-top: 23px;
+
+      padding:
+        18px 20px;
+
+      border: 0;
+
+      background: var(--blue);
+
+      color: white;
+
+      font-size: 17px;
+
+      line-height: 1.1;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      transition:
+        background 160ms ease,
+        opacity 160ms ease;
+    }
+
+
+    .join-start-button:hover:not(:disabled) {
+      background: var(--blue-dark);
+    }
+
+
+    .join-start-button:disabled {
+      opacity: 0.32;
+
+      cursor: not-allowed;
+    }
+
+
+    .join-note {
+      margin-top: 12px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.45;
+
+      text-align: center;
+    }
+
+
+
+    /* =====================================================
+       TIMER
+       ===================================================== */
+
+    .timer-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 1100;
+
+      display: none;
+
+      flex-direction: column;
+
+      background: var(--bg);
+
+      overflow-y: auto;
+    }
+
+
+    .timer-overlay.open {
+      display: flex;
+    }
+
+
+    .timer-header {
+      width: 100%;
+
+      max-width: 1000px;
+
+      margin: 0 auto;
+
+      padding:
+        26px 28px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .timer-brand {
+      font-size: 13px;
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: -0.01em;
+    }
+
+
+    .timer-brand span {
+      color: var(--blue);
+    }
+
+
+    .timer-status {
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+    }
+
+
+    .timer-main {
+      width: 100%;
+
+      max-width: 900px;
+
+      margin: auto;
+
+      padding:
+        50px 28px 70px;
+
+      text-align: center;
+    }
+
+
+    .timer-kicker {
+      margin-bottom: 19px;
+
+      color: var(--blue);
+
+      font-size: 12px;
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: 0.17em;
+
+      text-transform: uppercase;
+    }
+
+
+    .timer-title {
+      margin-bottom: 48px;
+
+      font-size:
+        clamp(50px, 9vw, 90px);
+
+      line-height: 0.85;
+
+      font-weight: 800;
+
+      letter-spacing: -0.075em;
+    }
+
+
+    .timer-display {
+      margin-bottom: 36px;
+
+      color: var(--blue);
+
+      font-size:
+        clamp(90px, 19vw, 190px);
+
+      line-height: 0.8;
+
+      font-weight: 800;
+
+      letter-spacing: -0.085em;
+
+      font-variant-numeric: tabular-nums;
+    }
+
+
+    .timer-progress {
+      width: 100%;
+
+      height: 8px;
+
+      margin-bottom: 28px;
+
+      overflow: hidden;
+
+      background: var(--line);
+    }
+
+
+    .timer-progress-bar {
+      width: 0%;
+
+      height: 100%;
+
+      background: var(--blue);
+
+      transition:
+        width 500ms linear;
+    }
+
+
+    .timer-copy {
+      max-width: 540px;
+
+      margin: 0 auto;
+
+      color: var(--muted);
+
+      font-size: 18px;
+
+      line-height: 1.4;
+    }
+
+
+    .timer-copy strong {
+      color: var(--text);
+    }
+
+
+    .timer-cancel {
+      margin-top: 28px;
+
+      border: 0;
+
+      background: transparent;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      text-decoration:
+        underline;
+
+      text-underline-offset: 3px;
+
+      cursor: pointer;
+    }
+
+
+
+    /* =====================================================
+       TIMER FERTIG
+       ===================================================== */
+
+    .timer-finish {
+      display: none;
+
+      max-width: 720px;
+
+      margin: 0 auto;
+    }
+
+
+    .timer-finish.visible {
+      display: block;
+    }
+
+
+    .finish-kicker {
+      margin-bottom: 20px;
+
+      color: var(--blue);
+
+      font-size: 12px;
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: 0.17em;
+
+      text-transform: uppercase;
+    }
+
+
+    .finish-title {
+      margin-bottom: 34px;
+
+      font-size:
+        clamp(52px, 10vw, 94px);
+
+      line-height: 0.84;
+
+      font-weight: 800;
+
+      letter-spacing: -0.08em;
+    }
+
+
+    .received-label {
+      margin-bottom: 14px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+    }
+
+
+    .received-message {
+      margin-bottom: 28px;
+
+      padding:
+        32px 26px;
+
+      background: var(--blue);
+
+      color: white;
+
+      font-size:
+        clamp(25px, 5vw, 45px);
+
+      line-height: 1.08;
+
+      font-weight: 800;
+
+      letter-spacing: -0.045em;
+    }
+
+
+    .finish-button {
+      padding:
+        15px 20px;
+
+      border: 0;
+
+      background: var(--text);
+
+      color: white;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+
+    .finish-button:hover {
+      background: var(--blue-dark);
+    }
+
+
+
+    /* =====================================================
        MOBILE
        ===================================================== */
 
@@ -1031,10 +1770,6 @@
       }
 
 
-      /* -------------------------
-         HAUPTBILD
-         ------------------------- */
-
       .hero-photo {
         width:
           calc(100% + 44px);
@@ -1052,11 +1787,6 @@
         font-size: 10px;
       }
 
-
-
-      /* -------------------------
-         ERDKUGEL
-         ------------------------- */
 
       .intro {
         padding-top: 58px;
@@ -1117,11 +1847,6 @@
       }
 
 
-
-      /* -------------------------
-         CTA
-         ------------------------- */
-
       .main-cta-wrap {
         margin-top: 50px;
       }
@@ -1145,11 +1870,6 @@
         font-size: 27px;
       }
 
-
-
-      /* -------------------------
-         STATISTIK
-         ------------------------- */
 
       .stats {
         margin-bottom: 50px;
@@ -1175,11 +1895,6 @@
         font-size: 17px;
       }
 
-
-
-      /* -------------------------
-         JEDE STUNDE
-         ------------------------- */
 
       .count-message {
         margin-bottom: 55px;
@@ -1213,11 +1928,6 @@
       }
 
 
-
-      /* -------------------------
-         MOTIVATIONS-BILD
-         ------------------------- */
-
       .motivation-photo {
         height: 170px;
 
@@ -1235,11 +1945,6 @@
         font-size: 16px;
       }
 
-
-
-      /* -------------------------
-         MOTIVATION
-         ------------------------- */
 
       .kicker {
         margin-bottom: 25px;
@@ -1264,11 +1969,6 @@
       }
 
 
-
-      /* -------------------------
-         NACHRICHT
-         ------------------------- */
-
       .message-input {
         font-size: 22px;
       }
@@ -1291,11 +1991,6 @@
       }
 
 
-
-      /* -------------------------
-         FOOTER
-         ------------------------- */
-
       .footer {
         padding-top: 31px;
       }
@@ -1312,6 +2007,60 @@
 
       .footer-title {
         font-size: 25px;
+      }
+
+
+      .join-overlay {
+        padding: 12px;
+      }
+
+
+      .join-modal {
+        padding:
+          29px 21px 23px;
+      }
+
+
+      .join-step-content {
+        margin-left: 0;
+      }
+
+
+      .join-share-buttons {
+        flex-direction: column;
+      }
+
+
+      .join-instagram-button,
+      .join-share-button {
+        width: 100%;
+      }
+
+
+      .timer-header {
+        padding:
+          20px;
+      }
+
+
+      .timer-main {
+        padding:
+          40px 20px 55px;
+      }
+
+
+      .timer-title {
+        margin-bottom: 42px;
+      }
+
+
+      .timer-display {
+        margin-bottom: 30px;
+      }
+
+
+      .timer-copy {
+        font-size: 16px;
       }
 
     }
@@ -1361,14 +2110,22 @@
         font-size: 20px;
       }
 
+
+      .join-title {
+        font-size: 37px;
+      }
+
     }
 
   </style>
 </head>
 
+
 <body>
 
+
   <main class="page">
+
 
     <!-- =================================================
          1. HERO
@@ -1432,8 +2189,6 @@
          ================================================= -->
 
     <section class="intro">
-
-      <!-- DEZENTE ERDKUGEL -->
 
       <div
         class="intro-globe"
@@ -1544,7 +2299,6 @@
         </svg>
 
       </div>
-
 
 
       <h2 class="intro-title">
@@ -1838,57 +2592,535 @@
 
 
 
+  <!-- =====================================================
+       TEILNAHME-FENSTER
+       ===================================================== -->
+
+  <div
+    class="join-overlay"
+    id="joinOverlay"
+    aria-hidden="true"
+  >
+
+    <div
+      class="join-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="joinTitle"
+    >
+
+      <button
+        class="join-close"
+        id="joinClose"
+        type="button"
+        aria-label="Schließen"
+      >
+        ×
+      </button>
+
+
+      <div class="join-kicker">
+        Jetzt wird's ernst
+      </div>
+
+
+      <h2
+        class="join-title"
+        id="joinTitle"
+      >
+        Erst zwei Dinge.
+        Dann 60 Minuten.
+      </h2>
+
+
+      <p class="join-intro">
+        Damit die Idee funktioniert, wird Bewegung
+        weitergegeben. Mach zuerst die beiden Schritte
+        und starte danach deine Stunde.
+      </p>
+
+
+
+      <!-- =================================================
+           SCHRITT 1
+           ================================================= -->
+
+      <div
+        class="join-step"
+        id="joinStepOne"
+      >
+
+        <div class="join-step-head">
+
+          <div class="join-step-number">
+            1
+          </div>
+
+
+          <div>
+
+            <div class="join-step-title">
+              Folge @tano.loew auf Instagram
+            </div>
+
+
+            <div class="join-step-copy">
+              Öffne mein Instagram-Profil und folge mir.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="join-step-content">
+
+          <a
+            class="join-instagram-button"
+            href="https://www.instagram.com/tano.loew/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @tano.loew auf Instagram ↗
+          </a>
+
+
+          <label class="join-confirm">
+
+            <input
+              type="checkbox"
+              id="followCheck"
+            >
+
+            <span>
+              Ich folge @tano.loew.
+            </span>
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           SCHRITT 2
+           ================================================= -->
+
+      <div
+        class="join-step join-share-section"
+        id="joinStepTwo"
+      >
+
+        <div class="join-step-head">
+
+          <div class="join-step-number">
+            2
+          </div>
+
+
+          <div>
+
+            <div class="join-step-title">
+              Gib die Idee weiter
+            </div>
+
+
+            <div class="join-step-copy">
+              Teile diese Webseite mit mindestens einer
+              Person über WhatsApp oder Instagram Direct.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="join-step-content">
+
+          <div class="join-share-buttons">
+
+            <button
+              class="join-share-button"
+              id="whatsappButton"
+              type="button"
+            >
+              Über WhatsApp teilen ↗
+            </button>
+
+
+            <button
+              class="join-share-button"
+              id="instagramButton"
+              type="button"
+            >
+              Instagram Direct ↗
+            </button>
+
+          </div>
+
+
+          <label class="join-confirm">
+
+            <input
+              type="checkbox"
+              id="shareCheck"
+            >
+
+            <span>
+              Ich habe die Webseite an mindestens eine
+              Person weitergeleitet.
+            </span>
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           START
+           ================================================= -->
+
+      <button
+        class="join-start-button"
+        id="startTimerButton"
+        type="button"
+        disabled
+      >
+        Meine 60 Minuten starten →
+      </button>
+
+
+      <div class="join-note">
+        Die Bestätigung der beiden Schritte erfolgt auf
+        Vertrauensbasis. Eine normale Webseite kann einen
+        Instagram-Follow oder eine Direct Message nicht
+        zuverlässig technisch überprüfen.
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       TIMER-FENSTER
+       ===================================================== -->
+
+  <div
+    class="timer-overlay"
+    id="timerOverlay"
+    aria-hidden="true"
+  >
+
+    <header class="timer-header">
+
+      <div class="timer-brand">
+
+        Eine Stunde.
+        <span>Die bewegt.</span>
+
+      </div>
+
+
+      <div
+        class="timer-status"
+        id="timerStatus"
+      >
+        Deine Stunde läuft
+      </div>
+
+    </header>
+
+
+
+    <main class="timer-main">
+
+
+      <!-- =================================================
+           TIMER LÄUFT
+           ================================================= -->
+
+      <div id="timerRunning">
+
+        <div class="timer-kicker">
+          Jetzt zählt nur eins
+        </div>
+
+
+        <h1 class="timer-title">
+          Beweg dich.
+        </h1>
+
+
+        <div
+          class="timer-display"
+          id="timerDisplay"
+        >
+          60:00
+        </div>
+
+
+        <div class="timer-progress">
+
+          <div
+            class="timer-progress-bar"
+            id="timerProgressBar"
+          ></div>
+
+        </div>
+
+
+        <p class="timer-copy">
+
+          Lauf. Geh. Fahr Rad. Schwimm. Trainier.
+          Oder mach etwas ganz anderes.
+
+          <br>
+
+          <strong>
+            Eine Stunde gehört jetzt dir.
+          </strong>
+
+        </p>
+
+
+        <button
+          class="timer-cancel"
+          id="cancelTimerButton"
+          type="button"
+        >
+          Stunde abbrechen
+        </button>
+
+      </div>
+
+
+
+      <!-- =================================================
+           TIMER FERTIG
+           ================================================= -->
+
+      <div
+        class="timer-finish"
+        id="timerFinish"
+      >
+
+        <div class="finish-kicker">
+          Geschafft
+        </div>
+
+
+        <h1 class="finish-title">
+          Du hast sie bewegt.
+        </h1>
+
+
+        <div class="received-label">
+          Deine Motivation von einem anderen Menschen
+        </div>
+
+
+        <div
+          class="received-message"
+          id="receivedMessage"
+        >
+          Du hast deine Stunde geschafft.
+        </div>
+
+
+        <button
+          class="finish-button"
+          id="finishButton"
+          type="button"
+        >
+          Zurück zur Seite →
+        </button>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       SUPABASE
+       ===================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+
   <script>
 
+
     /* =====================================================
-       ZENTRALER CTA
+       SUPABASE EINSTELLUNGEN
+       =====================================================
+
+       HIER DEINE BEIDEN SUPABASE-WERTE EINTRAGEN.
+
+       Du findest sie in deinem Supabase-Projekt
+       unter Connect / API Keys.
+
+       WICHTIG:
+       Hier ausschließlich die öffentliche
+       Publishable Key verwenden.
+
+       NICHT den Secret Key / Service Role Key
+       hier eintragen.
+    */
+
+
+    const SUPABASE_URL =
+      "HIER_DEINE_SUPABASE_URL";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "HIER_DEIN_SUPABASE_PUBLISHABLE_KEY";
+
+
+    let supabaseClient = null;
+
+
+    const supabaseConfigured =
+      SUPABASE_URL &&
+      SUPABASE_PUBLISHABLE_KEY &&
+      !SUPABASE_URL.includes("HIER_DEINE") &&
+      !SUPABASE_PUBLISHABLE_KEY.includes("HIER_DEIN");
+
+
+    if (supabaseConfigured) {
+
+      supabaseClient =
+        window.supabase.createClient(
+          SUPABASE_URL,
+          SUPABASE_PUBLISHABLE_KEY
+        );
+
+    }
+
+
+
+    /* =====================================================
+       EINSTELLUNGEN
        ===================================================== */
+
+
+    const CAMPAIGN_URL =
+      window.location.href.split("#")[0];
+
+
+    /*
+      DIE ECHTE AKTION DAUERT 60 MINUTEN.
+
+      Für einen kurzen Test kannst du vorübergehend
+      1 statt 60 eintragen.
+
+      VOR DEM LIVEGANG WIEDER AUF 60 STELLEN.
+    */
+
+    const TIMER_MINUTES = 60;
+
+
+    const TIMER_SECONDS =
+      TIMER_MINUTES * 60;
+
+
+
+    /* =====================================================
+       ELEMENTE
+       ===================================================== */
+
 
     const mainCta =
       document.getElementById("mainCta");
 
 
-    const motivation =
-      document.getElementById("motivation");
+    const joinOverlay =
+      document.getElementById("joinOverlay");
 
 
-    const messageInput =
-      document.getElementById("messageInput");
+    const joinClose =
+      document.getElementById("joinClose");
 
 
-    mainCta.addEventListener(
-      "click",
-      function() {
-
-        motivation.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+    const followCheck =
+      document.getElementById("followCheck");
 
 
-        setTimeout(
-          function() {
-
-            messageInput.focus();
-
-          },
-          650
-        );
-
-      }
-    );
+    const shareCheck =
+      document.getElementById("shareCheck");
 
 
+    const joinStepOne =
+      document.getElementById("joinStepOne");
 
-    /* =====================================================
-       FORMULAR
-       ===================================================== */
 
-    const form =
+    const joinStepTwo =
+      document.getElementById("joinStepTwo");
+
+
+    const startTimerButton =
+      document.getElementById("startTimerButton");
+
+
+    const whatsappButton =
+      document.getElementById("whatsappButton");
+
+
+    const instagramButton =
+      document.getElementById("instagramButton");
+
+
+    const timerOverlay =
+      document.getElementById("timerOverlay");
+
+
+    const timerDisplay =
+      document.getElementById("timerDisplay");
+
+
+    const timerProgressBar =
+      document.getElementById("timerProgressBar");
+
+
+    const timerRunning =
+      document.getElementById("timerRunning");
+
+
+    const timerFinish =
+      document.getElementById("timerFinish");
+
+
+    const timerStatus =
+      document.getElementById("timerStatus");
+
+
+    const receivedMessage =
+      document.getElementById("receivedMessage");
+
+
+    const finishButton =
+      document.getElementById("finishButton");
+
+
+    const cancelTimerButton =
+      document.getElementById("cancelTimerButton");
+
+
+    const messageForm =
       document.getElementById("messageForm");
 
 
-    const input =
+    const messageInput =
       document.getElementById("messageInput");
 
 
@@ -1896,43 +3128,245 @@
       document.getElementById("successMessage");
 
 
-    form.addEventListener(
-      "submit",
+    const peopleCount =
+      document.getElementById("peopleCount");
+
+
+    const hoursCount =
+      document.getElementById("hoursCount");
+
+
+
+    /* =====================================================
+       TIMER-VARIABLEN
+       ===================================================== */
+
+
+    let timerInterval = null;
+
+
+    let timerRemaining =
+      TIMER_SECONDS;
+
+
+    let timerStartedAt = null;
+
+
+
+    /* =====================================================
+       CTA ÖFFNET TEILNAHME-FENSTER
+       ===================================================== */
+
+
+    mainCta.addEventListener(
+      "click",
+      function() {
+
+        joinOverlay.classList.add(
+          "open"
+        );
+
+
+        joinOverlay.setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+
+        document.body.style.overflow =
+          "hidden";
+
+      }
+    );
+
+
+
+    /* =====================================================
+       MODAL SCHLIESSEN
+       ===================================================== */
+
+
+    function closeJoinModal() {
+
+      joinOverlay.classList.remove(
+        "open"
+      );
+
+
+      joinOverlay.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    joinClose.addEventListener(
+      "click",
+      closeJoinModal
+    );
+
+
+    joinOverlay.addEventListener(
+      "click",
       function(event) {
 
-        event.preventDefault();
+        if (
+          event.target === joinOverlay
+        ) {
+
+          closeJoinModal();
+
+        }
+
+      }
+    );
 
 
-        const message =
-          input.value.trim();
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (
+          event.key === "Escape" &&
+          joinOverlay.classList.contains("open")
+        ) {
+
+          closeJoinModal();
+
+        }
+
+      }
+    );
 
 
-        if (!message) {
 
-          input.focus();
+    /* =====================================================
+       SCHRITT 1
+       ===================================================== */
 
-          return;
+
+    followCheck.addEventListener(
+      "change",
+      function() {
+
+        const followed =
+          followCheck.checked;
+
+
+        joinStepOne.classList.toggle(
+          "completed",
+          followed
+        );
+
+
+        /*
+          Schritt 2 wird erst jetzt
+          freigeschaltet.
+        */
+
+        joinStepTwo.classList.toggle(
+          "unlocked",
+          followed
+        );
+
+
+        if (!followed) {
+
+          shareCheck.checked =
+            false;
+
+          joinStepTwo.classList.remove(
+            "completed"
+          );
 
         }
 
 
-        successMessage.classList.add(
-          "visible"
+        updateStartButton();
+
+      }
+    );
+
+
+
+    /* =====================================================
+       SCHRITT 2
+       ===================================================== */
+
+
+    shareCheck.addEventListener(
+      "change",
+      function() {
+
+        joinStepTwo.classList.toggle(
+          "completed",
+          shareCheck.checked
         );
 
 
-        input.value = "";
+        updateStartButton();
+
+      }
+    );
 
 
-        setTimeout(
-          function() {
 
-            successMessage.classList.remove(
-              "visible"
-            );
+    /* =====================================================
+       START-BUTTON AKTIVIEREN
+       ===================================================== */
 
-          },
-          4500
+
+    function updateStartButton() {
+
+      const followDone =
+        followCheck.checked;
+
+
+      const shareDone =
+        shareCheck.checked;
+
+
+      startTimerButton.disabled =
+        !(
+          followDone &&
+          shareDone
+        );
+
+    }
+
+
+
+    /* =====================================================
+       WHATSAPP TEILEN
+       ===================================================== */
+
+
+    whatsappButton.addEventListener(
+      "click",
+      async function() {
+
+        await copyCampaignLink();
+
+
+        const text =
+          "Mach mit bei „Eine Stunde. Die bewegt.“ – 60 Minuten Bewegung. Danach bekommst du eine Motivation von einem anderen Menschen. " +
+          CAMPAIGN_URL;
+
+
+        const whatsappUrl =
+          "https://wa.me/?text=" +
+          encodeURIComponent(text);
+
+
+        window.open(
+          whatsappUrl,
+          "_blank",
+          "noopener,noreferrer"
         );
 
       }
@@ -1941,37 +3375,854 @@
 
 
     /* =====================================================
-       PLACEHOLDER
+       INSTAGRAM DIRECT
        ===================================================== */
 
-    input.addEventListener(
-      "focus",
-      function() {
 
-        input.setAttribute(
-          "placeholder",
-          "Schreib ihr etwas, das sie antreibt …"
+    instagramButton.addEventListener(
+      "click",
+      async function() {
+
+        /*
+          Der Link wird zunächst kopiert,
+          weil Instagram von einer normalen
+          Webseite keinen zuverlässig
+          vorausgefüllten Direct-Share-Link
+          anbietet.
+        */
+
+        await copyCampaignLink();
+
+
+        window.open(
+          "https://www.instagram.com/direct/new/",
+          "_blank",
+          "noopener,noreferrer"
         );
 
       }
     );
 
 
-    input.addEventListener(
-      "blur",
+
+    /* =====================================================
+       LINK IN ZWISCHENABLAGE
+       ===================================================== */
+
+
+    async function copyCampaignLink() {
+
+      try {
+
+        if (
+          navigator.clipboard
+        ) {
+
+          await navigator.clipboard.writeText(
+            CAMPAIGN_URL
+          );
+
+        }
+
+      } catch (error) {
+
+        console.log(
+          "Kampagnenlink konnte nicht automatisch kopiert werden."
+        );
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       60 MINUTEN STARTEN
+       ===================================================== */
+
+
+    startTimerButton.addEventListener(
+      "click",
       function() {
 
-        if (!input.value) {
+        if (
+          !followCheck.checked ||
+          !shareCheck.checked
+        ) {
 
-          input.setAttribute(
-            "placeholder",
-            "„Zieh durch. Du schaffst das.“"
+          return;
+
+        }
+
+
+        closeJoinModal();
+
+
+        startTimer();
+
+      }
+    );
+
+
+
+    function startTimer() {
+
+      clearInterval(
+        timerInterval
+      );
+
+
+      timerRemaining =
+        TIMER_SECONDS;
+
+
+      timerStartedAt =
+        Date.now();
+
+
+      timerRunning.style.display =
+        "block";
+
+
+      timerFinish.classList.remove(
+        "visible"
+      );
+
+
+      timerOverlay.classList.add(
+        "open"
+      );
+
+
+      timerOverlay.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+
+      timerStatus.textContent =
+        "Deine Stunde läuft";
+
+
+      updateTimerDisplay();
+
+
+      /*
+        Wir berechnen die verbleibende
+        Zeit anhand der echten Uhrzeit.
+
+        Dadurch läuft der Timer nicht
+        schneller oder langsamer, wenn
+        der Browser einmal kurz pausiert.
+      */
+
+      timerInterval =
+        setInterval(
+          function() {
+
+            const elapsed =
+              Math.floor(
+                (
+                  Date.now() -
+                  timerStartedAt
+                ) / 1000
+              );
+
+
+            timerRemaining =
+              Math.max(
+                TIMER_SECONDS -
+                elapsed,
+                0
+              );
+
+
+            updateTimerDisplay();
+
+
+            if (
+              timerRemaining <= 0
+            ) {
+
+              clearInterval(
+                timerInterval
+              );
+
+
+              finishHour();
+
+            }
+
+          },
+          500
+        );
+
+    }
+
+
+
+    /* =====================================================
+       TIMER-ANZEIGE
+       ===================================================== */
+
+
+    function updateTimerDisplay() {
+
+      const minutes =
+        Math.floor(
+          timerRemaining / 60
+        );
+
+
+      const seconds =
+        timerRemaining % 60;
+
+
+      timerDisplay.textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+
+
+      const elapsed =
+        TIMER_SECONDS -
+        timerRemaining;
+
+
+      const progress =
+        Math.min(
+          Math.max(
+            (
+              elapsed /
+              TIMER_SECONDS
+            ) * 100,
+            0
+          ),
+          100
+        );
+
+
+      timerProgressBar.style.width =
+        progress + "%";
+
+    }
+
+
+
+    /* =====================================================
+       STUNDE FERTIG
+       ===================================================== */
+
+
+    async function finishHour() {
+
+      timerDisplay.textContent =
+        "00:00";
+
+
+      timerProgressBar.style.width =
+        "100%";
+
+
+      timerRunning.style.display =
+        "none";
+
+
+      timerFinish.classList.add(
+        "visible"
+      );
+
+
+      timerStatus.textContent =
+        "Geschafft";
+
+
+      /*
+        Person als abgeschlossen
+        speichern.
+      */
+
+      await recordCompletedHour();
+
+
+      /*
+        Jetzt wird die nächste
+        verfügbare Motivation geholt.
+      */
+
+      const message =
+        await claimNextMotivation();
+
+
+      if (message) {
+
+        receivedMessage.textContent =
+          "„" +
+          message +
+          "“";
+
+      } else {
+
+        receivedMessage.textContent =
+          "Du hast es geschafft. " +
+          "Nimm diesen Moment mit – " +
+          "und gib deine Motivation weiter.";
+
+      }
+
+
+      /*
+        Statistik aktualisieren.
+      */
+
+      await loadStats();
+
+    }
+
+
+
+    /* =====================================================
+       MOTIVATION AUS WARTESCHLANGE HOLEN
+       ===================================================== */
+
+
+    async function claimNextMotivation() {
+
+      /*
+        Falls Supabase noch nicht eingetragen
+        wurde, funktioniert die Seite trotzdem
+        lokal für Tests.
+      */
+
+      if (!supabaseClient) {
+
+        const localMessages =
+          JSON.parse(
+            localStorage.getItem(
+              "campaignMotivations"
+            ) || "[]"
+          );
+
+
+        if (
+          localMessages.length === 0
+        ) {
+
+          return null;
+
+        }
+
+
+        const next =
+          localMessages.shift();
+
+
+        localStorage.setItem(
+          "campaignMotivations",
+          JSON.stringify(
+            localMessages
+          )
+        );
+
+
+        return next.message;
+
+      }
+
+
+
+      /*
+        Die älteste noch nicht zugestellte
+        Motivation holen.
+      */
+
+      for (
+        let attempt = 0;
+        attempt < 5;
+        attempt++
+      ) {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from("motivations")
+            .select(
+              "id,message"
+            )
+            .is(
+              "delivered_at",
+              null
+            )
+            .order(
+              "created_at",
+              {
+                ascending: true
+              }
+            )
+            .limit(1);
+
+
+        if (
+          error ||
+          !data ||
+          data.length === 0
+        ) {
+
+          return null;
+
+        }
+
+
+        const candidate =
+          data[0];
+
+
+        /*
+          Nur wenn delivered_at noch null ist,
+          darf die Nachricht übernommen werden.
+        */
+
+        const {
+          data: claimed,
+          error: claimError
+        } =
+          await supabaseClient
+            .from("motivations")
+            .update({
+              delivered_at:
+                new Date().toISOString()
+            })
+            .eq(
+              "id",
+              candidate.id
+            )
+            .is(
+              "delivered_at",
+              null
+            )
+            .select(
+              "message"
+            )
+            .maybeSingle();
+
+
+        if (
+          !claimError &&
+          claimed
+        ) {
+
+          return claimed.message;
+
+        }
+
+      }
+
+
+      return null;
+
+    }
+
+
+
+    /* =====================================================
+       MOTIVATION ABSENDEN
+       ===================================================== */
+
+
+    messageForm.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
+
+
+        const message =
+          messageInput.value.trim();
+
+
+        if (
+          message.length < 3
+        ) {
+
+          messageInput.focus();
+
+          return;
+
+        }
+
+
+        const sendButton =
+          messageForm.querySelector(
+            ".send-button"
+          );
+
+
+        sendButton.disabled =
+          true;
+
+
+        sendButton.textContent =
+          "Wird weitergegeben …";
+
+
+        let saved =
+          false;
+
+
+
+        /* ---------------------------------------------
+           SUPABASE
+           --------------------------------------------- */
+
+        if (supabaseClient) {
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .from("motivations")
+              .insert({
+                message: message
+              });
+
+
+          if (!error) {
+
+            saved =
+              true;
+
+          } else {
+
+            console.error(
+              "Supabase Fehler:",
+              error
+            );
+
+          }
+
+        }
+
+
+
+        /* ---------------------------------------------
+           LOKALER TEST-FALLBACK
+           --------------------------------------------- */
+
+        else {
+
+          const localMessages =
+            JSON.parse(
+              localStorage.getItem(
+                "campaignMotivations"
+              ) || "[]"
+            );
+
+
+          localMessages.push({
+
+            message:
+              message,
+
+            created_at:
+              new Date().toISOString()
+
+          });
+
+
+          localStorage.setItem(
+            "campaignMotivations",
+            JSON.stringify(
+              localMessages
+            )
+          );
+
+
+          saved =
+            true;
+
+        }
+
+
+
+        /* ---------------------------------------------
+           ERFOLG
+           --------------------------------------------- */
+
+        if (saved) {
+
+          messageInput.value =
+            "";
+
+
+          successMessage.classList.add(
+            "visible"
+          );
+
+
+          sendButton.textContent =
+            "Auf den Weg geschickt ✓";
+
+
+          setTimeout(
+            function() {
+
+              successMessage.classList.remove(
+                "visible"
+              );
+
+
+              sendButton.textContent =
+                "Auf den Weg schicken";
+
+
+              sendButton.disabled =
+                false;
+
+            },
+            4500
+          );
+
+        }
+
+
+        /* ---------------------------------------------
+           FEHLER
+           --------------------------------------------- */
+
+        else {
+
+          sendButton.textContent =
+            "Nochmal versuchen";
+
+
+          sendButton.disabled =
+            false;
+
+
+          alert(
+            "Deine Nachricht konnte gerade nicht gespeichert werden. Bitte versuche es noch einmal."
           );
 
         }
 
       }
     );
+
+
+
+    /* =====================================================
+       STUNDE ABBRECHEN
+       ===================================================== */
+
+
+    cancelTimerButton.addEventListener(
+      "click",
+      function() {
+
+        const confirmed =
+          window.confirm(
+            "Möchtest du die Stunde wirklich abbrechen?"
+          );
+
+
+        if (!confirmed) {
+
+          return;
+
+        }
+
+
+        clearInterval(
+          timerInterval
+        );
+
+
+        closeTimer();
+
+      }
+    );
+
+
+
+    /* =====================================================
+       FERTIG-BUTTON
+       ===================================================== */
+
+
+    finishButton.addEventListener(
+      "click",
+      function() {
+
+        closeTimer();
+
+      }
+    );
+
+
+
+    /* =====================================================
+       TIMER SCHLIESSEN
+       ===================================================== */
+
+
+    function closeTimer() {
+
+      clearInterval(
+        timerInterval
+      );
+
+
+      timerOverlay.classList.remove(
+        "open"
+      );
+
+
+      timerOverlay.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+
+      timerRunning.style.display =
+        "block";
+
+
+      timerFinish.classList.remove(
+        "visible"
+      );
+
+
+      timerProgressBar.style.width =
+        "0%";
+
+
+      timerStatus.textContent =
+        "Deine Stunde läuft";
+
+
+      timerRemaining =
+        TIMER_SECONDS;
+
+
+      updateTimerDisplay();
+
+    }
+
+
+
+    /* =====================================================
+       TEILNEHMER SPEICHERN
+       ===================================================== */
+
+
+    async function recordCompletedHour() {
+
+      if (!supabaseClient) {
+
+        return;
+
+      }
+
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("participants")
+          .insert({});
+
+
+      if (error) {
+
+        console.error(
+          "Teilnehmer konnte nicht gespeichert werden:",
+          error
+        );
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       STATISTIK LADEN
+       ===================================================== */
+
+
+    async function loadStats() {
+
+      if (!supabaseClient) {
+
+        peopleCount.textContent =
+          "0";
+
+
+        hoursCount.textContent =
+          "0";
+
+
+        return;
+
+      }
+
+
+      const {
+        count,
+        error
+      } =
+        await supabaseClient
+          .from("participants")
+          .select(
+            "id",
+            {
+              count: "exact",
+              head: true
+            }
+          );
+
+
+      if (
+        !error &&
+        typeof count === "number"
+      ) {
+
+        peopleCount.textContent =
+          count.toLocaleString(
+            "de-DE"
+          );
+
+
+        hoursCount.textContent =
+          count.toLocaleString(
+            "de-DE"
+          );
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       START
+       ===================================================== */
+
+
+    updateStartButton();
+
+    loadStats();
+
 
   </script>
 
