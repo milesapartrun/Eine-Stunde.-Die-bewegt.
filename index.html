@@ -22,86 +22,130 @@
         </h1>
       </div>
 
-      <div class="hero-content">
+      <div class="hero-message">
+        <h2>
+          Gemeinsam machen wir die Welt ein Stück gesünder.
+        </h2>
+      </div>
 
-        <p class="intro">
+      <div class="hero-copy">
+
+        <p class="lead">
           60 Minuten für dich.
-          Rausgehen, loslaufen, abschalten.
-          Oder einfach das machen, was dir guttut.
+          Für deine Gesundheit.
         </p>
 
-        <p class="intro-small">
-          Egal ob du läufst, spazieren gehst, schwimmst,
-          trainierst oder einfach eine Runde durch die Natur drehst.
-          Hauptsache, du kommst in Bewegung.
+        <p class="description">
+          Geh spazieren, jogg eine Runde, fahr Rad, schwimm,
+          geh ins Fitnessstudio oder mach einfach das,
+          worauf du Lust hast.
+          Egal wie. Egal wo.
+          <strong>Hauptsache, du bewegst dich.</strong>
         </p>
 
-        <button class="start-button" id="startButton">
-          Eine Stunde. Die bewegt.
-        </button>
+      </div>
+
+      <button
+        class="start-button"
+        id="startButton"
+      >
+        <span>
+          Eine Stunde.<br>
+          Die bewegt.
+        </span>
+      </button>
+
+    </section>
+
+
+    <!-- COMMUNITY / IMPACT -->
+
+    <section
+      class="stats"
+      aria-label="Gemeinsame Bewegung"
+    >
+
+      <div class="stat">
+
+        <strong id="people">
+          0
+        </strong>
+
+        <span>
+          Menschen<br>
+          in Bewegung
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong id="hours">
+          0
+        </strong>
+
+        <span>
+          Stunden<br>
+          bewegt
+        </span>
 
       </div>
 
     </section>
 
 
-    <!-- IMPACT -->
-
-    <section class="stats" aria-label="Gemeinsame Bewegung">
-
-      <div class="stats-number" id="people">
-        0
-      </div>
-
-      <div class="stats-text">
-        Menschen sind heute
-        <strong>in Bewegung.</strong>
-      </div>
-
-    </section>
-
-
-    <!-- MESSAGE -->
+    <!-- MESSAGE FOR THE NEXT PERSON -->
 
     <section class="motivation">
 
-      <div class="motivation-heading">
+      <div class="motivation-top">
 
         <p class="section-label">
           Für die nächste Person
         </p>
 
         <h2>
-          Hinterlass ihr<br>
-          etwas.
+          Motivier sie.
         </h2>
 
       </div>
 
-      <div class="motivation-action">
 
-        <input
-          type="text"
-          id="messageInput"
-          placeholder="Ein Satz, der sie bewegt."
-          maxlength="160"
-          aria-label="Nachricht für die nächste Person"
+      <div class="motivation-content">
+
+        <p class="motivation-intro">
+          Ein Satz, der sie bewegt.
+        </p>
+
+
+        <div class="message-field">
+
+          <input
+            type="text"
+            id="messageInput"
+            maxlength="160"
+            placeholder="„Zieh durch. Du schaffst das.“"
+            aria-label="Motivationsnachricht"
+          >
+
+          <button
+            id="messageButton"
+            class="message-button"
+          >
+            Nachricht schicken
+          </button>
+
+        </div>
+
+
+        <div
+          class="quote"
+          id="quote"
         >
+          „Zieh durch. Du schaffst das.“
+        </div>
 
-        <button
-          class="message-button"
-          id="messageButton"
-        >
-          Weitergeben
-        </button>
-
-      </div>
-
-      <div
-        class="quote"
-        id="quote"
-      >
-        „Zieh durch. Du schaffst das.“
       </div>
 
     </section>
@@ -136,7 +180,8 @@
 
 
         <p class="modal-intro">
-          Bleib bei <strong>Eine Stunde. Die bewegt.</strong>
+          Bleib bei
+          <strong>Eine Stunde. Die bewegt.</strong>
           dabei und hilf mit, die Bewegung weiterzutragen.
         </p>
 
@@ -153,6 +198,7 @@
           </div>
 
           <div class="modal-action-text">
+
             <strong>
               Folge Tano Loew
             </strong>
@@ -160,6 +206,7 @@
             <span>
               Auf Instagram
             </span>
+
           </div>
 
           <div
@@ -184,6 +231,7 @@
           </div>
 
           <div class="modal-action-text">
+
             <strong>
               Trag die Bewegung weiter
             </strong>
@@ -192,6 +240,7 @@
               Teile Eine Stunde. Die bewegt.
               mit jemandem.
             </span>
+
           </div>
 
           <div
