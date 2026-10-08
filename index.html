@@ -17,6 +17,7 @@
       --line: #D8DDE2;
       --muted: #4B5055;
       --placeholder: #B8BDC2;
+
       --max-width: 820px;
     }
 
@@ -35,6 +36,7 @@
 
     body {
       min-height: 100vh;
+
       background: var(--bg);
       color: var(--text);
 
@@ -59,11 +61,20 @@
     }
 
 
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
     .page {
       width: 100%;
       max-width: var(--max-width);
+
       margin: 0 auto;
-      padding: 28px 28px 55px;
+
+      padding:
+        28px 28px
+        55px;
     }
 
 
@@ -74,30 +85,41 @@
 
     .hero {
       text-align: center;
+
       padding-top: 5px;
+
       margin-bottom: 30px;
     }
 
 
     .movement-symbol {
       position: relative;
+
       width: 76px;
       height: 54px;
-      margin: 0 auto 28px;
+
+      margin:
+        0 auto
+        28px;
     }
 
 
     .movement-symbol span {
       position: absolute;
+
       height: 10px;
+
       border-radius: 999px;
+
       background: var(--blue);
+
       transform: rotate(-25deg);
     }
 
 
     .movement-symbol span:nth-child(1) {
       width: 34px;
+
       top: 3px;
       left: 12px;
     }
@@ -105,6 +127,7 @@
 
     .movement-symbol span:nth-child(2) {
       width: 54px;
+
       top: 20px;
       left: 18px;
     }
@@ -112,41 +135,51 @@
 
     .movement-symbol span:nth-child(3) {
       width: 34px;
+
       top: 37px;
       left: 30px;
     }
 
 
     .hero-title {
-      font-size: clamp(76px, 16vw, 136px);
+      font-size:
+        clamp(76px, 16vw, 136px);
+
       line-height: 0.78;
+
       font-weight: 800;
+
       letter-spacing: -0.075em;
+
       text-align: center;
     }
 
 
     .hero-title .black {
       display: block;
+
       color: var(--text);
     }
 
 
     .hero-title .blue {
       display: block;
+
       color: var(--blue);
     }
 
 
 
     /* =====================================================
-       HAUPTBILD
+       GROSSES BILD
        ===================================================== */
 
     .hero-photo {
       position: relative;
 
-      width: calc(100% + 56px);
+      width:
+        calc(100% + 56px);
+
       margin-left: -28px;
 
       overflow: hidden;
@@ -169,6 +202,7 @@
       content: "";
 
       position: absolute;
+
       inset: 0;
 
       background:
@@ -190,14 +224,17 @@
       left: 24px;
       bottom: 20px;
 
-      padding: 9px 13px;
+      padding:
+        9px 13px;
 
       border-radius: 999px;
 
       background: white;
+
       color: var(--text);
 
       font-size: 12px;
+
       line-height: 1;
 
       font-weight: 800;
@@ -210,19 +247,58 @@
 
 
     /* =====================================================
-       EINLEITUNG
+       EINLEITUNG MIT ERDKUGEL
        ===================================================== */
 
     .intro {
+      position: relative;
+
       text-align: center;
 
       padding-top: 70px;
 
       margin-bottom: 70px;
+
+      isolation: isolate;
+    }
+
+
+    /*
+       Die Kugel liegt hinter dem gesamten
+       Einleitungstext und bleibt bewusst sehr dezent.
+    */
+
+    .intro-globe {
+      position: absolute;
+
+      z-index: -1;
+
+      width: 610px;
+      height: 610px;
+
+      left: 50%;
+      top: 15px;
+
+      transform:
+        translateX(-50%);
+
+      opacity: 0.075;
+
+      pointer-events: none;
+    }
+
+
+    .intro-globe svg {
+      width: 100%;
+      height: 100%;
+
+      display: block;
     }
 
 
     .intro-title {
+      position: relative;
+
       max-width: 660px;
 
       margin:
@@ -241,6 +317,8 @@
 
 
     .minutes {
+      position: relative;
+
       margin-bottom: 43px;
 
       font-size:
@@ -255,6 +333,8 @@
 
 
     .description {
+      position: relative;
+
       max-width: 700px;
 
       margin: 0 auto;
@@ -272,6 +352,7 @@
 
     .description-main {
       display: block;
+
       white-space: nowrap;
     }
 
@@ -294,13 +375,79 @@
        HAUPT-BUTTON
        ===================================================== */
 
-    .main-cta {
-      width: 100%;
+    .main-cta-wrap {
+      position: relative;
 
       margin-top: 58px;
 
+      z-index: 3;
+    }
+
+
+    /*
+       Dezenter blauer „Glow“ hinter dem Button.
+       Dadurch wirkt er wie der zentrale Punkt der Seite.
+    */
+
+    .main-cta-wrap::before {
+      content: "";
+
+      position: absolute;
+
+      z-index: -1;
+
+      left: 50%;
+      top: 50%;
+
+      width: 92%;
+      height: 82%;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius: 999px;
+
+      background: var(--blue);
+
+      opacity: 0.16;
+
+      filter: blur(25px);
+
+      animation:
+        ctaGlow 3s ease-in-out infinite;
+    }
+
+
+    @keyframes ctaGlow {
+
+      0%,
+      100% {
+        transform:
+          translate(-50%, -50%)
+          scale(0.96);
+
+        opacity: 0.13;
+      }
+
+      50% {
+        transform:
+          translate(-50%, -50%)
+          scale(1.04);
+
+        opacity: 0.22;
+      }
+    }
+
+
+    .main-cta {
+      position: relative;
+
+      width: 100%;
+
+      border: 0;
+
       padding:
-        26px 30px;
+        29px 30px 27px;
 
       border-radius: 999px;
 
@@ -310,18 +457,11 @@
 
       text-align: center;
 
-      font-size:
-        clamp(26px, 5vw, 35px);
-
-      line-height: 1.05;
-
-      font-weight: 750;
-
-      letter-spacing: -0.04em;
+      cursor: pointer;
 
       box-shadow:
-        0 16px 36px
-        rgba(78, 130, 238, 0.17);
+        0 18px 40px
+        rgba(78, 130, 238, 0.28);
 
       transition:
         transform 180ms ease,
@@ -330,14 +470,93 @@
     }
 
 
+    .main-cta::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 4px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.20);
+
+      border-radius: inherit;
+
+      pointer-events: none;
+    }
+
+
     .main-cta:hover {
       background: var(--blue-dark);
 
-      transform: translateY(-2px);
+      transform:
+        translateY(-4px)
+        scale(1.012);
 
       box-shadow:
-        0 21px 45px
-        rgba(78, 130, 238, 0.22);
+        0 25px 55px
+        rgba(78, 130, 238, 0.34);
+    }
+
+
+    .main-cta:active {
+      transform:
+        translateY(0)
+        scale(0.985);
+
+      box-shadow:
+        0 12px 25px
+        rgba(78, 130, 238, 0.25);
+    }
+
+
+    .main-cta-kicker {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 12px;
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: 0.17em;
+
+      text-transform: uppercase;
+
+      opacity: 0.78;
+    }
+
+
+    .main-cta-title {
+      display: block;
+
+      font-size:
+        clamp(28px, 5vw, 36px);
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: -0.045em;
+    }
+
+
+    .main-cta-arrow {
+      display: inline-block;
+
+      margin-left: 7px;
+
+      transition:
+        transform 180ms ease;
+    }
+
+
+    .main-cta:hover .main-cta-arrow {
+      transform:
+        translateX(5px);
     }
 
 
@@ -393,21 +612,15 @@
     }
 
 
-    /* LINKES DRITTEL */
-
     .movement-card:nth-child(1) img {
       left: 0;
     }
 
 
-    /* MITTLERES DRITTEL */
-
     .movement-card:nth-child(2) img {
       left: -100%;
     }
 
-
-    /* RECHTES DRITTEL */
 
     .movement-card:nth-child(3) img {
       left: -200%;
@@ -423,6 +636,7 @@
       content: "";
 
       position: absolute;
+
       inset: 0;
 
       background:
@@ -447,6 +661,7 @@
       color: white;
 
       font-size: 17px;
+
       line-height: 1;
 
       font-weight: 750;
@@ -466,6 +681,7 @@
       color: white;
 
       font-size: 11px;
+
       line-height: 1;
 
       font-weight: 800;
@@ -616,7 +832,6 @@
       position: absolute;
 
       top: 0;
-
       left: -100%;
 
       width: 300%;
@@ -745,7 +960,6 @@
       width: 100%;
 
       border: 0;
-
       outline: 0;
 
       background: transparent;
@@ -946,6 +1160,7 @@
 
       .movement-symbol {
         margin-bottom: 27px;
+
         transform: scale(0.82);
       }
 
@@ -960,7 +1175,8 @@
          ------------------------- */
 
       .hero-photo {
-        width: calc(100% + 44px);
+        width:
+          calc(100% + 44px);
 
         margin-left: -22px;
 
@@ -976,30 +1192,45 @@
       }
 
 
+
       /* -------------------------
-         INTRO
+         ERDKUGEL
          ------------------------- */
 
       .intro {
         padding-top: 58px;
+
         margin-bottom: 57px;
+      }
+
+
+      .intro-globe {
+        width: 430px;
+        height: 430px;
+
+        top: 25px;
+
+        opacity: 0.065;
       }
 
 
       .intro-title {
         margin-bottom: 56px;
+
         font-size: 26px;
       }
 
 
       .minutes {
         margin-bottom: 39px;
+
         font-size: 34px;
       }
 
 
       .description {
         font-size: 17px;
+
         line-height: 1.35;
       }
 
@@ -1011,24 +1242,46 @@
 
       .description-main .line {
         display: block;
+
         white-space: nowrap;
       }
 
 
       .description .highlight {
         margin-top: 7px;
+
         font-size: 18px;
+
         white-space: nowrap;
       }
 
 
-      .main-cta {
+
+      /* -------------------------
+         CTA
+         ------------------------- */
+
+      .main-cta-wrap {
         margin-top: 50px;
+      }
 
+
+      .main-cta {
         padding:
-          24px 22px;
+          25px 22px
+          23px;
+      }
 
-        font-size: 26px;
+
+      .main-cta-kicker {
+        font-size: 10px;
+
+        margin-bottom: 7px;
+      }
+
+
+      .main-cta-title {
+        font-size: 27px;
       }
 
 
@@ -1039,12 +1292,14 @@
 
       .movement-gallery {
         gap: 7px;
+
         margin-bottom: 63px;
       }
 
 
       .movement-card {
         height: 205px;
+
         border-radius: 17px;
       }
 
@@ -1052,6 +1307,7 @@
       .movement-card-label {
         left: 10px;
         bottom: 10px;
+
         font-size: 13px;
       }
 
@@ -1059,6 +1315,7 @@
       .movement-card-number {
         right: 9px;
         top: 10px;
+
         font-size: 9px;
       }
 
@@ -1075,12 +1332,15 @@
 
       .stat {
         min-height: 153px;
-        padding: 23px 18px;
+
+        padding:
+          23px 18px;
       }
 
 
       .stat-number {
         margin-bottom: 15px;
+
         font-size: 66px;
       }
 
@@ -1102,21 +1362,27 @@
 
       .count-message h2 {
         font-size: 36px;
+
         line-height: 1;
+
         letter-spacing: -0.06em;
+
         white-space: normal;
       }
 
 
       .count-line {
         display: block;
+
         white-space: nowrap;
       }
 
 
       .count-message::after {
         width: 58px;
+
         height: 4px;
+
         margin-top: 18px;
       }
 
@@ -1128,14 +1394,18 @@
 
       .motivation-photo {
         height: 170px;
+
         margin-bottom: 43px;
+
         border-radius: 21px;
       }
 
 
       .motivation-photo-text {
         left: 16px;
+
         bottom: 15px;
+
         font-size: 16px;
       }
 
@@ -1147,19 +1417,23 @@
 
       .kicker {
         margin-bottom: 25px;
+
         font-size: 13px;
       }
 
 
       .motivation-title {
         margin-bottom: 21px;
+
         font-size: 64px;
+
         white-space: nowrap;
       }
 
 
       .motivation-subtitle {
         margin-bottom: 49px;
+
         font-size: 21px;
       }
 
@@ -1176,6 +1450,7 @@
 
       .message-helper {
         font-size: 15px;
+
         margin-top: 13px;
       }
 
@@ -1202,7 +1477,9 @@
 
       .footer-mark {
         width: 48px;
+
         height: 4px;
+
         margin-bottom: 21px;
       }
 
@@ -1236,6 +1513,14 @@
       }
 
 
+      .intro-globe {
+        width: 350px;
+        height: 350px;
+
+        opacity: 0.06;
+      }
+
+
       .movement-card {
         height: 175px;
       }
@@ -1261,7 +1546,9 @@
 </head>
 
 
+
 <body>
+
 
   <main class="page">
 
@@ -1272,13 +1559,16 @@
 
     <section class="hero">
 
+
       <div
         class="movement-symbol"
         aria-hidden="true"
       >
+
         <span></span>
         <span></span>
         <span></span>
+
       </div>
 
 
@@ -1288,6 +1578,7 @@
           Eine<br>
           Stunde.
         </span>
+
 
         <span class="blue">
           Die<br>
@@ -1306,14 +1597,17 @@
 
     <section class="hero-photo">
 
+
       <img
         src="./movement.jpeg"
         alt="Menschen beim Laufen, Radfahren und Schwimmen"
       >
 
+
       <div class="photo-tag">
         Bewegung kennt keine Form
       </div>
+
 
     </section>
 
@@ -1325,19 +1619,140 @@
 
     <section class="intro">
 
+
+      <!-- DEZENTE ERDKUGEL -->
+
+      <div
+        class="intro-globe"
+        aria-hidden="true"
+      >
+
+        <svg
+          viewBox="0 0 600 600"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+
+          <circle
+            cx="300"
+            cy="300"
+            r="255"
+            fill="none"
+            stroke="#4E82EE"
+            stroke-width="7"
+          />
+
+          <ellipse
+            cx="300"
+            cy="300"
+            rx="255"
+            ry="105"
+            fill="none"
+            stroke="#4E82EE"
+            stroke-width="5"
+          />
+
+          <ellipse
+            cx="300"
+            cy="300"
+            rx="255"
+            ry="185"
+            fill="none"
+            stroke="#4E82EE"
+            stroke-width="4"
+          />
+
+          <ellipse
+            cx="300"
+            cy="300"
+            rx="105"
+            ry="255"
+            fill="none"
+            stroke="#4E82EE"
+            stroke-width="5"
+          />
+
+          <ellipse
+            cx="300"
+            cy="300"
+            rx="185"
+            ry="255"
+            fill="none"
+            stroke="#4E82EE"
+            stroke-width="4"
+          />
+
+          <path
+            d="
+              M 150 190
+              C 185 160 220 170 238 190
+              C 250 204 250 220 270 225
+              C 290 230 300 215 318 218
+              C 342 222 350 246 370 248
+              C 394 250 420 230 445 245
+              C 462 255 466 277 455 292
+              C 443 308 424 308 416 326
+              C 408 345 423 363 411 380
+              C 398 399 370 391 351 405
+              C 330 421 327 448 302 456
+              C 277 464 255 447 239 429
+              C 224 412 204 405 188 389
+              C 169 370 169 345 153 326
+              C 140 311 118 307 112 286
+              C 105 263 123 242 140 226
+              C 154 212 158 201 150 190
+              Z
+            "
+            fill="#4E82EE"
+            opacity="0.30"
+          />
+
+          <path
+            d="
+              M 245 128
+              C 260 145 282 151 294 144
+              C 308 136 317 116 335 118
+              C 352 120 361 138 358 154
+              C 355 170 340 180 342 197
+              C 344 215 363 224 370 241
+              C 378 260 369 278 351 285
+              C 333 292 316 280 301 286
+              C 285 292 278 311 261 313
+              C 243 315 231 299 219 285
+              C 207 270 187 266 181 248
+              C 175 230 187 213 202 201
+              C 216 190 221 172 215 157
+              C 210 145 219 130 233 126
+              Z
+            "
+            fill="#4E82EE"
+            opacity="0.22"
+          />
+
+        </svg>
+
+      </div>
+
+
+
       <h2 class="intro-title">
+
         Gemeinsam machen wir die Welt
         ein Stück gesünder.
+
       </h2>
 
 
       <p class="minutes">
+
         60 Minuten für dich.<br>
+
         Für deine Gesundheit.
+
       </p>
 
 
       <p class="description">
+
 
         <span class="description-main">
 
@@ -1353,15 +1768,48 @@
 
 
         <span class="highlight">
+
           Egal was. Hauptsache, du bewegst dich.
+
         </span>
 
       </p>
 
 
-      <div class="main-cta">
-        Eine Stunde.<br>
-        Die bewegt.
+
+      <!-- =================================================
+           ZENTRALER CTA
+           ================================================= -->
+
+      <div class="main-cta-wrap">
+
+
+        <button
+          class="main-cta"
+          id="mainCta"
+          type="button"
+          aria-label="Jetzt mitmachen"
+        >
+
+          <span class="main-cta-kicker">
+            Jetzt mitmachen
+          </span>
+
+
+          <span class="main-cta-title">
+
+            Eine Stunde.
+            Die bewegt.
+
+            <span class="main-cta-arrow">
+              →
+            </span>
+
+          </span>
+
+        </button>
+
+
       </div>
 
     </section>
@@ -1379,19 +1827,23 @@
 
       <article class="movement-card">
 
+
         <img
           src="./movement.jpeg"
           alt="Person beim Laufen in der Natur"
           loading="lazy"
         >
 
+
         <span class="movement-card-number">
           01
         </span>
 
+
         <span class="movement-card-label">
           Laufen
         </span>
+
 
       </article>
 
@@ -1401,19 +1853,23 @@
 
       <article class="movement-card">
 
+
         <img
           src="./movement.jpeg"
           alt="Person beim Radfahren an der Küste"
           loading="lazy"
         >
 
+
         <span class="movement-card-number">
           02
         </span>
 
+
         <span class="movement-card-label">
           Radfahren
         </span>
+
 
       </article>
 
@@ -1423,21 +1879,26 @@
 
       <article class="movement-card">
 
+
         <img
           src="./movement.jpeg"
           alt="Person beim Schwimmen im Meer"
           loading="lazy"
         >
 
+
         <span class="movement-card-number">
           03
         </span>
+
 
         <span class="movement-card-label">
           Schwimmen
         </span>
 
+
       </article>
+
 
     </section>
 
@@ -1449,7 +1910,9 @@
 
     <section class="stats">
 
+
       <div class="stat">
+
 
         <div
           class="stat-number"
@@ -1458,15 +1921,22 @@
           0
         </div>
 
+
         <div class="stat-label">
+
           Menschen<br>
+
           in Bewegung
+
         </div>
+
 
       </div>
 
 
+
       <div class="stat">
+
 
         <div
           class="stat-number"
@@ -1475,12 +1945,18 @@
           0
         </div>
 
+
         <div class="stat-label">
+
           Stunden<br>
+
           bewegt
+
         </div>
 
+
       </div>
+
 
     </section>
 
@@ -1492,17 +1968,22 @@
 
     <section class="count-message">
 
+
       <h2>
+
 
         <span class="count-line">
           Jede Stunde zählt.
         </span>
 
+
         <span class="count-line">
           Jede Bewegung auch.
         </span>
 
+
       </h2>
+
 
     </section>
 
@@ -1514,15 +1995,20 @@
 
     <section class="motivation-photo">
 
+
       <img
         src="./movement.jpeg"
         alt="Person beim Radfahren an der Küste"
         loading="lazy"
       >
 
+
       <div class="motivation-photo-text">
+
         Dein Tempo. Deine Stunde.
+
       </div>
+
 
     </section>
 
@@ -1532,21 +2018,32 @@
          8. MOTIVATION
          ================================================= -->
 
-    <section class="motivation">
+    <section
+      class="motivation"
+      id="motivation"
+    >
+
 
       <div class="kicker">
+
         Für die nächste Person
+
       </div>
 
 
       <h2 class="motivation-title">
+
         Motivier sie.
+
       </h2>
 
 
       <p class="motivation-subtitle">
+
         Schreib ihr etwas, das sie antreibt.
+
       </p>
+
 
 
       <form
@@ -1554,7 +2051,9 @@
         id="messageForm"
       >
 
+
         <div class="message-input-wrap">
+
 
           <input
             id="messageInput"
@@ -1566,23 +2065,30 @@
             aria-label="Motivationsnachricht"
           >
 
+
         </div>
 
 
         <div class="message-helper">
+
           Deine Nachricht wird an die nächste Person
           weitergegeben.
+
         </div>
 
 
         <div class="send-area">
 
+
           <button
             class="send-button"
             type="submit"
           >
+
             Auf den Weg schicken
+
           </button>
+
 
         </div>
 
@@ -1591,10 +2097,14 @@
           class="success-message"
           id="successMessage"
         >
+
           Geschafft. Deine Motivation ist unterwegs.
+
         </div>
 
+
       </form>
+
 
     </section>
 
@@ -1606,16 +2116,23 @@
 
     <footer class="footer">
 
+
       <div class="footer-mark"></div>
 
+
       <div class="footer-title">
+
         Eine Stunde.
+
         <span>
           Die bewegt.
         </span>
+
       </div>
 
+
     </footer>
+
 
   </main>
 
@@ -1623,11 +2140,58 @@
 
   <script>
 
+
+    /* =====================================================
+       ZENTRALER CTA
+       ===================================================== */
+
+    const mainCta =
+      document.getElementById("mainCta");
+
+
+    const motivation =
+      document.getElementById("motivation");
+
+
+    const messageInput =
+      document.getElementById("messageInput");
+
+
+    mainCta.addEventListener(
+      "click",
+      function() {
+
+        motivation.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+
+        setTimeout(
+          function() {
+
+            messageInput.focus();
+
+          },
+          650
+        );
+
+      }
+    );
+
+
+
+    /* =====================================================
+       FORMULAR
+       ===================================================== */
+
     const form =
       document.getElementById("messageForm");
 
+
     const input =
       document.getElementById("messageInput");
+
 
     const successMessage =
       document.getElementById("successMessage");
@@ -1639,17 +2203,27 @@
 
         event.preventDefault();
 
+
         const message =
           input.value.trim();
 
+
         if (!message) {
+
           input.focus();
+
           return;
+
         }
 
-        successMessage.classList.add("visible");
+
+        successMessage.classList.add(
+          "visible"
+        );
+
 
         input.value = "";
+
 
         setTimeout(
           function() {
@@ -1665,6 +2239,11 @@
       }
     );
 
+
+
+    /* =====================================================
+       PLACEHOLDER
+       ===================================================== */
 
     input.addEventListener(
       "focus",
@@ -1695,7 +2274,9 @@
       }
     );
 
+
   </script>
+
 
 </body>
 </html>
