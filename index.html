@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>einestunde — Die Stunde, die bewegt.</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="wordmark">einestunde</div>
+      <div class="top-note">60 Minuten. Für dich. Für alle.</div>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Die Stunde, die bewegt.</p>
+      <h1>einestunde</h1>
+      <p class="intro">Bewege dich 60 Minuten. Lauf, geh spazieren, fahr Rad, schwimm oder trainiere – ganz wie du willst.</p>
+
+      <button class="start-button" id="startButton">
+        <span>eine Stunde,<br><strong>die bewegt.</strong></span>
+        <span class="arrow">→</span>
+      </button>
+
+      <p class="microcopy">Bevor du startest: folge Tano Löw &amp; schick die Idee weiter.</p>
+
+      <div class="actions">
+        <a class="action primary" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram folgen ↗</a>
+        <button class="action secondary" id="shareButton">An eine Person schicken ↗</button>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Gemeinsamer Fortschritt">
+      <div><strong id="people">1.247</strong><span>Menschen dabei</span></div>
+      <div><strong id="hours">1.247</strong><span>Stunden bewegt</span></div>
+    </section>
+
+    <section class="motivation">
+      <p class="section-label">Für die nächste Person</p>
+      <h2>Was möchtest du ihr mitgeben?</h2>
+      <div class="quote">„Zieh durch. Du schaffst das.“</div>
+    </section>
+
+    <footer>Lasst uns gemeinsam die Welt ein Stück gesünder machen.</footer>
+  </main>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-card">
+      <button class="close" id="closeModal" aria-label="Schließen">×</button>
+      <p class="section-label">Eine Stunde wartet.</p>
+      <h2>Bereit, dich zu bewegen?</h2>
+      <p>Mit dem Start werden deine 60 Minuten gezählt.</p>
+      <button class="confirm" id="confirmStart">60 Minuten starten →</button>
+    </div>
+  </div>
+
+  <div class="timer hidden" id="timer">
+    <div class="timer-label">einestunde läuft</div>
+    <div class="clock" id="clock">60:00</div>
+    <div class="timer-sub">Bewege dich. Ganz egal wie.</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg: #f5f3ee;
+  --ink: #111;
+  --muted: #777;
+  --line: #d8d5cd;
+  --accent: #c8ff00;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, Arial, sans-serif;
+}
+.page { min-height: 100vh; padding: 24px 5vw 32px; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--line); padding-bottom: 18px;
+}
+.wordmark { font-weight: 900; font-size: 22px; letter-spacing: -.06em; }
+.top-note { font-size: 12px; color: var(--muted); }
+
+.hero {
+  min-height: 72vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  max-width: 900px; margin: auto;
+}
+.eyebrow, .section-label {
+  text-transform: uppercase; letter-spacing: .12em; font-size: 11px;
+  font-weight: 700; margin: 0 0 16px;
+}
+h1 {
+  font-size: clamp(80px, 17vw, 210px); line-height: .78;
+  letter-spacing: -.095em; margin: 0 0 38px; font-weight: 900;
+}
+.intro {
+  max-width: 620px; font-size: clamp(16px, 2vw, 21px);
+  line-height: 1.45; margin: 0 0 36px;
+}
+.start-button {
+  width: min(560px, 100%); border: 0; background: var(--accent);
+  padding: 26px 30px; border-radius: 2px; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  text-align: left; font: inherit; font-size: 22px; line-height: 1.05;
+  transition: transform .15s ease, box-shadow .15s ease;
+  box-shadow: 0 10px 0 #111;
+}
+.start-button:hover { transform: translateY(-4px); box-shadow: 0 14px 0 #111; }
+.start-button strong { font-weight: 900; }
+.arrow { font-size: 36px; }
+
+.microcopy { margin: 32px 0 14px; font-size: 12px; color: var(--muted); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.action {
+  border: 1px solid var(--ink); padding: 11px 15px; color: var(--ink);
+  background: transparent; text-decoration: none; font: inherit; font-size: 13px;
+  cursor: pointer;
+}
+.action.primary { background: var(--ink); color: white; }
+
+.stats {
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  display: grid; grid-template-columns: repeat(2, 1fr); max-width: 900px;
+  margin: 0 auto; text-align: center;
+}
+.stats > div { padding: 35px 10px; }
+.stats > div + div { border-left: 1px solid var(--line); }
+.stats strong { display: block; font-size: clamp(42px, 7vw, 72px); letter-spacing: -.06em; }
+.stats span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+
+.motivation { max-width: 700px; margin: 110px auto; text-align: center; }
+.motivation h2 { font-size: clamp(28px, 5vw, 54px); line-height: .95; letter-spacing: -.055em; margin: 0 0 28px; }
+.quote { font-size: clamp(22px, 4vw, 38px); font-weight: 800; letter-spacing: -.04em; }
+
+footer { text-align: center; font-size: 13px; color: var(--muted); padding: 20px 0; }
+
+.hidden { display: none !important; }
+.modal {
+  position: fixed; inset: 0; background: rgba(17,17,17,.65);
+  display: grid; place-items: center; padding: 20px; z-index: 5;
+}
+.modal-card {
+  position: relative; background: var(--bg); width: min(500px, 100%);
+  padding: 38px; text-align: center;
+}
+.modal-card h2 { font-size: 42px; line-height: .95; letter-spacing: -.05em; margin: 0 0 16px; }
+.modal-card p:not(.section-label) { color: var(--muted); line-height: 1.5; }
+.close { position: absolute; right: 14px; top: 10px; border: 0; background: none; font-size: 28px; cursor: pointer; }
+.confirm { width: 100%; margin-top: 20px; padding: 17px; border: 0; background: var(--ink); color: white; font: inherit; font-weight: 800; cursor: pointer; }
+
+.timer {
+  position: fixed; inset: 0; background: var(--accent); z-index: 10;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+}
+.timer-label { text-transform: uppercase; letter-spacing: .15em; font-size: 12px; font-weight: 800; }
+.clock { font-size: clamp(100px, 25vw, 300px); font-weight: 900; letter-spacing: -.09em; line-height: .85; margin: 30px 0; }
+.timer-sub { font-size: 18px; }
+
+@media (max-width: 600px) {
+  .page { padding: 18px 18px 26px; }
+  .top-note { display: none; }
+  .hero { min-height: 76vh; }
+  .start-button { font-size: 18px; padding: 22px; }
+  .stats strong { font-size: 42px; }
+}
