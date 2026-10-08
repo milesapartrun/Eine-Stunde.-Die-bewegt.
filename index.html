@@ -3206,6 +3206,21 @@
 
 
     /*
+      NEU:
+      Der komplette vorgefertigte Text für
+      WhatsApp und Instagram.
+
+      Der Link steht bewusst in einer eigenen
+      Zeile, damit er in den Messengern als
+      klickbarer Link erkannt wird.
+    */
+
+    const SHARE_TEXT =
+      "Mach mit bei „Eine Stunde. Die bewegt.“ – 60 Minuten Bewegung. Danach bekommst du eine Motivation von einem anderen Menschen.\n\n" +
+      CAMPAIGN_URL;
+
+
+    /*
       DIE ECHTE AKTION DAUERT 60 MINUTEN.
 
       Für einen kurzen Test kannst du vorübergehend
@@ -3549,21 +3564,22 @@
 
     whatsappButton.addEventListener(
       "click",
-      async function() {
+      function() {
 
-        const text =
-          "Mach mit bei „Eine Stunde. Die bewegt.“ – 60 Minuten Bewegung. Danach bekommst du eine Motivation von einem anderen Menschen. " +
-          CAMPAIGN_URL;
+        /*
+          Der komplette Nachrichtentext wird
+          direkt in WhatsApp vorausgefüllt.
 
-
-        await copyText(
-          text
-        );
-
+          Die URL steht in einer eigenen Zeile
+          und wird von WhatsApp als klickbarer
+          Link erkannt.
+        */
 
         const whatsappUrl =
           "https://wa.me/?text=" +
-          encodeURIComponent(text);
+          encodeURIComponent(
+            SHARE_TEXT
+          );
 
 
         window.open(
@@ -3593,21 +3609,17 @@
           mit einem beliebigen Text vorausfüllt.
 
           Deshalb wird hier der KOMPLETTE
-          Nachrichtentext kopiert und anschließend
-          direkt Instagram Direct geöffnet.
+          Nachrichtentext inklusive klickbarem
+          Link kopiert und anschließend direkt
+          Instagram Direct geöffnet.
 
           Der Nutzer kann die Nachricht dort
           unmittelbar einfügen und verschicken.
         */
 
-        const text =
-          "Mach mit bei „Eine Stunde. Die bewegt.“ – 60 Minuten Bewegung. Danach bekommst du eine Motivation von einem anderen Menschen. " +
-          CAMPAIGN_URL;
-
-
         const copied =
           await copyText(
-            text
+            SHARE_TEXT
           );
 
 
@@ -3618,7 +3630,7 @@
 
 
           instagramButton.textContent =
-            "📋 Nachricht kopiert ✓";
+            "📋 Nachricht kopiert – jetzt einfügen ✓";
 
 
           setTimeout(
@@ -3628,7 +3640,7 @@
                 originalText;
 
             },
-            2500
+            3500
           );
 
         }
