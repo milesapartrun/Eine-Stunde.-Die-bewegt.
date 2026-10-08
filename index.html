@@ -3603,18 +3603,61 @@
       async function() {
 
         /*
-          Instagram bietet über eine normale
-          Webseite keinen zuverlässigen Link an,
-          der eine neue Direct Message bereits
-          mit einem beliebigen Text vorausfüllt.
+          Zuerst versuchen wir das native Teilen-Menü
+          des Geräts. Wenn Instagram bzw. das Gerät
+          Text und URL übernimmt, kann die Nachricht
+          dort direkt weitergegeben werden.
+        */
 
-          Deshalb wird hier der KOMPLETTE
-          Nachrichtentext inklusive klickbarem
-          Link kopiert und anschließend direkt
-          Instagram Direct geöffnet.
+        const originalText =
+          instagramButton.textContent;
 
-          Der Nutzer kann die Nachricht dort
-          unmittelbar einfügen und verschicken.
+
+        if (
+          navigator.share
+        ) {
+
+          try {
+
+            await navigator.share({
+              title:
+                "Eine Stunde. Die bewegt.",
+
+              text:
+                "Mach mit bei „Eine Stunde. Die bewegt.“ – 60 Minuten Bewegung. Danach bekommst du eine Motivation von einem anderen Menschen.",
+
+              url:
+                CAMPAIGN_URL
+            });
+
+
+            return;
+
+          } catch (error) {
+
+            /*
+              Wenn der Nutzer das native Teilen-Menü
+              bewusst abbricht, nichts weiter öffnen.
+            */
+
+            if (
+              error &&
+              error.name === "AbortError"
+            ) {
+
+              return;
+
+            }
+
+          }
+
+        }
+
+
+        /*
+          Falls das native Teilen nicht verfügbar ist
+          oder nicht funktioniert, wird der komplette
+          Nachrichtentext inklusive URL kopiert.
         */
 
         const copied =
@@ -3624,10 +3667,6 @@
 
 
         if (copied) {
-
-          const originalText =
-            instagramButton.textContent;
-
 
           instagramButton.textContent =
             "📋 Nachricht kopiert – jetzt einfügen ✓";
