@@ -3613,13 +3613,6 @@
       "click",
       async function() {
 
-        /*
-          Zuerst versuchen wir das native Teilen-Menü
-          des Geräts. Wenn Instagram bzw. das Gerät
-          Text und URL übernimmt, kann die Nachricht
-          dort direkt weitergegeben werden.
-        */
-
         const originalText =
           instagramButton.textContent;
 
@@ -3629,6 +3622,78 @@
         ) {
 
           try {
+
+            /*
+              Zuerst versuchen wir das Bild selbst
+              über das native Teilen-Menü zu teilen.
+
+              Dadurch muss Instagram nicht versuchen,
+              das Open-Graph-Bild der URL zu laden,
+              sondern bekommt die echte Bilddatei.
+            */
+
+            const response =
+              await fetch("./movement.jpeg");
+
+
+            const blob =
+              await response.blob();
+
+
+            const imageFile =
+              new File(
+                [blob],
+                "eine-stunde-die-bewegt.jpg",
+                {
+                  type:
+                    blob.type ||
+                    "image/jpeg"
+                }
+              );
+
+
+            const shareData = {
+              files: [imageFile],
+
+              title:
+                "Eine Stunde. Die bewegt.",
+
+              text:
+                "Mach mit bei „Eine Stunde. Die bewegt.“ 💙\n\n60 Minuten Bewegung. Für dich. Für deine Gesundheit.",
+
+              url:
+                CAMPAIGN_URL
+            };
+
+
+            /*
+              Nur wenn das Gerät das Teilen
+              von Dateien tatsächlich unterstützt,
+              versuchen wir den Bild-Share.
+            */
+
+            if (
+              navigator.canShare &&
+              navigator.canShare({
+                files: [imageFile]
+              })
+            ) {
+
+              await navigator.share(
+                shareData
+              );
+
+
+              return;
+
+            }
+
+
+            /*
+              Wenn Dateifreigabe nicht unterstützt
+              wird, versuchen wir weiterhin den
+              bisherigen Text-/URL-Share.
+            */
 
             await navigator.share({
               title:
@@ -3666,9 +3731,11 @@
 
 
         /*
-          Falls das native Teilen nicht verfügbar ist
-          oder nicht funktioniert, wird der komplette
-          Nachrichtentext inklusive URL kopiert.
+          Falls das native Teilen nicht verfügbar ist,
+          die Bildfreigabe nicht funktioniert oder das
+          Gerät den nativen Share nicht unterstützt,
+          wird der komplette Nachrichtentext inklusive
+          URL kopiert.
         */
 
         const copied =
