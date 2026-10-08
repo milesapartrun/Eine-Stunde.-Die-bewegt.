@@ -48,6 +48,7 @@
 
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+
       overflow-x: hidden;
     }
 
@@ -62,7 +63,10 @@
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 28px 28px 55px;
+
+      padding:
+        28px 28px
+        55px;
     }
 
 
@@ -73,30 +77,41 @@
 
     .hero {
       text-align: center;
+
       padding-top: 5px;
+
       margin-bottom: 30px;
     }
 
 
     .movement-symbol {
       position: relative;
+
       width: 76px;
       height: 54px;
-      margin: 0 auto 28px;
+
+      margin:
+        0 auto
+        28px;
     }
 
 
     .movement-symbol span {
       position: absolute;
+
       height: 10px;
+
       border-radius: 999px;
+
       background: var(--blue);
+
       transform: rotate(-25deg);
     }
 
 
     .movement-symbol span:nth-child(1) {
       width: 34px;
+
       top: 3px;
       left: 12px;
     }
@@ -104,6 +119,7 @@
 
     .movement-symbol span:nth-child(2) {
       width: 54px;
+
       top: 20px;
       left: 18px;
     }
@@ -111,28 +127,36 @@
 
     .movement-symbol span:nth-child(3) {
       width: 34px;
+
       top: 37px;
       left: 30px;
     }
 
 
     .hero-title {
-      font-size: clamp(76px, 16vw, 136px);
+      font-size:
+        clamp(76px, 16vw, 136px);
+
       line-height: 0.78;
+
       font-weight: 800;
+
       letter-spacing: -0.075em;
+
       text-align: center;
     }
 
 
     .hero-title .black {
       display: block;
+
       color: var(--text);
     }
 
 
     .hero-title .blue {
       display: block;
+
       color: var(--blue);
     }
 
@@ -145,7 +169,9 @@
     .hero-photo {
       position: relative;
 
-      width: calc(100% + 56px);
+      width:
+        calc(100% + 56px);
+
       margin-left: -28px;
 
       height: 390px;
@@ -163,6 +189,12 @@
       display: block;
 
       object-fit: cover;
+
+      /*
+        Das komplette Dreierbild bleibt sichtbar.
+      */
+
+      object-position: center center;
     }
 
 
@@ -170,6 +202,7 @@
       content: "";
 
       position: absolute;
+
       inset: 0;
 
       background:
@@ -191,14 +224,17 @@
       left: 24px;
       bottom: 20px;
 
-      padding: 9px 13px;
+      padding:
+        9px 13px;
 
       border-radius: 999px;
 
       background: white;
+
       color: var(--text);
 
       font-size: 12px;
+
       line-height: 1;
 
       font-weight: 800;
@@ -273,6 +309,7 @@
 
     .description-main {
       display: block;
+
       white-space: nowrap;
     }
 
@@ -374,9 +411,24 @@
     }
 
 
+    /*
+      Das eine Bild wird hier dreimal verwendet.
+
+      Da das Originalbild aus drei gleich großen
+      Bereichen besteht, zeigen wir jeweils nur
+      das passende Drittel.
+    */
+
     .movement-card img {
-      width: 100%;
+      position: absolute;
+
+      top: 0;
+
+      width: 300%;
+
       height: 100%;
+
+      max-width: none;
 
       display: block;
 
@@ -388,23 +440,29 @@
     }
 
 
+    /* LINKES DRITTEL = LAUFEN */
+
     .movement-card:nth-child(1) img {
-      object-position: center;
+      left: 0;
     }
 
+
+    /* MITTLERES DRITTEL = RADFAHREN */
 
     .movement-card:nth-child(2) img {
-      object-position: center;
+      left: -100%;
     }
 
 
+    /* RECHTES DRITTEL = SCHWIMMEN */
+
     .movement-card:nth-child(3) img {
-      object-position: center;
+      left: -200%;
     }
 
 
     .movement-card:hover img {
-      transform: scale(1.045);
+      transform: scale(1.035);
     }
 
 
@@ -412,6 +470,7 @@
       content: "";
 
       position: absolute;
+
       inset: 0;
 
       background:
@@ -605,14 +664,23 @@
 
 
     .motivation-photo img {
-      width: 100%;
+      position: absolute;
+
+      top: 0;
+
+      left: -100%;
+
+      width: 300%;
+
       height: 100%;
+
+      max-width: none;
 
       display: block;
 
       object-fit: cover;
 
-      object-position: center 62%;
+      object-position: center center;
     }
 
 
@@ -754,6 +822,7 @@
 
     .message-input::placeholder {
       color: var(--placeholder);
+
       opacity: 1;
     }
 
@@ -918,6 +987,7 @@
 
     @media (max-width: 600px) {
 
+
       .page {
         padding:
           23px 22px
@@ -956,6 +1026,7 @@
 
       .photo-tag {
         left: 18px;
+
         bottom: 16px;
 
         font-size: 10px;
@@ -1021,6 +1092,10 @@
       }
 
 
+      /* -------------------------
+         SPORT-GALERIE
+         ------------------------- */
+
       .movement-gallery {
         gap: 7px;
 
@@ -1037,6 +1112,7 @@
 
       .movement-card-label {
         left: 10px;
+
         bottom: 10px;
 
         font-size: 13px;
@@ -1045,11 +1121,16 @@
 
       .movement-card-number {
         right: 9px;
+
         top: 10px;
 
         font-size: 9px;
       }
 
+
+      /* -------------------------
+         STATISTIK
+         ------------------------- */
 
       .stats {
         margin-bottom: 50px;
@@ -1076,6 +1157,10 @@
       }
 
 
+      /* -------------------------
+         JEDE STUNDE
+         ------------------------- */
+
       .count-message {
         margin-bottom: 55px;
       }
@@ -1101,11 +1186,16 @@
 
       .count-message::after {
         width: 58px;
+
         height: 4px;
 
         margin-top: 18px;
       }
 
+
+      /* -------------------------
+         MOTIVATIONS-BILD
+         ------------------------- */
 
       .motivation-photo {
         height: 170px;
@@ -1118,11 +1208,16 @@
 
       .motivation-photo-text {
         left: 16px;
+
         bottom: 15px;
 
         font-size: 16px;
       }
 
+
+      /* -------------------------
+         MOTIVATION
+         ------------------------- */
 
       .kicker {
         margin-bottom: 25px;
@@ -1147,6 +1242,10 @@
       }
 
 
+      /* -------------------------
+         NACHRICHT
+         ------------------------- */
+
       .message-input {
         font-size: 22px;
       }
@@ -1169,6 +1268,10 @@
       }
 
 
+      /* -------------------------
+         FOOTER
+         ------------------------- */
+
       .footer {
         padding-top: 31px;
       }
@@ -1176,6 +1279,7 @@
 
       .footer-mark {
         width: 48px;
+
         height: 4px;
 
         margin-bottom: 21px;
@@ -1195,6 +1299,7 @@
        ===================================================== */
 
     @media (max-width: 380px) {
+
 
       .hero-title {
         font-size: 69px;
@@ -1294,7 +1399,7 @@
 
 
       <img
-        src="images/movement-triptych.jpg"
+        src="images/movement.jpeg"
         alt="Menschen beim Laufen, Radfahren und Schwimmen"
       >
 
@@ -1381,11 +1486,13 @@
     <section class="movement-gallery">
 
 
+      <!-- LAUFEN -->
+
       <article class="movement-card">
 
 
         <img
-          src="images/runner.jpg"
+          src="images/movement.jpeg"
           alt="Person beim Laufen in der Natur"
           loading="lazy"
         >
@@ -1405,11 +1512,13 @@
 
 
 
+      <!-- RADFAHREN -->
+
       <article class="movement-card">
 
 
         <img
-          src="images/cyclist.jpg"
+          src="images/movement.jpeg"
           alt="Person beim Radfahren an der Küste"
           loading="lazy"
         >
@@ -1429,11 +1538,13 @@
 
 
 
+      <!-- SCHWIMMEN -->
+
       <article class="movement-card">
 
 
         <img
-          src="images/swimmer.jpg"
+          src="images/movement.jpeg"
           alt="Person beim Schwimmen im Meer"
           loading="lazy"
         >
@@ -1549,8 +1660,8 @@
 
 
       <img
-        src="images/cyclist.jpg"
-        alt="Radfahrerin unterwegs an der Küste"
+        src="images/movement.jpeg"
+        alt="Person beim Radfahren an der Küste"
         loading="lazy"
       >
 
